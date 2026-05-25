@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<ScreenDataListContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BaseScreenDataContractList>
+    <BaseScreenDataContract xsi:type="SqlViewerScreenDataContract">
+      <Name>Sql Görüntüleyici</Name>
+      <Description>AAP.ins_AccountApplication abc</Description>
+      <DataSourceName>DESTEK - DEV</DataSourceName>
+      <DBIndexes>
+        <int>2</int>
+      </DBIndexes>
+      <ObjectType>9</ObjectType>
+      <SchemaId>74</SchemaId>
+      <ObjectId>172280119</ObjectId>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="FavoriteQueryScreenDataContract">
+      <Name>Favori Queryler</Name>
+      <Description>aaa</Description>
+    </BaseScreenDataContract>
+  </BaseScreenDataContractList>
+</ScreenDataListContract>

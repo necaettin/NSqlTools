@@ -1,0 +1,20 @@
+-- Sertifika oluşturma
+# PowerShell'i Administrator olarak çalıştırın:
+$cert = New-SelfSignedCertificate -Type CodeSigningCert -Subject "CN=NSqlTools Developer" -CertStoreLocation Cert:\CurrentUser\My -NotAfter (Get-Date).AddYears(5)
+
+# Sertifikayı export edin (diğer kullanıcılara dağıtmak için)
+$pwd = ConvertTo-SecureString -String "YourPassword123" -Force -AsPlainText
+Export-PfxCertificate -Cert $cert -FilePath "D:\NSqlTools_CodeSign.pfx" -Password $pwd
+
+---- İmzalama
+cd "C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64"
+
+signtool.exe sign /f "D:\NSqlTools_CodeSign.pfx" /fd SHA256 /p "YourPassword123" /t http://timestamp.digicert.com "D:\BENIMKODLAR\NSqlTools\NSqlTools.UI\bin\Debug\NSqlTools.exe"
+
+-- İmza sonrası
+Diğer kullanıcılar NSqlTools_CodeSign.pfx dosyasını alıp şunu yapmalı:
+1.	PFX dosyasına çift tıkla
+2.	Store Location: Local Machine → Next
+3.	Şifreyi girin → Next
+4.	Certificate Store: "Place all certificates in the following store" → Browse → Trusted Root Certification Authorities seçin
+5.	Finish

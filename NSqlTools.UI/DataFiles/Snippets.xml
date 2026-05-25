@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ArrayOfSnippetContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SnippetContract>
+    <UniqueId>82b4c722-794b-4a92-a1b8-88de148257e5</UniqueId>
+    <Shortcut>snip_ssf</Shortcut>
+    <Expansion>SELECT * FROM</Expansion>
+    <Description>SELECT * FROM yazdırır</Description>
+  </SnippetContract>
+  <SnippetContract>
+    <UniqueId>7bc8afd6-2cd6-4fcb-870a-4ffce59a8c25</UniqueId>
+    <Shortcut>snip_df</Shortcut>
+    <Expansion>DELETE FROM</Expansion>
+    <Description>Delete from yazdırır</Description>
+  </SnippetContract>
+  <SnippetContract>
+    <UniqueId>16c3bd8d-50a1-426b-a703-f57403a4be9b</UniqueId>
+    <Shortcut>snip_message</Shortcut>
+    <Expansion>SELECT mg.NAME,
+	m.PropertyName,
+	md.Description,
+	*
+FROM Boa.cor.Messaging m
+JOIN Boa.cor.MessagingGroup mg ON mg.MessagingGroupId = m.MessagingGroupId
+JOIN Boa.cor.MessagingDetail md ON md.Code = m.Code
+	AND md.LanguageId = 1
+WHERE md.Description LIKE '%Kişinin kimlik bilgileri güncellenmiştir veya%'
+	OR m.PropertyName = 'LetterInformation'
+</Expansion>
+    <Description>Mesaj Arama</Description>
+  </SnippetContract>
+</ArrayOfSnippetContract>

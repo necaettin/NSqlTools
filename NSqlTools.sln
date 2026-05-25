@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSqlTools.BusinessLayer", "NSqlTools.BusinessLayer\NSqlTools.BusinessLayer.csproj", "{82FD5DBE-2A8B-4C6A-93B7-B74B791F2506}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSqlTools.Lib", "NSqlTools.Lib\NSqlTools.Lib.csproj", "{2C59FB1D-9FA7-40B6-916E-9F476C57D607}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSqlTools.ScintillaDiff", "NSqlTools.ScintillaDiff\NSqlTools.ScintillaDiff.csproj", "{6409C26B-9796-4815-9293-4AAC31478835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSqlTools.Types", "NSqlTools.Types\NSqlTools.Types.csproj", "{88B8E918-200F-466F-9A9F-006980B67BBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSqlTools.UI", "NSqlTools.UI\NSqlTools.UI.csproj", "{DD5CAFC7-2439-4720-9008-73F60A010575}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSqlTools.MCPServer", "NSqlTools.MCPServer\NSqlTools.MCPServer.csproj", "{F39DF993-FDE2-4EE3-894C-467D7D091576}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82FD5DBE-2A8B-4C6A-93B7-B74B791F2506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82FD5DBE-2A8B-4C6A-93B7-B74B791F2506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82FD5DBE-2A8B-4C6A-93B7-B74B791F2506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82FD5DBE-2A8B-4C6A-93B7-B74B791F2506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C59FB1D-9FA7-40B6-916E-9F476C57D607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C59FB1D-9FA7-40B6-916E-9F476C57D607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C59FB1D-9FA7-40B6-916E-9F476C57D607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C59FB1D-9FA7-40B6-916E-9F476C57D607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6409C26B-9796-4815-9293-4AAC31478835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6409C26B-9796-4815-9293-4AAC31478835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6409C26B-9796-4815-9293-4AAC31478835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6409C26B-9796-4815-9293-4AAC31478835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B8E918-200F-466F-9A9F-006980B67BBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B8E918-200F-466F-9A9F-006980B67BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B8E918-200F-466F-9A9F-006980B67BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B8E918-200F-466F-9A9F-006980B67BBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD5CAFC7-2439-4720-9008-73F60A010575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD5CAFC7-2439-4720-9008-73F60A010575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD5CAFC7-2439-4720-9008-73F60A010575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD5CAFC7-2439-4720-9008-73F60A010575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F39DF993-FDE2-4EE3-894C-467D7D091576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39DF993-FDE2-4EE3-894C-467D7D091576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39DF993-FDE2-4EE3-894C-467D7D091576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39DF993-FDE2-4EE3-894C-467D7D091576}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {050E598A-F219-46AE-B574-FCD8C8B2C1E6}
+	EndGlobalSection
+EndGlobal

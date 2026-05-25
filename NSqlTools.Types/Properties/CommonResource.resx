@@ -1,0 +1,1491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FileMenu" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>Clear Cache</value>
+  </data>
+  <data name="ToolsMenu" xml:space="preserve">
+    <value>&amp;Tools</value>
+  </data>
+  <data name="SqlViewerMenu" xml:space="preserve">
+    <value>&amp;Sql Viewer</value>
+  </data>
+  <data name="RunQuery" xml:space="preserve">
+    <value>Run Query</value>
+  </data>
+  <data name="DBSearch" xml:space="preserve">
+    <value>DB Search</value>
+  </data>
+  <data name="SqlCompare" xml:space="preserve">
+    <value>Sql Compare</value>
+  </data>
+  <data name="SqlBatchCompare" xml:space="preserve">
+    <value>Sql Batch Compare</value>
+  </data>
+  <data name="InsertScriptGenerator" xml:space="preserve">
+    <value>Insert Script Generator</value>
+  </data>
+  <data name="InsertScriptGeneratorToolTip" xml:space="preserve">
+    <value>To generate insert scripts for a table based on a specified script.</value>
+  </data>
+  <data name="FreeTextCompare" xml:space="preserve">
+    <value>Free Text Compare</value>
+  </data>
+  <data name="ConnectionStrings" xml:space="preserve">
+    <value>Connection Strings</value>
+  </data>
+  <data name="TextViewer" xml:space="preserve">
+    <value>Text Viewer</value>
+  </data>
+  <data name="ToolbarMenu" xml:space="preserve">
+    <value>&amp;Toolbar</value>
+  </data>
+  <data name="AlwaysOpenNewPage" xml:space="preserve">
+    <value>Always open new page</value>
+  </data>
+  <data name="HelpMenu" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="AboutNSqlTools" xml:space="preserve">
+    <value>&amp;About NSqlTools</value>
+  </data>
+  <data name="ToolStrip" xml:space="preserve">
+    <value>ToolStrip</value>
+  </data>
+  <data name="SqlViewer" xml:space="preserve">
+    <value>Sql Viewer</value>
+  </data>
+  <data name="SqlViewerToolTip" xml:space="preserve">
+    <value>Sql Viewer: It is for viewing the contents of SQL objects that include tables and Transact-SQL scripts.</value>
+  </data>
+  <data name="RunQueryToolTip" xml:space="preserve">
+    <value>Run Query: To execute SQL scripts.</value>
+  </data>
+  <data name="DBSearchToolTip" xml:space="preserve">
+    <value>DB Search: To search across all objects within a database.</value>
+  </data>
+  <data name="DataSourcesToolTip" xml:space="preserve">
+    <value>It is the screen where Connection Scripts used within the application are defined.</value>
+  </data>
+  <data name="ExitMenu" xml:space="preserve">
+    <value>E&amp;xit</value>
+  </data>
+  <data name="OptionsMenu" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="SqlCompareTooltip" xml:space="preserve">
+    <value>SQL Compare: It is for comparing the contents of SQL objects that include tables and Transact-SQL scripts.</value>
+  </data>
+  <data name="BatchCompareToolTip" xml:space="preserve">
+    <value>Sql Batch Compare: Allows the comparison of database objects belonging to a schema.</value>
+  </data>
+  <data name="CreateInsertScripts" xml:space="preserve">
+    <value>Create Insert Scripts</value>
+  </data>
+  <data name="ConnectionStringsToolTip" xml:space="preserve">
+    <value>Connection Strings: It is the screen where Connection Scripts used within the application are defined.</value>
+  </data>
+  <data name="CloseCurrentTab" xml:space="preserve">
+    <value>Close Current Tab</value>
+  </data>
+  <data name="SaveFileDialogFilter" xml:space="preserve">
+    <value>Text files (*.txt)|*.txt|Sql files (*.sql)|*.sql|All files (*.*)|*.*</value>
+  </data>
+  <data name="OpenFileDialogFilter" xml:space="preserve">
+    <value>Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*</value>
+  </data>
+  <data name="MenuStrip" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="SearchDBObject" xml:space="preserve">
+    <value>Search DB Object</value>
+  </data>
+  <data name="CacheCleared" xml:space="preserve">
+    <value>Cache Cleared!</value>
+  </data>
+  <data name="TabDragError" xml:space="preserve">
+    <value>Error: {0}\nDraggedTabIndex:{1}</value>
+  </data>
+  <data name="ExistingScreensWillBeClosed" xml:space="preserve">
+    <value>Existing screens will be closed. Are you sure?</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="ForFeedbackAndSuggestions" xml:space="preserve">
+    <value>For feedback and suggestions:</value>
+  </data>
+  <data name="CreatedByNecaettinKeskin" xml:space="preserve">
+    <value>Created by Necaettin Keskin.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>About {0}</value>
+  </data>
+  <data name="VersionNumber" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
+  <data name="FeedbackAndSuggestions" xml:space="preserve">
+    <value>Feedback and Suggestions</value>
+  </data>
+  <data name="HelloNNIHaveTheFollowingFeedbackOrSuggestions" xml:space="preserve">
+    <value>Hello,\n\nI have the following feedback or suggestions...</value>
+  </data>
+  <data name="UnableToOpenEmailClient" xml:space="preserve">
+    <value>Unable to open email client: {0}</value>
+  </data>
+  <data name="sqlViewerHelp" xml:space="preserve">
+    <value>SQL VIEWER: The contents of individual database objects (Tables, Stored Procedures, Triggers, etc.) can be examined.</value>
+  </data>
+  <data name="RunQueryHelp" xml:space="preserve">
+    <value>RUN QUERY: The SQL scripts are intended to be executed. The executed script may contain multiple scripts. Note: SP (Stored Procedure) alter scripts should not be executed.</value>
+  </data>
+  <data name="DBSearchHelp" xml:space="preserve">
+    <value>DB Search: This feature enables users to search for specific data within a database, taking into account case sensitivity if required. It can search across all objects in the database, including within the columns of tables. This is particularly useful for finding precise matches, especially when the case of the letters matters.</value>
+  </data>
+  <data name="SqlCompareHelp" xml:space="preserve">
+    <value>SQL COMPARE: Allows comparison of two database objects containing tables or Transact-SQL. Displays the differences found.</value>
+  </data>
+  <data name="SqlBatchCompareHelp" xml:space="preserve">
+    <value>SQL BATCH COMPARE: Compares objects of specified types under one schema with those in another database. Displays any differences if they exist.</value>
+  </data>
+  <data name="InsertScriptGeneratorHelp" xml:space="preserve">
+    <value>INSERT SCRIPT GENERATOR: Executes a query containing the columns of a selected table and displays the output as an SQL script.</value>
+  </data>
+  <data name="ConnectionStringsHelp" xml:space="preserve">
+    <value>CONNECTION STRINGS: The connection string definitions used within the application are configured. The defined connection strings are stored in a file named DataSources.xml.</value>
+  </data>
+  <data name="FreeTextCompareHelp" xml:space="preserve">
+    <value>FREE TEXT COMPARE: CS, JS, VB, XML enables comparison between files.</value>
+  </data>
+  <data name="NotePadCompare" xml:space="preserve">
+    <value>Note Pad Compare</value>
+  </data>
+  <data name="NotePad" xml:space="preserve">
+    <value>Note Pad</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
+  <data name="AddDataSource" xml:space="preserve">
+    <value>Add Data Source</value>
+  </data>
+  <data name="EditDataSource" xml:space="preserve">
+    <value>Edit Data Source</value>
+  </data>
+  <data name="DeleteDataSource" xml:space="preserve">
+    <value>Delete Data Source</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="DataSource" xml:space="preserve">
+    <value>Data Source</value>
+  </data>
+  <data name="IntegratedSecurity" xml:space="preserve">
+    <value>Integrated Security</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="InitialCatalog" xml:space="preserve">
+    <value>Initial Catalog</value>
+  </data>
+  <data name="TargetSchema" xml:space="preserve">
+    <value>Target Schema</value>
+  </data>
+  <data name="SourceSchema" xml:space="preserve">
+    <value>Source Schema</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ObjectType" xml:space="preserve">
+    <value>Object Type</value>
+  </data>
+  <data name="NameFilter" xml:space="preserve">
+    <value>Name Filter</value>
+  </data>
+  <data name="SchemaSource" xml:space="preserve">
+    <value>Schema Source</value>
+  </data>
+  <data name="NameSource" xml:space="preserve">
+    <value>Name Source</value>
+  </data>
+  <data name="Difference" xml:space="preserve">
+    <value>Difference</value>
+  </data>
+  <data name="SchemaTarget" xml:space="preserve">
+    <value>Schema Target</value>
+  </data>
+  <data name="NameTarget" xml:space="preserve">
+    <value>Name Target</value>
+  </data>
+  <data name="CollapseCriteriaPanel" xml:space="preserve">
+    <value>Collapse Criteria Panel</value>
+  </data>
+  <data name="StartDBBatchCompare" xml:space="preserve">
+    <value>Start DB Batch Compare</value>
+  </data>
+  <data name="ExportSearchResultToExcel" xml:space="preserve">
+    <value>Export Search Result To Excel</value>
+  </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Equal</value>
+  </data>
+  <data name="NotEqual" xml:space="preserve">
+    <value>Not Equal</value>
+  </data>
+  <data name="ExistsInSource" xml:space="preserve">
+    <value>Exists In Source</value>
+  </data>
+  <data name="ExistsInTarget" xml:space="preserve">
+    <value>Exists In Target</value>
+  </data>
+  <data name="ExcelFiles" xml:space="preserve">
+    <value>Excel Files|*.xls;*.xlsx</value>
+  </data>
+  <data name="BatchCompareResults" xml:space="preserve">
+    <value>Batch Compare Results</value>
+  </data>
+  <data name="DataHasBeenSuccessfullyExportedToExcelWouldYouLikeToOpenExcel" xml:space="preserve">
+    <value>Data has been successfully exported to Excel. Would you like to open Excel?</value>
+  </data>
+  <data name="ExportSuccessful" xml:space="preserve">
+    <value>Export Successful</value>
+  </data>
+  <data name="ExportFailed" xml:space="preserve">
+    <value>Export Failed</value>
+  </data>
+  <data name="BatchCompare" xml:space="preserve">
+    <value>Batch Compare</value>
+  </data>
+  <data name="XObjectsWereCompared" xml:space="preserve">
+    <value>{0} object(s) were compared</value>
+  </data>
+  <data name="SourceDBObject" xml:space="preserve">
+    <value>Source DB Object</value>
+  </data>
+  <data name="TableColumns" xml:space="preserve">
+    <value>Table Columns</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Null" xml:space="preserve">
+    <value>Null</value>
+  </data>
+  <data name="Ident" xml:space="preserve">
+    <value>Ident.</value>
+  </data>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Default Value</value>
+  </data>
+  <data name="TableSelect" xml:space="preserve">
+    <value>Table Select</value>
+  </data>
+  <data name="SourceSQLScript" xml:space="preserve">
+    <value>Source SQL Script</value>
+  </data>
+  <data name="SourceSQLScriptResult" xml:space="preserve">
+    <value>Source SQL Script Result</value>
+  </data>
+  <data name="GeneratedInsertScripts" xml:space="preserve">
+    <value>Generated Insert Scripts</value>
+  </data>
+  <data name="WriteSourceSqlScript" xml:space="preserve">
+    <value>Write Source Sql Script</value>
+  </data>
+  <data name="RunSourceSQLScript" xml:space="preserve">
+    <value>Run Source SQL Script</value>
+  </data>
+  <data name="GenerateInsertScripts" xml:space="preserve">
+    <value>Generate insert scripts</value>
+  </data>
+  <data name="SaveGeneratedInsertScripts" xml:space="preserve">
+    <value>Save generated insert scripts</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Export To Excel</value>
+  </data>
+  <data name="ImportFromExcel" xml:space="preserve">
+    <value>Import From Excel</value>
+  </data>
+  <data name="WordWrap" xml:space="preserve">
+    <value>Word Wrap</value>
+  </data>
+  <data name="WithSquareBrackets" xml:space="preserve">
+    <value>With Square Brackets</value>
+  </data>
+  <data name="ColumnInfo" xml:space="preserve">
+    <value>Table:{0}.{1} / {2} Columns</value>
+  </data>
+  <data name="InsertSQL" xml:space="preserve">
+    <value>Insert SQL</value>
+  </data>
+  <data name="SelectATableAndEnterSourceSqlScript" xml:space="preserve">
+    <value>Select a table and enter source sql script!</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="TableContaisUndefined" xml:space="preserve">
+    <value>Table contais undefined sql data type(s): sysname, hierarchyid, geometry, variant, binary, image, varbinary</value>
+  </data>
+  <data name="ErrorOccuredOnRowColumnValue" xml:space="preserve">
+    <value>Error occured on Row: {0}, Column: {1}, Value: {2}</value>
+  </data>
+  <data name="InsertScriptsWereCreated" xml:space="preserve">
+    <value>{0} insert scripts were created.</value>
+  </data>
+  <data name="SqlScriptResults" xml:space="preserve">
+    <value>Sql Script Results</value>
+  </data>
+  <data name="DataHasBeenSuccessfullyImported" xml:space="preserve">
+    <value>Data has been successfully imported!</value>
+  </data>
+  <data name="ImportSuccessful" xml:space="preserve">
+    <value>Import Successful</value>
+  </data>
+  <data name="ImportFromExcelFailed" xml:space="preserve">
+    <value>Import from excel failed</value>
+  </data>
+  <data name="DataTypeMismatchedErrorOccured" xml:space="preserve">
+    <value>Data Type mismatched error occured</value>
+  </data>
+  <data name="DataTypeMismatchedErrorOccuredDataTypeShouldBe" xml:space="preserve">
+    <value>Data Type mismatched error occured. Data type should be {0}.</value>
+  </data>
+  <data name="XRows" xml:space="preserve">
+    <value>{0} Rows</value>
+  </data>
+  <data name="DBSelect" xml:space="preserve">
+    <value>DB Select</value>
+  </data>
+  <data name="ExpandQueryResultsPanel" xml:space="preserve">
+    <value>Expand Query Results Panel</value>
+  </data>
+  <data name="ParseSql" xml:space="preserve">
+    <value>Parse Sql</value>
+  </data>
+  <data name="CollapseQueryResultsPanel" xml:space="preserve">
+    <value>Collapse Query Results Panel</value>
+  </data>
+  <data name="ExpandCriteriaPanel" xml:space="preserve">
+    <value>Expand Criteria Panel</value>
+  </data>
+  <data name="TransferToNotePad" xml:space="preserve">
+    <value>Would you like to transfer the selected DB object content to the SQL Notepad? The text you have written in the SQL Notepad will be lost! Do you confirm?</value>
+  </data>
+  <data name="DoYouConfirm" xml:space="preserve">
+    <value>Do you confirm?</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="SelectADatabase" xml:space="preserve">
+    <value>Select a database!</value>
+  </data>
+  <data name="XQueryResult" xml:space="preserve">
+    <value>{0} Query Result</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="RepoFilter" xml:space="preserve">
+    <value>Repo Filter</value>
+  </data>
+  <data name="RepoToolTip" xml:space="preserve">
+    <value>Searches for content within database objects containing Transact-SQL, and searches for column names in table-type database objects.</value>
+  </data>
+  <data name="RepoExtraSearchKeyword" xml:space="preserve">
+    <value>Repo Extra Search Keyword</value>
+  </data>
+  <data name="AzureRepo" xml:space="preserve">
+    <value>Azure Repo</value>
+  </data>
+  <data name="CaseSentitive" xml:space="preserve">
+    <value>Case Sentitive</value>
+  </data>
+  <data name="DBObjectType" xml:space="preserve">
+    <value>DB Object Type</value>
+  </data>
+  <data name="SearchKeyword" xml:space="preserve">
+    <value>Search Keyword</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Search Result</value>
+  </data>
+  <data name="Schema" xml:space="preserve">
+    <value>Schema</value>
+  </data>
+  <data name="HitCount" xml:space="preserve">
+    <value>Hit Count</value>
+  </data>
+  <data name="StartDBSearch" xml:space="preserve">
+    <value>Start DB Search</value>
+  </data>
+  <data name="Columns" xml:space="preserve">
+    <value>Columns</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>Column Name</value>
+  </data>
+  <data name="Nullable" xml:space="preserve">
+    <value>Nullable</value>
+  </data>
+  <data name="Identity" xml:space="preserve">
+    <value>Identity</value>
+  </data>
+  <data name="SqlScript" xml:space="preserve">
+    <value>Sql Script</value>
+  </data>
+  <data name="AzureRepoSearch" xml:space="preserve">
+    <value>Azure Repo Search</value>
+  </data>
+  <data name="SearchKeywordIsRequired" xml:space="preserve">
+    <value>Search keyword is required!</value>
+  </data>
+  <data name="OneOfDBSearchOrRepoSearchShouldBeChecked" xml:space="preserve">
+    <value>One of DB Search or Repo search should be checked!</value>
+  </data>
+  <data name="DBShouldBeSelected" xml:space="preserve">
+    <value>DB should be selected</value>
+  </data>
+  <data name="RepoSelectionIsRequired" xml:space="preserve">
+    <value>Repo selection is required!</value>
+  </data>
+  <data name="TableAndColumns" xml:space="preserve">
+    <value>Table:{0}.{1}.{2} / {3} Columns</value>
+  </data>
+  <data name="RepoFileContent" xml:space="preserve">
+    <value>Repo File Content</value>
+  </data>
+  <data name="SearchResults" xml:space="preserve">
+    <value>Search Results</value>
+  </data>
+  <data name="SearchKeywordFoundIn" xml:space="preserve">
+    <value>Search keyword found in: {0} database objects, {1} table columns, {2} repo object.</value>
+  </data>
+  <data name="DBObject" xml:space="preserve">
+    <value>DB Object</value>
+  </data>
+  <data name="ConnectionString" xml:space="preserve">
+    <value>Connection String</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="TestTheConnectionString" xml:space="preserve">
+    <value>Test The Connection String</value>
+  </data>
+  <data name="DefaultDatabase" xml:space="preserve">
+    <value>Default Database</value>
+  </data>
+  <data name="ConnectionStringDefinition" xml:space="preserve">
+    <value>Connection String Definition</value>
+  </data>
+  <data name="ConnectionSuccessfull" xml:space="preserve">
+    <value>Connection successfull!</value>
+  </data>
+  <data name="ConnectionTestResult" xml:space="preserve">
+    <value>Connection Test Result</value>
+  </data>
+  <data name="ConnectionUnsuccessfullErrorDetail" xml:space="preserve">
+    <value>Connection unsuccessfull! Error Detail: {0}</value>
+  </data>
+  <data name="ConnectionStringNameFieldIsRequired" xml:space="preserve">
+    <value>Connection String name field is required!</value>
+  </data>
+  <data name="ConnectionStringFieldIsRequired" xml:space="preserve">
+    <value>Connection String field is required!</value>
+  </data>
+  <data name="ServerNameFieldIsRequired" xml:space="preserve">
+    <value>Server name field is required!</value>
+  </data>
+  <data name="UserNameFieldIsRequired" xml:space="preserve">
+    <value>User name field is required!</value>
+  </data>
+  <data name="PasswordFieldIsRequired" xml:space="preserve">
+    <value>Password field is required!</value>
+  </data>
+  <data name="ThisNameHasAlreadyBeednUsed" xml:space="preserve">
+    <value>This name has already been used!</value>
+  </data>
+  <data name="TableRelationships" xml:space="preserve">
+    <value>Table Relationships</value>
+  </data>
+  <data name="TableIndexes" xml:space="preserve">
+    <value>Table Indexes</value>
+  </data>
+  <data name="FKName" xml:space="preserve">
+    <value>FK Name</value>
+  </data>
+  <data name="ReferencedTable" xml:space="preserve">
+    <value>Referenced Table</value>
+  </data>
+  <data name="ColumnNames" xml:space="preserve">
+    <value>Column Names</value>
+  </data>
+  <data name="RelationshipName" xml:space="preserve">
+    <value>Relationship Name</value>
+  </data>
+  <data name="IndexName" xml:space="preserve">
+    <value>Index Name</value>
+  </data>
+  <data name="IsUnique" xml:space="preserve">
+    <value>Is Unique</value>
+  </data>
+  <data name="IsPrimaryKey" xml:space="preserve">
+    <value>Is Primary Key</value>
+  </data>
+  <data name="IndexType" xml:space="preserve">
+    <value>Index Type</value>
+  </data>
+  <data name="TableInfo" xml:space="preserve">
+    <value>Table Info</value>
+  </data>
+  <data name="DB" xml:space="preserve">
+    <value>DB</value>
+  </data>
+  <data name="SaveLeftNotePad" xml:space="preserve">
+    <value>Save Left NotePad</value>
+  </data>
+  <data name="SaveRightNotePad" xml:space="preserve">
+    <value>Save Right NotePad</value>
+  </data>
+  <data name="OpenLeft" xml:space="preserve">
+    <value>Open Left</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="BiggerChars" xml:space="preserve">
+    <value>Bigger Chars</value>
+  </data>
+  <data name="SmallerChars" xml:space="preserve">
+    <value>Smaller Chars</value>
+  </data>
+  <data name="CaseSensistive" xml:space="preserve">
+    <value>Case Sensistive</value>
+  </data>
+  <data name="FindLeft" xml:space="preserve">
+    <value>Find Left</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="OpenCloseFindResultsPanel" xml:space="preserve">
+    <value>Open\\Close Find Results Panel</value>
+  </data>
+  <data name="FindNext" xml:space="preserve">
+    <value>Find next</value>
+  </data>
+  <data name="FindPrevious" xml:space="preserve">
+    <value>Find previous</value>
+  </data>
+  <data name="Wrap" xml:space="preserve">
+    <value>Wrap</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Full Screen</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="SingleView" xml:space="preserve">
+    <value>Single View</value>
+  </data>
+  <data name="Swap" xml:space="preserve">
+    <value>Swap</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>All files (*.*)|*.*</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="OpenFindDialog" xml:space="preserve">
+    <value>Open Find Dialog</value>
+  </data>
+  <data name="ExpandFindResultsPanel" xml:space="preserve">
+    <value>Expand Find Results Panel</value>
+  </data>
+  <data name="CollapseFindResultsPanel" xml:space="preserve">
+    <value>Collapse Find Results Panel</value>
+  </data>
+  <data name="IDSource" xml:space="preserve">
+    <value>ID Source</value>
+  </data>
+  <data name="TypeSource" xml:space="preserve">
+    <value>Type Source</value>
+  </data>
+  <data name="NullableSource" xml:space="preserve">
+    <value>Nullable Source</value>
+  </data>
+  <data name="IdentitySource" xml:space="preserve">
+    <value>Identity Source</value>
+  </data>
+  <data name="IDTarget" xml:space="preserve">
+    <value>ID Target</value>
+  </data>
+  <data name="TypeTarget" xml:space="preserve">
+    <value>Type Target</value>
+  </data>
+  <data name="NullableTarget" xml:space="preserve">
+    <value>Nullable Target</value>
+  </data>
+  <data name="IdentityTarget" xml:space="preserve">
+    <value>Identity Target</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingColumns" xml:space="preserve">
+    <value>Error occured while getting columns</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingConnectionStringsDefineConnectionStrings" xml:space="preserve">
+    <value>Error occured while getting Connection Strings. Define connection strings!</value>
+  </data>
+  <data name="ErrorOccuredWhileConnectingToX" xml:space="preserve">
+    <value>Error occured while connecting to {0}</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingDBList" xml:space="preserve">
+    <value>Error occured while getting DB list</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingDbObjectList" xml:space="preserve">
+    <value>Error occured while getting db object list</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingObjectList" xml:space="preserve">
+    <value>Error occured while getting object list</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingDbObject" xml:space="preserve">
+    <value>Error occured while getting db object</value>
+  </data>
+  <data name="ErrorOccuredWhileSearchingDB" xml:space="preserve">
+    <value>Error occured while searching DB</value>
+  </data>
+  <data name="GetDepotsError" xml:space="preserve">
+    <value>Error occured while getting Depots</value>
+  </data>
+  <data name="GetRepoSearchResultError" xml:space="preserve">
+    <value>Error occured while searching Repo</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingSchemaList" xml:space="preserve">
+    <value>Error occured while getting schema list</value>
+  </data>
+  <data name="ErrorOccuredWhileRunningSqlQuery" xml:space="preserve">
+    <value>Error occured while running sql query</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingTableList" xml:space="preserve">
+    <value>Error occured while getting table list</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingTableIndexList" xml:space="preserve">
+    <value>Error occured while getting table index list</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingTableRelationshipList" xml:space="preserve">
+    <value>Error occured while getting table relationship list</value>
+  </data>
+  <data name="ErrorDetail" xml:space="preserve">
+    <value>{0}\n\nError Detail: {1}</value>
+  </data>
+  <data name="Criteria" xml:space="preserve">
+    <value>Criteria</value>
+  </data>
+  <data name="CommandTimeout" xml:space="preserve">
+    <value>Command Timeout</value>
+  </data>
+  <data name="AddTableColumnsToCSV" xml:space="preserve">
+    <value>Add table column names to CSV</value>
+  </data>
+  <data name="ThreadCount" xml:space="preserve">
+    <value>Thread Count</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="OnlyNotEmptyTables" xml:space="preserve">
+    <value>Only not empty tables</value>
+  </data>
+  <data name="Tables" xml:space="preserve">
+    <value>Tables</value>
+  </data>
+  <data name="Logs" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="ExportToCSVCompleted" xml:space="preserve">
+    <value>Export to CSV completed.</value>
+  </data>
+  <data name="FileExportedStartedTableNameX" xml:space="preserve">
+    <value>File export started. Table Name: {0}</value>
+  </data>
+  <data name="FileExportedEndedTableNameX" xml:space="preserve">
+    <value>File export ended. Table Name: {0}</value>
+  </data>
+  <data name="ErrorOccuredTableNameErrorDetail" xml:space="preserve">
+    <value>Error occured. Table Name: {0}, Error Detail: {1}</value>
+  </data>
+  <data name="ErrorOccuredX" xml:space="preserve">
+    <value>Error occured. Error Detail: {0}</value>
+  </data>
+  <data name="ExportToCsvCompletedForDB" xml:space="preserve">
+    <value>Export to csv completed for {0}</value>
+  </data>
+  <data name="ExportToCsvStartedForX" xml:space="preserve">
+    <value>Export to csv started for {0}</value>
+  </data>
+  <data name="CreateZip" xml:space="preserve">
+    <value>Create Zip</value>
+  </data>
+  <data name="ZipFileCreateStartedForX" xml:space="preserve">
+    <value>Zip file create started for {0}.</value>
+  </data>
+  <data name="ZipFileCreateEndedForX" xml:space="preserve">
+    <value>Zip file create ended for {0}.</value>
+  </data>
+  <data name="Customizer" xml:space="preserve">
+    <value>Customizer</value>
+  </data>
+  <data name="TableToCSV" xml:space="preserve">
+    <value>Table To CSV</value>
+  </data>
+  <data name="DBList" xml:space="preserve">
+    <value>DB List</value>
+  </data>
+  <data name="DBName" xml:space="preserve">
+    <value>DB Name</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="TableName" xml:space="preserve">
+    <value>Table Name</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="NotCompleted" xml:space="preserve">
+    <value>Not Completed</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ProcessCancelled" xml:space="preserve">
+    <value>Process cancelled</value>
+  </data>
+  <data name="SelectAPath" xml:space="preserve">
+    <value>Select a path</value>
+  </data>
+  <data name="ErrorOccuredErrorDetail" xml:space="preserve">
+    <value>Error occured. Error detail: {0}</value>
+  </data>
+  <data name="NoTableFoundForX" xml:space="preserve">
+    <value>No table found for {0}</value>
+  </data>
+  <data name="CreateInsertScriptsSeperately" xml:space="preserve">
+    <value>Create insert scripts seperately</value>
+  </data>
+  <data name="FavoriteQueries" xml:space="preserve">
+    <value>Favorite Queries</value>
+  </data>
+  <data name="AddFavoriteQuery" xml:space="preserve">
+    <value>Add Favorite Query</value>
+  </data>
+  <data name="EditFavoriteQuery" xml:space="preserve">
+    <value>Edit Favorite Query</value>
+  </data>
+  <data name="DeleteFavoriteQuery" xml:space="preserve">
+    <value>Delete Favorite Query</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="_0FavoriteQueryies" xml:space="preserve">
+    <value>{0} Favorite Query(ies)</value>
+  </data>
+  <data name="AreYouSureYouWantToDeleteit" xml:space="preserve">
+    <value>Are you sure you want to delete it?</value>
+  </data>
+  <data name="QueryText" xml:space="preserve">
+    <value>Query Text</value>
+  </data>
+  <data name="QueryTextisRequired" xml:space="preserve">
+    <value>QueryText is required</value>
+  </data>
+  <data name="NameisRequired" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="SQLTools" xml:space="preserve">
+    <value>SQL Tools</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="SqlConnectionStringBuilderError" xml:space="preserve">
+    <value>SqlConnection String Builder Error</value>
+  </data>
+  <data name="FormatSql" xml:space="preserve">
+    <value>Format SQL</value>
+  </data>
+  <data name="NameShouldBeUnique" xml:space="preserve">
+    <value>Name should be unique</value>
+  </data>
+  <data name="GetFromFavoriteQueries" xml:space="preserve">
+    <value>Get from favorite queries</value>
+  </data>
+  <data name="SaveToFavoriteQueries" xml:space="preserve">
+    <value>Save to favorite queries</value>
+  </data>
+  <data name="RefreshFavoriteQueries" xml:space="preserve">
+    <value>Refresh favorite queries</value>
+  </data>
+  <data name="DoYouWantToOpenLastSessionSForms" xml:space="preserve">
+    <value>Do you want to open last session's forms? Opened tabs will be closed!</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>Edit Screen Package</value>
+  </data>
+  <data name="AddNewProject" xml:space="preserve">
+    <value>Add New Screen Package</value>
+  </data>
+  <data name="UpdateDate" xml:space="preserve">
+    <value>Update Date</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Screen Packages</value>
+  </data>
+  <data name="OpenProject" xml:space="preserve">
+    <value>Open Screen Package</value>
+  </data>
+  <data name="AddProject" xml:space="preserve">
+    <value>Add Screen Package</value>
+  </data>
+  <data name="DeleteProject" xml:space="preserve">
+    <value>Delete Screen Package</value>
+  </data>
+  <data name="MultiRowTabs" xml:space="preserve">
+    <value>Multi row tabs</value>
+  </data>
+  <data name="FillWithCurrentOpenedDocuments" xml:space="preserve">
+    <value>Fill with current opened documents</value>
+  </data>
+  <data name="Screens" xml:space="preserve">
+    <value>Screens</value>
+  </data>
+  <data name="XScreenPackages" xml:space="preserve">
+    <value>{0} Screen package(s)</value>
+  </data>
+  <data name="ScreenPackageInfo" xml:space="preserve">
+    <value>Screen Package Info</value>
+  </data>
+  <data name="Savesandopenstheopenedscreenstogetherwiththeselectedcriteria" xml:space="preserve">
+    <value>Saves and opens the opened screens together with the selected criteria.</value>
+  </data>
+  <data name="FavoriteQueriesCanBeSavedForLaterUse" xml:space="preserve">
+    <value>Favorite queries can be saved for later use.</value>
+  </data>
+  <data name="LoadLastOpenedScreens" xml:space="preserve">
+    <value>Load Last Opened Screens</value>
+  </data>
+  <data name="ComparisonColumns" xml:space="preserve">
+    <value>Comparison Columns</value>
+  </data>
+  <data name="TargetDB" xml:space="preserve">
+    <value>Target DB</value>
+  </data>
+  <data name="SourceDB" xml:space="preserve">
+    <value>Source DB</value>
+  </data>
+  <data name="ToBeComparedSQLScript" xml:space="preserve">
+    <value>To Be Compared SQL Script</value>
+  </data>
+  <data name="DataCompare" xml:space="preserve">
+    <value>Data Compare</value>
+  </data>
+  <data name="FillSourceDBTargetDBAndSQL" xml:space="preserve">
+    <value>Fill Source DB, Target DB and SQL.</value>
+  </data>
+  <data name="SourceSQLShouldReturnOneTable" xml:space="preserve">
+    <value>Source SQL should return one table.</value>
+  </data>
+  <data name="ErrorOccuredWhileRunningSqlToDataCompare" xml:space="preserve">
+    <value>Error occured while running Sql. Error Detail: {0}</value>
+  </data>
+  <data name="PleaseFillCompareColumns" xml:space="preserve">
+    <value>Please fill compare columns</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source - </value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Target - </value>
+  </data>
+  <data name="DataCompareResults" xml:space="preserve">
+    <value>Data compare results</value>
+  </data>
+  <data name="DisplayOnlyNotEqualColumns" xml:space="preserve">
+    <value>Display only not equal columns</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="DataCompareHelp" xml:space="preserve">
+    <value>DATA COMPARE: It compares two data sources with each other on a cell-by-cell basis and displays the results on a grid.</value>
+  </data>
+  <data name="DatabaseOrder" xml:space="preserve">
+    <value>Database Order</value>
+  </data>
+  <data name="TableDependencies" xml:space="preserve">
+    <value>Table Dependencies</value>
+  </data>
+  <data name="ObjectContent" xml:space="preserve">
+    <value>Object Content</value>
+  </data>
+  <data name="SchemaName" xml:space="preserve">
+    <value>Schema Name</value>
+  </data>
+  <data name="ObjectName" xml:space="preserve">
+    <value>Object Name</value>
+  </data>
+  <data name="ObjectId" xml:space="preserve">
+    <value>ObjectId</value>
+  </data>
+  <data name="DescriptionIsRequired" xml:space="preserve">
+    <value>Description is required</value>
+  </data>
+  <data name="ExpansionIsRequired" xml:space="preserve">
+    <value>Sql script is required</value>
+  </data>
+  <data name="ShortcutIsRequired" xml:space="preserve">
+    <value>Shortcut is required!</value>
+  </data>
+  <data name="ShortcutMustStartWith" xml:space="preserve">
+    <value>Shortcut must start with #.</value>
+  </data>
+  <data name="ShortcutShouldBeUnique" xml:space="preserve">
+    <value>Shortcut should be unique!</value>
+  </data>
+  <data name="AddSnippet" xml:space="preserve">
+    <value>Add Snippet</value>
+  </data>
+  <data name="UpdateSnippet" xml:space="preserve">
+    <value>Update Snippet</value>
+  </data>
+  <data name="Shortcut" xml:space="preserve">
+    <value>Shortcut</value>
+  </data>
+  <data name="Snippets" xml:space="preserve">
+    <value>Snippets</value>
+  </data>
+  <data name="DeleteSnippet" xml:space="preserve">
+    <value>Delete Snippet</value>
+  </data>
+  <data name="Snippet" xml:space="preserve">
+    <value>Snippets</value>
+  </data>
+  <data name="ChangeLog" xml:space="preserve">
+    <value>Change Log</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Log Files</value>
+  </data>
+  <data name="FormatText" xml:space="preserve">
+    <value>Format Text</value>
+  </data>
+  <data name="DatabaseAlreadyAdded" xml:space="preserve">
+    <value>Database already added!</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Source0Target12DifferencesWereFoundBetweenTheScripts" xml:space="preserve">
+    <value>Source: {0}, Target: {1} / {2} differences were found between the scripts.</value>
+  </data>
+  <data name="Table0123Columns" xml:space="preserve">
+    <value>Table: {0}.{1}.{2} ({3} Columns)</value>
+  </data>
+  <data name="_0DBObjects" xml:space="preserve">
+    <value>{0} DB Objects</value>
+  </data>
+  <data name="_0RowSAffected" xml:space="preserve">
+    <value>({0} row(s) affected)</value>
+  </data>
+  <data name="_0ConnectionStringS" xml:space="preserve">
+    <value>{0} Connection String(s)</value>
+  </data>
+  <data name="TotalRecordCount0NumberOfColumnsContainingDifferences1NumberOfRowsContainingDifferences2NumberOfCellsContainingDifferences3" xml:space="preserve">
+    <value>Total record count: {0}, number of columns containing differences: {1}, number of rows containing differences: {2}, number of cells containing differences: {3}</value>
+  </data>
+  <data name="LogInitializationError0" xml:space="preserve">
+    <value>Log initialization error: {0}</value>
+  </data>
+  <data name="ApplicationError0" xml:space="preserve">
+    <value>Application error: {0}</value>
+  </data>
+  <data name="AllFilesAll" xml:space="preserve">
+    <value>All Files|*.*</value>
+  </data>
+  <data name="ImportFromFileFailed" xml:space="preserve">
+    <value>Import from file failed</value>
+  </data>
+  <data name="ShowToolsToolbar" xml:space="preserve">
+    <value>Show tools toolbar</value>
+  </data>
+  <data name="ShowOptionsToolbar" xml:space="preserve">
+    <value>Show options toolbar</value>
+  </data>
+  <data name="SQLScriptSource" xml:space="preserve">
+    <value>SQL Script - Source</value>
+  </data>
+  <data name="SQLScriptSourceTarget" xml:space="preserve">
+    <value>SQL Script - Source &amp; Target</value>
+  </data>
+  <data name="SQLScriptTarget" xml:space="preserve">
+    <value>SQL Script - Target</value>
+  </data>
+  <data name="SqlScriptIsDifferent" xml:space="preserve">
+    <value>Sql Script Is Different</value>
+  </data>
+  <data name="EncryptDecrypt" xml:space="preserve">
+    <value>Encrypt \ Decrypt</value>
+  </data>
+  <data name="Encrypt" xml:space="preserve">
+    <value>Encrypt</value>
+  </data>
+  <data name="Decrypt" xml:space="preserve">
+    <value>Decrypt</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>Method</value>
+  </data>
+  <data name="Sha256" xml:space="preserve">
+    <value>Sha256</value>
+  </data>
+  <data name="Rijndael" xml:space="preserve">
+    <value>Rijndael</value>
+  </data>
+  <data name="SData" xml:space="preserve">
+    <value>SData</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="Input" xml:space="preserve">
+    <value>Input</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="AES" xml:space="preserve">
+    <value>AES</value>
+  </data>
+  <data name="BOAEncryptDecrypt" xml:space="preserve">
+    <value>BOA Encrypt\Decrypt</value>
+  </data>
+  <data name="FillKeyValue" xml:space="preserve">
+    <value>Fill Key value!</value>
+  </data>
+  <data name="FillInputValue" xml:space="preserve">
+    <value>Fill Input value!</value>
+  </data>
+  <data name="Journal" xml:space="preserve">
+    <value>Journal</value>
+  </data>
+  <data name="BOATools" xml:space="preserve">
+    <value>BOA Tools</value>
+  </data>
+  <data name="TFS" xml:space="preserve">
+    <value>TFS</value>
+  </data>
+  <data name="Ara" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="RefreshUsers" xml:space="preserve">
+    <value>Refresh Users</value>
+  </data>
+  <data name="TFSSettings" xml:space="preserve">
+    <value>TFS Settings</value>
+  </data>
+  <data name="TFSPath" xml:space="preserve">
+    <value>TFS Path</value>
+  </data>
+  <data name="TFSURL" xml:space="preserve">
+    <value>TFS URL</value>
+  </data>
+  <data name="ChangesetID" xml:space="preserve">
+    <value>Changeset ID</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Changeset Comment</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="Branch" xml:space="preserve">
+    <value>Branch</value>
+  </data>
+  <data name="MergedToTest" xml:space="preserve">
+    <value>Merged To Test</value>
+  </data>
+  <data name="MergedToMain" xml:space="preserve">
+    <value>Merged To Main</value>
+  </data>
+  <data name="ChangesetComment" xml:space="preserve">
+    <value>Changeset Comment</value>
+  </data>
+  <data name="ShowOnlyUnmergedToMain" xml:space="preserve">
+    <value>Show only unmerged to Main</value>
+  </data>
+  <data name="ShowOnlyUnmergedToTest" xml:space="preserve">
+    <value>Show only unmerged to Test</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="Clean" xml:space="preserve">
+    <value>Clean</value>
+  </data>
+  <data name="Hazır" xml:space="preserve">
+    <value>Hazır</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="ValueCountChangesetFound" xml:space="preserve">
+    <value>{0} changeset found</value>
+  </data>
+  <data name="Tümü" xml:space="preserve">
+    <value>-- Tümü --</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>-- All --</value>
+  </data>
+  <data name="FillTFSUrl" xml:space="preserve">
+    <value>Fill TFS Url.</value>
+  </data>
+  <data name="PleaseFillTFSPathExProductAndDeliveryDestek" xml:space="preserve">
+    <value>Please fill TFS Path (ex: ProductAndDelivery/Destek).</value>
+  </data>
+  <data name="ASearchingOperationIsRunningPleaseWait" xml:space="preserve">
+    <value>A searching operation is running. Please wait.</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Searching...</value>
+  </data>
+  <data name="ErrorOccured" xml:space="preserve">
+    <value>Error occured</value>
+  </data>
+  <data name="ErrorOccuredDetail0" xml:space="preserve">
+    <value>Error occured. Detail: {0}</value>
+  </data>
+  <data name="AOperationIsRunningPleaseWait" xml:space="preserve">
+    <value>A operation is running. Please wait!</value>
+  </data>
+  <data name="UsersAreLoading" xml:space="preserve">
+    <value>Users are loading...</value>
+  </data>
+  <data name="_0UsersAreFound" xml:space="preserve">
+    <value>{0} users are found.</value>
+  </data>
+  <data name="TFSSearchResults" xml:space="preserve">
+    <value>TFS Search Results</value>
+  </data>
+  <data name="DevCheckinUser" xml:space="preserve">
+    <value>Dev Checkin User</value>
+  </data>
+  <data name="TestMergeUser" xml:space="preserve">
+    <value>Test Merge User</value>
+  </data>
+  <data name="MainMergeUser" xml:space="preserve">
+    <value>Main Merge User</value>
+  </data>
+  <data name="TestMergeDate" xml:space="preserve">
+    <value>Test Merge Date</value>
+  </data>
+  <data name="MainMergeDate" xml:space="preserve">
+    <value>Main Merge Date</value>
+  </data>
+  <data name="CouldNtFoundAnyFirmBranchUnder0" xml:space="preserve">
+    <value>Could'nt found any firm/branch under {0}</value>
+  </data>
+  <data name="TFSError0" xml:space="preserve">
+    <value>TFS Error:{0}</value>
+  </data>
+  <data name="BranchStructureCouldNtBeDiscovered0" xml:space="preserve">
+    <value>Branch structure could'nt be discovered: {0}</value>
+  </data>
+  <data name="CommentIsRequired" xml:space="preserve">
+    <value>Comment is required!</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingOwners" xml:space="preserve">
+    <value>Error occured while getting owners</value>
+  </data>
+  <data name="LoadingFileChangesForChangeset0" xml:space="preserve">
+    <value>Loading file changes for changeset {0}...</value>
+  </data>
+  <data name="_0FileChangesFound" xml:space="preserve">
+    <value>{0} file changes found</value>
+  </data>
+  <data name="OldVersion" xml:space="preserve">
+    <value>Old Version</value>
+  </data>
+  <data name="NewVersion" xml:space="preserve">
+    <value>New Version</value>
+  </data>
+  <data name="ServerPath" xml:space="preserve">
+    <value>File Path</value>
+  </data>
+  <data name="ChangeType" xml:space="preserve">
+    <value>Change Type</value>
+  </data>
+  <data name="LoadingFileContent0" xml:space="preserve">
+    <value>Loading file content: {0}...</value>
+  </data>
+  <data name="NotPadCompare" xml:space="preserve">
+    <value>Not Pad Compare</value>
+  </data>
+  <data name="DisplayingFile0" xml:space="preserve">
+    <value>Displaying file: {0}</value>
+  </data>
+  <data name="TFSSearch" xml:space="preserve">
+    <value>TFS Search</value>
+  </data>
+  <data name="DoubleClickToViewFileChanges" xml:space="preserve">
+    <value>Double click to view file changes</value>
+  </data>
+  <data name="ToViewTheChangesDoubleClickOrLeftClickIfTheWindowIsAlreadyOpen" xml:space="preserve">
+    <value>To view the changes, double-click, or left-click if the window is already open.</value>
+  </data>
+  <data name="DevOld" xml:space="preserve">
+    <value>Dev - Old</value>
+  </data>
+  <data name="DevNew" xml:space="preserve">
+    <value>Dev - New</value>
+  </data>
+  <data name="TestOld" xml:space="preserve">
+    <value>Test - Old</value>
+  </data>
+  <data name="TestNew" xml:space="preserve">
+    <value>Test - New</value>
+  </data>
+  <data name="MainOld" xml:space="preserve">
+    <value>Main - Old</value>
+  </data>
+  <data name="MainNew" xml:space="preserve">
+    <value>Main - New</value>
+  </data>
+  <data name="LütfenSourceVeTargetSeçiniz" xml:space="preserve">
+    <value>Please select Source and Target</value>
+  </data>
+  <data name="LütfenÖnceBirChangesetSeçiniz" xml:space="preserve">
+    <value>Please select a changeset</value>
+  </data>
+  <data name="Uyarı" xml:space="preserve">
+    <value>Warnin</value>
+  </data>
+  <data name="TFSSearchHelp" xml:space="preserve">
+    <value>Performs a search in TFS. Displays changesets that have not yet been deployed to Test or Main. Shows the contents of the changesets.</value>
+  </data>
+  <data name="TableTriggers" xml:space="preserve">
+    <value>Table Triggers</value>
+  </data>
+  <data name="TriggerName" xml:space="preserve">
+    <value>Trigger Name</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingTableTriggerList" xml:space="preserve">
+    <value>Error occured while getting table trigger list!</value>
+  </data>
+  <data name="CancelQuery" xml:space="preserve">
+    <value>Cancel Query</value>
+  </data>
+  <data name="QueryCancelled" xml:space="preserve">
+    <value>Query cancelled.</value>
+  </data>
+  <data name="SearchCancelled" xml:space="preserve">
+    <value>Search cancelled.</value>
+  </data>
+  <data name="SearchFailed" xml:space="preserve">
+    <value>Search failed: </value>
+  </data>
+  <data name="OperationCancelled" xml:space="preserve">
+    <value>Operation cancelled.</value>
+  </data>
+  <data name="BatchCompareCancelledByUser" xml:space="preserve">
+    <value>Batch compare cancelled by user.</value>
+  </data>
+  <data name="ComparisonCancelled" xml:space="preserve">
+    <value>Comparison cancelled.</value>
+  </data>
+</root>

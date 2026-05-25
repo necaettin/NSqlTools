@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ArrayOfProjectContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectContract>
+    <Name>d</Name>
+    <Description>b</Description>
+    <CreatedDate>2025-06-17T08:31:05.383307+03:00</CreatedDate>
+    <UpdateDate>2026-01-01T18:27:49.6962842+03:00</UpdateDate>
+    <UniqueId>2cda5e73-4739-47d9-b7ea-3519d062805f</UniqueId>
+  </ProjectContract>
+  <ProjectContract>
+    <Name>abcc</Name>
+    <Description>b</Description>
+    <CreatedDate>2025-06-17T13:56:05.1803266+03:00</CreatedDate>
+    <UpdateDate>2025-06-18T08:53:52.05382+03:00</UpdateDate>
+    <UniqueId>001c4026-500a-4a24-a693-9296470c5897</UniqueId>
+  </ProjectContract>
+  <ProjectContract>
+    <Name>Çoklu</Name>
+    <Description />
+    <CreatedDate>2025-06-18T09:01:57.3123236+03:00</CreatedDate>
+    <UpdateDate>2025-06-18T09:02:48.1524976+03:00</UpdateDate>
+    <UniqueId>2dd3b678-0ae8-46ca-99f5-9859ab4e7e6e</UniqueId>
+  </ProjectContract>
+</ArrayOfProjectContract>

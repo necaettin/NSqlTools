@@ -1,0 +1,757 @@
+<?xml version="1.0"?>
+<ArrayOfFavoriteQueryContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FavoriteQueryContract>
+    <Name>Mesaj arama</Name>
+    <Description />
+    <QueryText>SELECT mg.NAME,
+	m.PropertyName,
+	md.Description,
+	*
+FROM Boa.cor.Messaging m
+JOIN Boa.cor.MessagingGroup mg ON mg.MessagingGroupId = m.MessagingGroupId
+JOIN Boa.cor.MessagingDetail md ON md.Code = m.Code
+	AND md.LanguageId = 1
+WHERE md.Description LIKE '%Kişinin kimlik bilgileri güncellenmiştir veya%'
+	OR m.PropertyName = 'LetterInformation'
+</QueryText>
+    <CreatedDate>2025-06-06T21:23:53.1048295+03:00</CreatedDate>
+    <UniqueId>c59e700c-09dc-488c-9756-3cfcc316e3b8</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Divit Akışı Listele</Name>
+    <Description />
+    <QueryText>select * from dms.DocumentFlowMap where FlowId='ebdc0445-a564-496b-a706-7234d026e5a8'
+select * from dms.FlowProfileDocs where FlowStepId='7778f70b-6de0-4b9a-9c16-d8a90dc417bd'
+select * from dms.FlowStep where FlowId='ec5aaa11-af49-4bb2-8298-8826238aa496'
+select * from dms.Flow where FlowId='ec5aaa11-af49-4bb2-8298-8826238aa496'
+
+
+-- Divit Dosyaları
+SELECT 
+	F.FileId,
+	F.FileName,
+	F.AccountNumber,
+	F.TranDate,
+	F.TranBranchId,
+	F.SystemDate,
+	F.UserName,
+	F.HostName,
+	F.FileType,
+	F.MimeType,
+	F.Extension,
+	FV.State,
+	F.Description,
+	F.FolderId,
+	F.InstanceId,
+	F.FlowId,			
+	FV.VersionNumber,
+	FV.FileSize,
+	FV.IsCurrent,
+	FV.FileServerObjectId,
+	FV.SystemDate UpdateSystemDate,
+	FV.UserName UpdateUserName 		
+FROM BOAContent.CMS.[File] F WITH (NOLOCK) 
+INNER JOIN BOAContent.CMS.FileVersion FV WITH(NOLOCK) ON F.FileId = FV.FileId 
+WHERE 	F.InstanceId = @InstanceId AND 
+		F.FlowId = @FlowId	
+		
+		
+-- DivitId - FlowId eşleşmesi için
+SELECT top 100 * FROM DMS.FlowProfileDocs where DivitId ='a5473d16-e6e0-4feb-98e4-bf30211e531a'
+
+
+-- Döküman
+select * from boa.dms.Documents where DocName like '%KVKK-Delil%' -- DocId: 1776
+-- Bir dökümanın kullanıldığı flowlar
+SELECT top 100 * FROM boa.DMS.DocumentFlowMap where DocId=1776 and FlowId='ef89e45f-5d11-4c48-9367-ab5e45510c47'
+-- Bu döküman akışının kullanıldığı flow profiller ve zorunluluk durumları
+SELECT * FROM boa.DMS.FlowProfileDocs where DocumentFlowMapId in (SELECT DocumentFlowMapId FROM boa.DMS.DocumentFlowMap where DocId=1776  and FlowId='ef89e45f-5d11-4c48-9367-ab5e45510c47')
+-- Bu dökümanın kullanıldığı flowStepler
+select * from boa.dms.FlowStep where FlowStepId in (SELECT distinct FlowStepId FROM boa.DMS.FlowProfileDocs where DocumentFlowMapId in (SELECT DocumentFlowMapId FROM boa.DMS.DocumentFlowMap where DocId=1776 and FlowId='ef89e45f-5d11-4c48-9367-ab5e45510c47'))
+
+
+
+SELECT TOP 1 @FlowId = fs.FlowId
+	,@FlowStepId = fpd.FlowStepId
+	,@ProfileId = fpd.ProfileId
+FROM SRVPREV.BOA.DMS.FlowProfileDocs fpd WITH (NOLOCK)
+INNER JOIN SRVPREV.BOA.DMS.FlowStep fs WITH (NOLOCK) ON fpd.FlowStepId = fs.FlowStepId
+WHERE DivitId = @DivitId
+
+
+
+</QueryText>
+    <CreatedDate>2025-06-18T09:11:48.893711+03:00</CreatedDate>
+    <UniqueId>80ba6a48-3fb4-4cee-8d27-5939ad3a4bdb</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>BCP Tablo Tanımları</Name>
+    <Description />
+    <QueryText>-- Termler
+SELECT * FROM DTG.Term WHERE TermId in (
+	SELECT 
+		tc.TermId 
+	FROM 
+		DTG.[Table] t
+		JOIN DTG.TableColumn tc ON tc.TableId = t.TableId
+	WHERE
+		t.DBName = 'EWS'
+)
+
+-- Linked Terms
+SELECT * FROM DTG.Term WHERE TermId in (
+	SELECT 
+		t.TermId 
+	FROM 
+		DTG.[Table] t
+	WHERE
+		t.DBName = 'EWS'
+)
+
+-- Tablolar
+SELECT 
+	*
+FROM 
+	DTG.[Table] t
+WHERE
+	t.DBName = 'EWS'
+
+
+-- Tablo Kolonları
+SELECT 
+	tc.*
+FROM 
+	DTG.[Table] t
+	JOIN DTG.TableColumn tc ON tc.TableId = t.TableId
+WHERE
+	t.DBName = 'EWS'
+</QueryText>
+    <CreatedDate>2025-06-18T09:12:00.9679239+03:00</CreatedDate>
+    <UniqueId>ce2433af-bd65-4486-b391-3bcf4c1e3a00</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>İş Akış Tabloları</Name>
+    <Description />
+    <QueryText>select top 100  * from wfl.Flow where name='Kasa Mutabakatı'
+select top 100  * from wfl.FlowVersion where FlowId=1000 and IsAlive=1
+select top 100 s.Name, * from wfl.AuthorizedState a join wfl.State s on s.StateId=a.StateId where FlowVersionId=8007
+select * from wfl.State where name ='Mutabakat Onayı'
+select * from wfl.State where name like '%Mutabakat%'
+select * from wfl.FlowState where FlowVersionId=8007
+select * from wfl.Instance where FlowId=1000
+</QueryText>
+    <CreatedDate>2025-06-18T09:12:12.1407377+03:00</CreatedDate>
+    <UniqueId>3c401219-7557-4b66-bc4b-339d3d8a2057</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Kur aktarımı</Name>
+    <Description />
+    <QueryText>insert into boa.cor.FXRate (TranDate, IndexType, FEC, CurrencyBid, CurrencyAsk, EffectiveBid, EffectiveAsk, Parity, ParityBid, ParityAsk, UserName, SystemDate, HostName)
+select r101.TranDate, 3, r101.FEC, r101.CurrencyBid, r101.CurrencyAsk, r101.EffectiveBid, r101.EffectiveAsk, r101.Parity, r101.ParityBid, r101.ParityAsk, r101.UserName, r101.SystemDate, r101.HostName from cor.FXRate r101
+where r101.TranDate='2023-09-26' and r101.IndexType=101 and not EXISTS(select top 1 1 from cor.FXRate r3 where r3.TranDate='2023-09-26' and r3.IndexType=3 and r3.FEC = r101.FEC)
+
+
+
+insert into cor.fxrate 
+select '2025-06-13', [IndexType], [FEC], [CurrencyBid], [CurrencyAsk], [EffectiveBid], [EffectiveAsk], [Parity], [ParityBid], [ParityAsk], [UserName], [SystemDate], [HostName]
+from cor.fxrate 
+where TranDate='2025-05-27'
+
+</QueryText>
+    <CreatedDate>2025-06-18T09:12:24.898618+03:00</CreatedDate>
+    <UniqueId>765830dc-a10f-4ec3-94ec-84d7d0701d46</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Muhasebe</Name>
+    <Description />
+    <QueryText>--Hesaplar
+BOA.ACC.COA -&gt; Hesap bilgileri
+BOA.ACC.COADetail -&gt; Hesap detay bilgileri
+BOA.COR.LedgerBalance -&gt; Mizan tablosu. Anlık hesap bakiyesi kontrolü için. Mizan ekranı kullanılabilir ama müşteri bazlı değil.
+
+select AccountNumber,AccountSuffix,LedgerId,sum(TotalDebit-TotalCredit)'Bakiye' 
+from boa.cor.LedgerBalance with (nolock)
+where 
+'20240904' between BeginDate and EndDate and 
+LEFT(LedgerId,2)=17 and 
+AccountNumber=1000 and 
+AccountSuffix=1
+group by AccountNumber,AccountSuffix,LedgerId  -- Mizan
+
+COR.GeneralLedger -&gt; view
+COR.GeneralLedgerCurrent -&gt; view
+
+--Fişler
+BOA.COR.AccountingDetailCore -&gt; O senenin kayıtları. Fiş bacakları. Alt hesap izleme raporu.
+BOA.COR.AccouningCore -&gt; O senenin kayıtları. Fiş temel bilgileri
+
+--Fiş Arşiv Tabloları
+BOA.COR.AccountingDetail -&gt; Arşiv. Alt hesap izleme arşiv raporu.
+BOA.COR.Accounting -&gt; Arşiv
+
+</QueryText>
+    <CreatedDate>2025-06-18T09:12:57.8219556+03:00</CreatedDate>
+    <UniqueId>543956aa-2048-4be8-820b-da4529816ab2</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Rapor</Name>
+    <Description />
+    <QueryText>--EXCEL PARAMETRESİ KULLANAN RAPORLAR
+select * from boa.dwh.Report where ReportId IN (select ReportId from boa.dwh.ReportParameter where Name like '%excel%')
+
+-- Rapor bulma
+SELECT 
+	* 
+FROM 
+	BOA.DWH.Report 
+WHERE
+	Name like '%Kambiyo Bsmv%'
+	
+	--[ACC].[rpt_ExchangeBSMV]
+
+
+</QueryText>
+    <CreatedDate>2025-06-18T09:13:15.5815181+03:00</CreatedDate>
+    <UniqueId>11ff016f-aa30-48f3-ba1f-205c241ab2c3</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Resource</Name>
+    <Description />
+    <QueryText>
+SELECT
+	r.Name, 
+	r.ResourceCode,
+	rp.AssemblyName,
+	rp.ClassName,
+	r.*,
+	rp.*
+FROM 
+	AUT.ResourceProp rp
+	JOIN AUT.Resource r ON r.ResourceId = rp.ResourceId
+WHERE 
+	r.name like '%Taşıma yöntemi tanımlama%'
+	or AssemblyName LIKE '%BOA.UI.CoreBanking.Teller.IntrabankMoneyTransferFromAccount%'
+
+
+-- Tüm Ekranlar
+Select re.ResourceId,
+
+             re.ResourceCode, 
+
+             re.ParentId, 
+
+             re.Name,
+
+             re.TypeId,
+
+             re.IconPath, 
+
+             re.SortId,
+
+             re.ChannelId,
+
+             ch.ChannelName,
+
+             re.IsActive,        
+
+             rp.IsWorkflow,             
+
+             ra.HasAccounting,
+
+             ra.HasSlip,
+
+             ra.HasCommission,
+
+             ar.HasRight,
+
+             ISNULL((SELECT TOP 1 1 FROM BOA.[ONE].[ResourceAction] ron WITH (NOLOCK) WHERE ron.ResourceId = re.ResourceId), 0) IsOneAction,
+
+             (CASE WHEN rp.UIType = 4 OR ro.ResourceId IS NOT NULL THEN 1 ELSE 0 END) IsOneResource,
+
+             (CASE WHEN rp.AssemblyName = 'BOA.UI.DWH.Report.Executer' THEN 1 ELSE 0 END) IsReport,
+
+             rop.PageName,
+
+             ISNULL(tsc.AssemblyName, rp.AssemblyName) AssemblyName,
+
+             rp.ClassName, rp.ModuleCode,
+
+             wf.ResourceWorkFlow,
+
+           rm.FullPath,
+
+             CASE WHEN tsc.TaskCode IS NOT NULL OR rp.AssemblyName = 'BOA.Task.Executer' THEN 'Task'
+
+                    WHEN rp.AssemblyName = 'BOA.UI.DWH.Report.Executer' THEN 'Report'
+
+                    WHEN rp.AssemblyName like 'BOA.UI.DynamicFormGenerator.%' THEN 'Dynamic Screen'
+
+                    WHEN LEN(RTRIM(re.ResourceCode)) &gt; 4 THEN 'Screen'
+
+             END ResourceUsageType,
+
+             tsc.TaskId,
+
+             tsc.TaskCode,
+
+             tsc.TaskName,
+
+             tsc.TaskStatus,
+
+             rm.Parent1 Parent,
+
+             rm.Child1,          
+
+             rm.Child2,
+
+             rm.Child3,
+
+             rm.Child4,          
+
+             (LEN(rm.FullPath) - LEN(REPLACE(rm.FullPath, '&gt;', '')) ) LevelCount,
+
+             rlm.ResourceRole
+
+             ,[OneRoot]
+
+             ,[OneParent] 
+
+             ,[OnePage]
+
+---SElect COUNT(*)         
+
+-- INTO TMP.ResourceInfo
+
+FROM BOA.AUT.Resource re WITH (NOLOCK)
+
+LEFT JOIN BOA.COR.Channel ch WITH (NOLOCK) ON ch.ChannelId = re.ChannelId
+
+LEFT JOIN BOA.AUT.ResourceProp rp WITH (NOLOCK) ON rp.ResourceId = re.ResourceId
+
+LEFT JOIN BOA.AUT.MenuPath rm WITH (NOLOCK) ON rm.ResourceId = re.ResourceId
+
+LEFT JOIN BOA.ONE.Resource ro WITH (NOLOCK) ON ro.ResourceId = re.ResourceId
+
+LEFT JOIN ( SELECT   ropx.ResourceId, ropx.PageName
+
+                                 ,(SElect Data FROM BOA.COR.fSplitStringToTable(ropx.PageName, '/') WHERE Id = 2) [OneRoot]
+
+                                 ,(SElect Data FROM BOA.COR.fSplitStringToTable(ropx.PageName, '/') WHERE Id = 3)  [OneParent]
+
+                                 , (SElect Data FROM BOA.COR.fSplitStringToTable(ropx.PageName, '/') WHERE Id = 4) [OnePage]
+
+                    FROM  BOA.ONE.ResourceProp ropx WITH (NOLOCK) 
+
+                    ) rop ON rop.ResourceId = re.ResourceId
+
+LEFT JOIN (SELECT reac.ResourceId, MAX(CONVERT(TINYINT, HasAccounting)) HasAccounting,
+
+                         MAX(CONVERT(TINYINT, HasSlip)) HasSlip, MAX(CONVERT(TINYINT, HasCommission)) HasCommission
+
+                FROM BOA.AUT.ResourceAction reac WITH (NOLOCK)
+
+                GROUP BY reac.ResourceId
+
+                ) ra ON ra.ResourceId = re.ResourceId
+
+LEFT JOIN (SELECT ars.ResourceId, MAX(CASE WHEN ars.IsAllow = 1 AND ars.BitMask &gt; 0 THEN 1 ELSE 0 END) HasRight
+
+                    FROM BOA.AUT.AccessRight ars WITH (NOLOCK)
+
+                    GROUP BY  ars.ResourceId
+
+           ) ar ON ar.ResourceId = re.ResourceId
+
+LEFT JOIN ( SELECT rf.ResourceCode, STUFF( (SELECT CONCAT(', ', wff.FlowID, ' - ', wff.Name)
+
+                                                                          FROM BOA.WFL.ResourceFlow rfs WITH (NOLOCK)
+
+                                                                          INNER JOIN BOA.WFL.Flow wff WITH (NOLOCK) ON rfs.FlowId = wff.FlowID
+
+                                                                          WHERE rfs.ResourceCode = rf.ResourceCode
+
+                                                                         FOR XML PATH(''),TYPE).value('text()[1]','nvarchar(max)'),1, 2,N'')       ResourceWorkFlow     
+
+                    FROM BOA.WFL.ResourceFlow rf WITH (NOLOCK)
+
+                    --WHERE rf.ResourceCode = 'IDRTSATSTA'
+
+                    GROUP BY rf.ResourceCode
+
+             ) wf ON wf.ResourceCode = re.ResourceCode
+
+LEFT JOIN ( SELECT td.ResourceId, td.TaskId, td.Name TaskName, td.Status TaskStatus, td.TaskCode,
+
+                                 MAX(ISNULL(tae.AssemblyName, reg.AssemblyName)) AssemblyName          
+
+                    FROM BOA.TSC.TaskDefinition td WITH(NOLOCK)
+
+                    INNER JOIN BOA.TSC.TaskDefinitionDetail tdd WITH(NOLOCK)  ON td.TaskId = tdd.TaskId
+
+                    INNER JOIN BOA.TSC.TaskAction ta WITH(NOLOCK)  ON ta.TaskDetailId = tdd.TaskDefinitionDetailId
+
+                    LEFT JOIN  BOA.TSC.TaskActionCallBOAEOD tae WITH(NOLOCK)  ON tae.TaskDetailId = tdd.TaskDefinitionDetailId AND ta.ItemNumber = tae.ItemNumber
+
+                    LEFT JOIN  BOA.TSC.TaskActionCallBOARequest tbr WITH(NOLOCK)  ON tbr.TaskDetailId = tdd.TaskDefinitionDetailId AND ta.ItemNumber = tbr.ItemNumber
+
+                    LEFT JOIN  BOA.COR.Registry reg WITH(NOLOCK)  ON reg.RegistryID = tbr.RegistryId
+
+                    WHERE tdd.IsActive = 1 
+
+                    GROUP BY td.ResourceId, td.TaskId, td.Name, td.Status, td.TaskCode
+
+               ) tsc ON tsc.ResourceId = re.ResourceId
+
+LEFT JOIN ( SELECT rrlx.ResourceId,  STUFF( (SELECT DISTINCT CONCAT(', ', CASE WHEN rl.RoleId IN (2, 12) THEN 'Bireysel'
+
+                                                                                                                          WHEN rl.IsCorporate = 1 AND rl.RoleId &lt;= 16 THEN 'Kurumsal'
+
+                                                                                                          END)
+
+                                                                          FROM BOAWeb.INT.RoleResource rrl WITH (NOLOCK) 
+
+                                                                          INNER JOIN BOAWeb.INT.[Role] rl WITH (NOLOCK) ON rrl.RoleId = rl.RoleId
+
+                                                                          WHERE rrl.ResourceId = rrlx.ResourceId
+
+                                                                         FOR XML PATH(''),TYPE).value('text()[1]','nvarchar(max)'),1, 2,N'')       ResourceRole  
+
+                    FROM BOAWeb.INT.RoleResource rrlx WITH (NOLOCK) 
+
+                    GROUP BY rrlx.ResourceId
+
+) rlm ON rlm.ResourceId = re.ResourceId
+where re.IsActive = 1
+ORDER BY re.ParentId, re.SortId, re.Name
+
+</QueryText>
+    <CreatedDate>2025-06-18T09:13:28.8557598+03:00</CreatedDate>
+    <UniqueId>6e96abb3-067d-45aa-a25d-9cdb06703fbd</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Sql'de Arama</Name>
+    <Description />
+    <QueryText>-- SP'lerde
+SELECT 
+	s.name AS SchemaName, p.name
+FROM   
+	sys.procedures p
+	JOIN sys.schemas s ON p.schema_id = s.schema_id
+WHERE  
+	Object_definition(p.object_id) LIKE '%EffectivePartnerExperience%'
+	
+	
+-- View
+SELECT 
+	s.name AS SchemaName, p.name, Object_definition(p.object_id)
+FROM   
+	sys.all_views p
+	JOIN sys.schemas s ON p.schema_id = s.schema_id
+WHERE  
+	Object_definition(p.object_id) LIKE '%aa%'
+	
+	
+-- Tablolarda
+SELECT 
+	s.name AS SchemaName, 
+	c.name  AS'ColumnName',
+	t.name AS'TableName'
+FROM
+	sys.columns c
+	JOIN sys.tables t ON c.object_id =t.object_id
+	JOIN sys.schemas s ON t.schema_id = s.schema_id
+WHERE
+	c.name LIKE'%ReviseReasonId%'
+ORDER BY 
+	TableName, ColumnName;
+
+-- Tablo kolon karşılaştırma
+SELECT 
+	ct.name, * 
+FROM 
+	SYS.OBJECTS ot 
+	JOIN SYS.OBJECTS os ON os.schema_id = 189 AND os.name='DailyFlowDeclaration'
+	
+	FULL OUTER JOIN SYS.COLUMNS ct ON ct.object_id = ot.object_id
+	FULL OUTER JOIN SYS.COLUMNS cs ON cs.object_id = os.object_id AND cs.name = ct.name
+WHERE
+	ot.schema_id = 189 AND ot.name='DailyFlowDeclaration_TEMP'
+	AND (ct.column_id is null OR cs.column_id is null OR ct.system_type_id &lt;&gt; cs.system_type_id OR ct.is_nullable &lt;&gt; cs.is_nullable OR ct.is_identity &lt;&gt; cs.is_identity OR ct.user_type_id &lt;&gt; cs.user_type_id OR ct.max_length &lt;&gt; cs.max_length)
+</QueryText>
+    <CreatedDate>2025-06-18T09:13:39.7231491+03:00</CreatedDate>
+    <UniqueId>fc48039f-b654-49dd-ac0f-2ed7225fa96b</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Şema, Kolon vs. Ekleme</Name>
+    <Description />
+    <QueryText>-- Şema ekleme
+IF NOT EXISTS(SELECT top 1 1FROM sys.schemas WHERE name ='RCA')
+BEGIN
+	EXEC('CREATE SCHEMA [RCA]')
+END
+
+-- Kolon ekleme
+IF NOT EXISTS(SELECT TOP 1 1 FROM SYS.columns c WITH (NOLOCK) JOIN SYS.tables t WITH (NOLOCK) ON t.object_id = c.object_id JOIN SYS.schemas s WITH (NOLOCK) ON s.schema_id = t.schema_id WHERE t.name='ApplicationLog' and UPPER(s.name) = 'RCA' AND c.name = 'AccountConstraintId')
+BEGIN 
+	ALTER TABLE 
+		RCA.ApplicationLog
+	ADD 
+		[AccountConstraintId] INT NULL
+END
+
+		
+		
+</QueryText>
+    <CreatedDate>2025-06-18T09:13:50.788408+03:00</CreatedDate>
+    <UniqueId>3ee5fa68-8060-4eee-bb36-f1aac4cbc976</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Task Arama</Name>
+    <Description />
+    <QueryText>SELECT  
+	td.TaskId, 
+	td.Name, 
+	td.Status, 
+	tdd.TaskDefinitionDetailId, 
+	tdd.IsActive, 
+	ISNULL(tae.ClassName, tas.SpName) TskAction, 	  
+	ta.*, 
+	tdd.*
+FROM 
+	BOA.TSC.TaskDefinition td WITH(NOLOCK) 
+	JOIN BOA.TSC.TaskDefinitionDetail tdd WITH(NOLOCK)  ON td.TaskId = tdd.TaskId
+	JOIN BOA.TSC.TaskAction ta WITH(NOLOCK)  ON ta.TaskDetailId = tdd.TaskDefinitionDetailId
+	LEFT JOIN BOA.TSC.TaskActionCallBOAEOD tae WITH(NOLOCK)  ON tae.TaskDetailId = tdd.TaskDefinitionDetailId AND ta.ItemNumber = tae.ItemNumber
+	LEFT JOIN BOA.TSC.TaskActionCallSP tas WITH(NOLOCK)  ON tas.TaskDetailId = tdd.TaskDefinitionDetailId AND ta.ItemNumber = tas.ItemNumber
+WHERE 
+	tdd.IsActive = 1 
+	--AND td.Name like '%memzuç%'
+	AND tas.SpName like '%tsk_UnitAccountValueHistory%'
+	--AND tae.ClassName like '%IncentiveRating%'
+	--AND td.TaskId IN (782) 
+</QueryText>
+    <CreatedDate>2025-06-18T09:14:04.2063082+03:00</CreatedDate>
+    <UniqueId>51de3d37-bb70-4736-8c20-aa6dc97f0d25</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Trigger</Name>
+    <Description />
+    <QueryText>IF EXISTS(SELECT * FROM sysobjects WHERE type = 'TR' AND name = 'BOASYNC_Tri_SerialNumber')
+BEGIN
+	DISABLE TRIGGER BOASYNC_Tri_SerialNumber ON BOA.PPM.SerialNumber
+END
+</QueryText>
+    <CreatedDate>2025-06-18T09:14:13.3945046+03:00</CreatedDate>
+    <UniqueId>5c21c2ac-8887-4875-bad8-2231e94b8932</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Yetkiler</Name>
+    <Description />
+    <QueryText>Çalışma grubu bazlı:
+BOA.[AUT].[fActionIdListByBitmask]
+Tablo: select * from AUT.AccessRight
+
+Bir ekrana bağlı olarak bir aksiyon için accesspoint üzerinden bir kişide yetki var mı kontrolü yapar:
+select * from aut.AccessRight ar where ar.AccessPointId in (select AccessPointId from aut.fAccessPointIdListByUserId(127)) and ar.ResourceId=402
+and exists(SELECT 1 FROM BOA.[AUT].[fActionIdListByBitmask](ar.BitMask) f where f.ActionId = 52)
+
+
+Yetki silme
+  UPDATE a SET a.Bitmask = a.Bitmask - POWER(CAST(2 AS BIGINT), ra.ActionId - 1)
+    ---SELECT *
+    FROM BOA.AUT.AccessRight a WITH (NOLOCK) 
+    INNER JOIN BOA.AUT.Resource re WITH (NOLOCK) ON re.ResourceId = a.ResourceId
+    INNER JOIN @ResourceAction ra ON re.ResourceCode = ra.ResourceCode
+    WHERE AccessPointId = @AccessPointId AND
+        EXISTS (SELECT TOP 1 1 FROM BOA.[AUT].[fActionIdListByBitmask](a.Bitmask) f WHERE f.ActionId = ra.ActionId)
+        AND re.IsActive = 1
+
+
+Yetki kaldırma cursor ile
+DECLARE 
+@AccessPointId INT, @ResourceId INT, @IsAllow BIT, @ActiveFrom SMALLDATETIME, @ActiveTo SMALLDATETIME, @ActionId INT, @Bitmask BIGINT, @BitmaskNew BIGINT
+
+DECLARE contact_cursor CURSOR FOR  
+select 
+	a.AccessPointId, a.ResourceId, a.IsAllow, a.ActiveFrom, a.ActiveTo, ra.ActionId, a.Bitmask, a.Bitmask - POWER(CAST(2 AS BIGINT), ra.ActionId - 1) as BitmaskNew
+FROM 
+	BOA.AUT.AccessRight a WITH (NOLOCK) 
+	INNER JOIN BOA.AUT.Resource re WITH (NOLOCK) ON re.ResourceId = a.ResourceId
+	INNER JOIN AUT.ResourceAction ra ON ra.ResourceId = re.ResourceId and ra.ActionId in (40, 10, 6, 8, 14, 15,  57, 9, 4, 7, 50, 16)
+WHERE 
+	EXISTS (SELECT TOP 1 1 FROM BOA.[AUT].[fActionIdListByBitmask](a.Bitmask) f WHERE f.ActionId = ra.ActionId)
+AND re.IsActive = 1
+and re.ResourceId = 12716
+  
+OPEN contact_cursor;  
+  
+-- Perform the first fetch.  
+FETCH NEXT FROM contact_cursor  
+INTO @AccessPointId, @ResourceId, @IsAllow, @ActiveFrom, @ActiveTo, @ActionId, @Bitmask, @BitmaskNew
+
+-- Check @@FETCH_STATUS to see if there are any more rows to fetch.  
+WHILE @@FETCH_STATUS = 0  
+BEGIN  
+	UPDATE AUT.AccessRight SET BitMask = @BitmaskNew where 
+	AccessPointId=@AccessPointId and ResourceId=@ResourceId and IsAllow=@IsAllow and ActiveFrom=@ActiveFrom and ActiveTo=@ActiveTo
+
+   FETCH NEXT FROM contact_cursor  
+   INTO @AccessPointId, @ResourceId, @IsAllow, @ActiveFrom, @ActiveTo, @ActionId, @Bitmask, @BitmaskNew
+END  
+  
+CLOSE contact_cursor;  
+DEALLOCATE contact_cursor;  
+GO  
+
+
+</QueryText>
+    <CreatedDate>2025-06-18T09:14:24.7993024+03:00</CreatedDate>
+    <UniqueId>8afe7397-fd96-41a0-a975-0a7c2b2604c2</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Mesaj Taşıma v3</Name>
+    <Description />
+    <QueryText>-- VERİNİN ELDE EDİLMESİ
+--select 'UNION ALL SELECT '''+m.PropertyName+''' AS PropertyName,  '''+REPLACE(d.Description, '''', '''''')+''' AS Description, '+CAST(d.LanguageId as VARCHAR)+' AS LanguageId, '+cast(m.MessagingGroupId as varchar)+' AS MessagingGroupId' from cor.messagingdetail d join cor.messaging m on m.code=d.code where m.PropertyName IN ('AccountConstraintWarningForFAST', 'FASTBalance', 'FASTBusinessRentPayment', 'FASTDailyLimitControl', 'FASTDonationPayment', 'FASTDuesPayment', 'FASTECommerce', 'FASTECommerceDetail', 'FASTEducation', 'FASTHousingRentPayment', 'FASTIndividualFinancialInvestment', 'FASTIndividualPayment', 'FASTIndividualPaymentDetail', 'FASTOnSiteShopping', 'FASTOnSiteShoppingDetail', 'FASTScholorshipPayment', 'FASTServicePayment', 'FASTServicePaymentDetail', 'FASTTip', 'FASTTransactions', 'IncomingFast', 'OutGoingFast', 'OutgoingFASTExtraRecord', 'OutgoingFASTMissingRecord', 'PaymentInstitutionPOSWarning', 'SocialMediaCash', 'WorkFromHomeAccountConstraint', 'InvalidIBANFormat', 'RepeatingTransferWarning', 'TransactionBranchName') and m.MessagingGroupId=19
+--UNION ALL
+--select 'UNION ALL SELECT '''+m.PropertyName+''' AS PropertyName,  '''+REPLACE(d.Description, '''', '''''')+''' AS Description, '+CAST(d.LanguageId as VARCHAR)+' AS LanguageId, '+cast(m.MessagingGroupId as varchar)+' AS MessagingGroupId' from cor.messagingdetail d join cor.messaging m on m.code=d.code where m.PropertyName IN ('FastAccountNotExist', 'FastTransactionNotFound', 'FastWarningInfo', 'TRQRInformation', 'YourTRQRPurchaseIsFailedWithFast', 'YourTRQRPurchaseIsSucceededWithFast') and m.MessagingGroupId=716
+--UNION ALL
+--select 'UNION ALL SELECT '''+m.PropertyName+''' AS PropertyName,  '''+REPLACE(d.Description, '''', '''''')+''' AS Description, '+CAST(d.LanguageId as VARCHAR)+' AS LanguageId, '+cast(m.MessagingGroupId as varchar)+' AS MessagingGroupId' from cor.messagingdetail d join cor.messaging m on m.code=d.code where m.PropertyName IN ('FASTBalance', 'FromEFTToFAST', 'FromFASTToEFT', 'OutgoingFASTExtraRecord', 'OutgoingFASTMissingRecord') and m.MessagingGroupId=46
+--UNION ALL
+--select 'UNION ALL SELECT '''+m.PropertyName+''' AS PropertyName,  '''+REPLACE(d.Description, '''', '''''')+''' AS Description, '+CAST(d.LanguageId as VARCHAR)+' AS LanguageId, '+cast(m.MessagingGroupId as varchar)+' AS MessagingGroupId' from cor.messagingdetail d join cor.messaging m on m.code=d.code where m.PropertyName IN ('DepositAndWithdrawalFasterAtATM', 'DepositAndWithdrawalFasterAtATMDetail') and m.MessagingGroupId=677
+DECLARE @PropertyName VARCHAR(500), @Description NVARCHAR(MAX), @LanguageId INT, @MessagingGroupId INT
+
+DECLARE messaging_cursor CURSOR FOR
+SELECT 'CustomerIdMustBeGreaterThanZero' AS PropertyName,  'Müşteri numarası boş olamaz.' AS Description, 1 AS LanguageId, 19 AS MessagingGroupId UNION ALL 
+SELECT 'CustomerIdMustBeGreaterThanZero' AS PropertyName,  'Cutomer id must be greater than zero.' AS Description, 2 AS LanguageId, 19 AS MessagingGroupId UNION ALL 
+SELECT 'SMEAccountConstraintNotFound' AS PropertyName,  '{0} numaralı başvuru için kısıt numarası bulunamadı.' AS Description, 1 AS LanguageId, 19 AS MessagingGroupId UNION ALL 
+SELECT 'SMEAccountConstraintStatusError' AS PropertyName,  '{0} nolu başvuru için kısıt devam etmektedir.' AS Description, 1 AS LanguageId, 19 AS MessagingGroupId UNION ALL 
+SELECT 'YRBCustomerIdWarning' AS PropertyName,  'Lütfen müşteri numarasını giriniz.' AS Description, 1 AS LanguageId, 19 AS MessagingGroupId UNION ALL 
+SELECT 'YRBCustomerIdWarning' AS PropertyName,  'Please enter the customer number.' AS Description, 2 AS LanguageId, 19 AS MessagingGroupId UNION ALL 
+SELECT 'YrbOldConstraintCouldNotBeFetched' AS PropertyName,  'Hesap üzerindeki önceki kısıt bilgisi getirilemedi.' AS Description, 1 AS LanguageId, 19 AS MessagingGroupId UNION ALL 
+SELECT 'YrbVideoCallAccountConstraintAlertText' AS PropertyName,  'Uzaktan Müşteri Edinimi Hesap Kısıtı' AS Description, 1 AS LanguageId, 19 AS MessagingGroupId UNION ALL 
+SELECT 'YrbVideoCallAccountConstraintDescription' AS PropertyName,  'Uzaktan Müşteri Edinimi Hesap Kısıtı' AS Description, 1 AS LanguageId, 19 AS MessagingGroupId UNION ALL 
+SELECT 'CustomerNotFoundMsg' AS PropertyName,  'Müşteri bulunamadı.' AS Description, 1 AS LanguageId, 44 AS MessagingGroupId UNION ALL 
+SELECT 'ParameterNotFoundError' AS PropertyName,  'Parametre bulunamadı.' AS Description, 1 AS LanguageId, 44 AS MessagingGroupId UNION ALL 
+SELECT 'RoleUpdateInvalidUserRoleMessage' AS PropertyName,  'Bireysel müşteri numarası giriniz.' AS Description, 1 AS LanguageId, 44 AS MessagingGroupId UNION ALL 
+SELECT 'UserRoleInfoNotFound' AS PropertyName,  'Kullanıcı Rol Bilgisi Bulunamadı' AS Description, 1 AS LanguageId, 44 AS MessagingGroupId UNION ALL 
+SELECT 'UserRoleInfoNotFound' AS PropertyName,  'User Role Information Is Not Found' AS Description, 2 AS LanguageId, 44 AS MessagingGroupId
+
+
+OPEN messaging_cursor
+
+FETCH NEXT FROM messaging_cursor
+INTO @PropertyName, @Description, @LanguageId, @MessagingGroupId
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	IF NOT EXISTS(SELECT TOP 1 1 FROM COR.Messaging WITH (NOLOCK) WHERE MessagingGroupId=@MessagingGroupId 
+		AND PropertyName = @PropertyName)
+	BEGIN
+		INSERT INTO BOA.COR.Messaging 
+		(MessagingGroupId, PropertyName, Severity, UserName, HostName, SystemDate, HostIP) 
+		VALUES
+		(@MessagingGroupId, @PropertyName, 0, 'arch', 'arch_comp', GETDATE(), 'ip')
+	END
+
+	DECLARE @Code INT 
+	SELECT @Code = Code FROM BOA.COR.Messaging WHERE PropertyName = @PropertyName AND MessagingGroupId = @MessagingGroupId
+
+	-- COR.MessagingDetail ekleniyor\güncelleniyor
+	IF NOT EXISTS(SELECT TOP 1 1 FROM COR.MessagingDetail WITH (NOLOCK) WHERE Code = @Code AND LanguageId = @LanguageId)
+	BEGIN
+		INSERT INTO BOA.COR.MessagingDetail (Code, LanguageId, Description, SystemDate) 
+		VALUES(@Code, @LanguageId, @Description, GETDATE())
+	END
+	ELSE
+	BEGIN
+		UPDATE COR.MessagingDetail SET Description = @Description WHERE Code = @Code AND LanguageId = @LanguageId
+	END
+
+    FETCH NEXT FROM messaging_cursor
+    INTO @PropertyName, @Description, @LanguageId, @MessagingGroupId
+END
+CLOSE messaging_cursor;
+DEALLOCATE messaging_cursor;
+
+UPDATE COR.MessagingGroup SET Version = Version + 1 WHERE MessagingGroupId IN (19, 44)
+
+</QueryText>
+    <CreatedDate>2025-06-18T09:14:40.5071524+03:00</CreatedDate>
+    <UniqueId>5a9ed156-78e4-4cf3-b603-70a8f0270ae4</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>Parametre Taşıma v2</Name>
+    <Description />
+    <QueryText>
+IF NOT EXISTS(SELECT TOP 1 1 FROM BOA.COR.ParameterDefinition WITH (NOLOCK) WHERE ParamType='TIMETOEXDAYCOUNT')
+BEGIN
+	INSERT INTO BOA.COR.ParameterDefinition 
+	(ParamTable, ParamGroupCode, ParamType, ParamLabel, ParamDescription, PropertyCount, ParamDataType1, ParamLen1, ParamLabel1, ParamDataType2, ParamLen2, ParamLabel2, ParamDataType3, ParamLen3, ParamLabel3, ParamDataType4, ParamLen4, ParamLabel4, ParamDataType5, ParamLen5, ParamLabel5, ParamDataType6, ParamLen6, ParamLabel6, ParamDataType7, ParamLen7, ParamLabel7, ParamDataType8, ParamLen8, ParamLabel8, LanguageId, UserName, SystemDate, HostName, ParamDescriptionLabel, Owner, Approver, IsCacheable, IsCritical) 
+	VALUES
+	('COR.ParameterDefault', 'TSCHDLR', 'TIMETOEXDAYCOUNT', 'TIMETOEXDAYCOUNT', 'İşlenecek taskları tespit için kaç gün önceye bakılacağı bilgisini barındırır', 1, 'Int32', 20, 'Gün değeri', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'SU1', '2025-04-11 08:42:06', 'ARCPD018NB', NULL, 631, 631, 1, 0)
+END
+
+IF NOT EXISTS(SELECT TOP 1 1 FROM BOA.COR.ParameterDefault WITH (NOLOCK) WHERE ParamType='TIMETOEXDAYCOUNT' AND ParamValue='5')
+BEGIN
+	INSERT INTO BOA.COR.ParameterDefault 
+	(ParamType, ParamDescription, ParamValue, ParamDataType, ParamDataTypeRef, ParamDate, LanguageId, UserName, HostName, SystemDate, UpdateUserName, UpdateHostName, UpdateSystemDate, HostIP, ParamGroupCode) 
+	VALUES
+	('TIMETOEXDAYCOUNT', 'Kaç gün önceden itibaren taskları çalıştırmak için alınacağı', '14', NULL, NULL, NULL, 1, 'SU1', 'ARCPD018NB', '2025-04-11 08:43:41', NULL, NULL, NULL, '192.168.1.59', 'TSCHDLR')
+END
+</QueryText>
+    <CreatedDate>2025-06-18T09:14:51.8806977+03:00</CreatedDate>
+    <UniqueId>2cfad0ff-06e6-459b-8823-3ff6db91fd8e</UniqueId>
+  </FavoriteQueryContract>
+  <FavoriteQueryContract>
+    <Name>VC Bildirimi</Name>
+    <Description />
+    <QueryText>DECLARE @ChequeLeafNotificationId INT, @Micr VARCHAR(80), @ChequeId INT 
+DECLARE NotCursor CURSOR
+FOR							
+SELECT '000572801025650050090046915389' AS Micr, 36140 AS ChequeId
+UNION ALL SELECT '001227901019840050010088836671' AS Micr, 35446 AS ChequeId
+UNION ALL SELECT '001328501026040050080077521242' AS Micr, 41368 AS ChequeId
+UNION ALL SELECT '001923601015480050010088566215' AS Micr, 43826 AS ChequeId
+UNION ALL SELECT '001943001024470050020064112806' AS Micr, 35445 AS ChequeId
+UNION ALL SELECT '002168701023380050180027801148' AS Micr, 39137 AS ChequeId
+UNION ALL SELECT '002540401020190050310054060405' AS Micr, 35701 AS ChequeId
+UNION ALL SELECT '002623901021410050040072653082' AS Micr, 42537 AS ChequeId
+UNION ALL SELECT '003153701019300050090030216332' AS Micr, 34544 AS ChequeId
+UNION ALL SELECT '003153801025880050160059127088' AS Micr, 28407 AS ChequeId
+UNION ALL SELECT '003578201008410050010003446432' AS Micr, 35318 AS ChequeId
+UNION ALL SELECT '004531601019990050280039674582' AS Micr, 43772 AS ChequeId
+UNION ALL SELECT '006088201009260050040075783219' AS Micr, 35362 AS ChequeId
+UNION ALL SELECT '008187001022550050210044869093' AS Micr, 39896 AS ChequeId
+UNION ALL SELECT '011349901002800050050068477457' AS Micr, 32496 AS ChequeId
+UNION ALL SELECT '012572601001430050150049318704' AS Micr, 28973 AS ChequeId
+UNION ALL SELECT '016330701006490050020026506296' AS Micr, 34916 AS ChequeId
+UNION ALL SELECT '023075401000530050020056874942' AS Micr, 36101 AS ChequeId
+UNION ALL SELECT '034238501001160050010097966587' AS Micr, 45648 AS ChequeId
+UNION ALL SELECT '043633401000190050010074281930' AS Micr, 41605 AS ChequeId
+
+OPEN NotCursor
+FETCH NEXT FROM NotCursor INTO @Micr, @ChequeId
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	SELECT @ChequeLeafNotificationId = NULL
+	SELECT TOP 1 @ChequeLeafNotificationId = ChequeLeafNotificationId FROM BOA.CHQ.ChequeLeafNotification WITH (NOLOCK) WHERE Micr=@Micr
+	IF(@ChequeLeafNotificationId IS NULL)
+	BEGIN
+		INSERT INTO BOA.CHQ.ChequeLeafNotification (ChequeLeafId, ChequeId, CurrentNotification, NotificationStatus, Micr, UserName, HostName, SystemDate, HostIP) VALUES
+		(NULL, @ChequeId, 'VC', 0, @Micr, 'BoaUser', 'arch_host', GETDATE(), 'arch_server')
+		SELECT @ChequeLeafNotificationId = @@identity
+	END
+
+	INSERT INTO CHQ.ChequeLeafNotificationTransaction ([ChequeLeafNotificationId], [CurrentNotification], [NotificationStatus], [ProcessReferanceNo], [ProcessResult], [ProcessType], 
+	[TransactionResult], [FarId], [IsActive], [UserName], [HostName], [SystemDate], [HostIP])
+	VALUES(@ChequeLeafNotificationId, 'VC', 2, NULL, NULL, 'TDS-T', NULL, NULL, 1, 'arch_user', 'arch_host', GETDATE(), 'arch_host')
+
+	FETCH NEXT FROM NotCursor INTO @Micr, @ChequeId
+END
+CLOSE NotCursor
+DEALLOCATE NotCursor</QueryText>
+    <CreatedDate>2025-12-23T12:17:24.4664685+03:00</CreatedDate>
+    <UniqueId>238c02e9-9f43-480d-8273-10734bdbd0c8</UniqueId>
+  </FavoriteQueryContract>
+</ArrayOfFavoriteQueryContract>

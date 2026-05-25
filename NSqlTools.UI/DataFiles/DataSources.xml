@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<ArrayOfConnectionStringContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ConnectionStringContract>
+    <Id>5c10260c-0bbd-4e79-83f3-f3e5021952f8</Id>
+    <Name>DESTEK - DEV</Name>
+    <ConnectionString>Data Source=172.19.0.4;Initial Catalog=boa;Integrated Security=False;User ID=destekdeveloper;Password=WY7KXV9I8svDP6JHB;Min Pool Size=10;Max Pool Size=200;Application Name=Thriller; TrustServerCertificate=True</ConnectionString>
+    <DataSource>172.19.0.4</DataSource>
+    <UserName>destekdeveloper</UserName>
+    <Password>WY7KXV9I8svDP6JHB</Password>
+    <InitialCatalog>boa</InitialCatalog>
+    <IntegratedSecurity>false</IntegratedSecurity>
+    <DatabaseOrderList>
+      <string>Boa</string>
+      <string>BoaStats</string>
+      <string>BOADWH</string>
+    </DatabaseOrderList>
+  </ConnectionStringContract>
+  <ConnectionStringContract>
+    <Id>f4e9738a-3b80-419d-9d0c-f8333e58a68f</Id>
+    <Name>DESTEK - TEST</Name>
+    <ConnectionString>Data Source=172.17.92.10;Initial Catalog=boa;Integrated Security=False;User ID=dybdbuser;Password=Sn3uQFVatsDF9pgC</ConnectionString>
+    <DataSource>172.17.92.10</DataSource>
+    <UserName>dybdbuser</UserName>
+    <Password>Sn3uQFVatsDF9pgC</Password>
+    <InitialCatalog>boa</InitialCatalog>
+    <IntegratedSecurity>false</IntegratedSecurity>
+    <DatabaseOrderList />
+  </ConnectionStringContract>
+  <ConnectionStringContract>
+    <Id>789f8f97-3b79-4e91-84dd-fc4d796875c3</Id>
+    <Name>DESTEK - PREP</Name>
+    <ConnectionString>Data Source=172.17.92.200;Initial Catalog=boa;Min Pool Size=10; Max Pool Size=200;Application Name=Thriller;User Id=dybdbuser;Password=Sn3uQFVatsDF9pgC;</ConnectionString>
+    <DataSource>172.17.92.200</DataSource>
+    <UserName>dybdbuser</UserName>
+    <Password>Sn3uQFVatsDF9pgC</Password>
+    <InitialCatalog>boa</InitialCatalog>
+    <IntegratedSecurity>false</IntegratedSecurity>
+    <DatabaseOrderList />
+  </ConnectionStringContract>
+  <ConnectionStringContract>
+    <Id>f704975d-8270-4958-b538-a215e3bfe780</Id>
+    <Name>DESTEK - BFIX</Name>
+    <ConnectionString>Data Source=172.17.82.210;Initial Catalog=boa;Min Pool Size=10; Max Pool Size=200;Application Name=Thriller;User Id=dybdbuser;Password=Sn3uQFVatsDF9pgC;</ConnectionString>
+    <DataSource>172.17.82.210</DataSource>
+    <UserName>dybdbuser</UserName>
+    <Password>Sn3uQFVatsDF9pgC</Password>
+    <InitialCatalog>boa</InitialCatalog>
+    <IntegratedSecurity>false</IntegratedSecurity>
+    <DatabaseOrderList />
+  </ConnectionStringContract>
+  <ConnectionStringContract>
+    <Id>9b013fb7-443f-45ee-ba35-7d90c2832b50</Id>
+    <Name>Halk - Dev</Name>
+    <ConnectionString>Data Source=10.5.0.8;Initial Catalog=BOA;Integrated Security=False;User ID=Archideveloper;Password=Ab3ycMG8h53U</ConnectionString>
+    <DataSource>10.5.0.8</DataSource>
+    <UserName>Archideveloper</UserName>
+    <Password>Ab3ycMG8h53U</Password>
+    <InitialCatalog>BOA</InitialCatalog>
+    <IntegratedSecurity>false</IntegratedSecurity>
+    <DatabaseOrderList />
+  </ConnectionStringContract>
+</ArrayOfConnectionStringContract>

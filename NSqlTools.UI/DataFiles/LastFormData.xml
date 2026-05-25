@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<ScreenDataListContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BaseScreenDataContractList>
+    <BaseScreenDataContract xsi:type="RunQueryScreenDataContract">
+      <Name>Run Query</Name>
+      <DataSourceName>DESTEK - DEV</DataSourceName>
+      <DBIndexes>
+        <int>0</int>
+      </DBIndexes>
+      <ObjectType>9</ObjectType>
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+      <QueryText>SELECT mg.NAME,
+	m.PropertyName,
+	md.Description,
+	*
+FROM Boa.cor.Messaging m
+JOIN Boa.cor.MessagingGroup mg ON mg.MessagingGroupId = m.MessagingGroupId
+JOIN Boa.cor.MessagingDetail md ON md.Code = m.Code
+	AND md.LanguageId = 1
+WHERE md.Description LIKE '%İşlemin durumu valör gü%'
+	OR m.PropertyName = 'LetterInformation'
+
+
+EXEC TRE.sel_TxnFXByKey @TxnNo='1'
+
+SELECT 
+    TxnFlags,
+    *		
+FROM 
+    TRE.TxnFX WITH (NOLOCK)
+WHERE 
+    TxnNo = 1
+</QueryText>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="SqlViewerScreenDataContract">
+      <Name>Sql Viewer</Name>
+      <Description>TRE.sel_TxnFXByKey</Description>
+      <DataSourceName>DESTEK - DEV</DataSourceName>
+      <DBIndexes>
+        <int>0</int>
+      </DBIndexes>
+      <ObjectType>9</ObjectType>
+      <SchemaId>23</SchemaId>
+      <ObjectId>1265491637</ObjectId>
+    </BaseScreenDataContract>
+  </BaseScreenDataContractList>
+</ScreenDataListContract>

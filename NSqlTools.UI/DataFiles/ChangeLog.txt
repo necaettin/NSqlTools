@@ -1,0 +1,29 @@
+﻿14.12.2025 - 2.0.3
+- Snippet desteği eklendi.
+- Log4Net logları eklendi.
+
+22.12.2025 - 2.0.4
+- İntellisense desteği sql için tüm ekranlarda eklendi.
+- Formatlama özelliği biraz daha geliştirildi.
+
+01.01.2026 - 2.1.1
+- Tüm gridler sıralanabilir ve filtrelenebilir hale getirildi.
+- Toolbar özelleştirme seçenekleri eklendi.
+
+04.01.2026 - 2.1.2
+- Veri karşılaştırmaya hedef sql'in farklılaştırılabilmesi için seçenek eklendi.
+
+04.03.2026 - 2.1.3
+- Insert script oluştururken oluşan hatalar giderildi.
+
+12.04.2026 - 2.1.4
+- TFS arama ekranı eklendi.
+
+13.04.2026 - 2.1.4
+- TFS arama bug düzeltmeleri yapıldı.
+
+21.04.2026 - 2.1.5
+- TFS arama ekranı düzenlemeleri
+
+19.05.2026 - 2.1.6
+- Threadli çalışan ekranlarda iptal yapılabilmesi sağlandı.

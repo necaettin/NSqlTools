@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<ScreenDataListContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BaseScreenDataContractList>
+    <BaseScreenDataContract xsi:type="DataCompareScreenDataContract">
+      <Name>Veri Karşılaştır</Name>
+      <ComparisonColumns>
+        <ColumnContract>
+          <TableObjectId>0</TableObjectId>
+          <ColumnId xsi:nil="true" />
+          <Name>ParamCode</Name>
+          <SystemTypeId xsi:nil="true" />
+          <UserTypeId xsi:nil="true" />
+          <MaxLength xsi:nil="true" />
+          <Precision xsi:nil="true" />
+          <IsNullable xsi:nil="true" />
+          <IsIdentity xsi:nil="true" />
+          <IsSelected>true</IsSelected>
+          <HitCount>0</HitCount>
+        </ColumnContract>
+        <ColumnContract>
+          <TableObjectId>0</TableObjectId>
+          <ColumnId xsi:nil="true" />
+          <Name>ParamType</Name>
+          <SystemTypeId xsi:nil="true" />
+          <UserTypeId xsi:nil="true" />
+          <MaxLength xsi:nil="true" />
+          <Precision xsi:nil="true" />
+          <IsNullable xsi:nil="true" />
+          <IsIdentity xsi:nil="true" />
+          <IsSelected>true</IsSelected>
+          <HitCount>0</HitCount>
+        </ColumnContract>
+      </ComparisonColumns>
+      <InputSqlScript>SELECT * FROM cor.Parameter WHERE ParamType='YesNo'</InputSqlScript>
+      <SourceDBObjectSelectFormDataContract>
+        <DataSourceName>DESTEK - DEV</DataSourceName>
+        <DBIndexes>
+          <int>0</int>
+        </DBIndexes>
+        <ObjectType>18</ObjectType>
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </SourceDBObjectSelectFormDataContract>
+      <TargetDBObjectSelectFormDataContract>
+        <DataSourceName>DESTEK - TEST</DataSourceName>
+        <DBIndexes>
+          <int>6</int>
+        </DBIndexes>
+        <ObjectType xsi:nil="true" />
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </TargetDBObjectSelectFormDataContract>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="ConnectionStringsScreenDataContract">
+      <Name>Bağlantı Cümlesi</Name>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="SqlViewerScreenDataContract">
+      <Name>Sql Görüntüleyici</Name>
+      <Description>AAP.AccountApplication</Description>
+      <DataSourceName>DESTEK - DEV</DataSourceName>
+      <DBIndexes>
+        <int>0</int>
+      </DBIndexes>
+      <ObjectType>18</ObjectType>
+      <SchemaId>74</SchemaId>
+      <ObjectId>140280005</ObjectId>
+    </BaseScreenDataContract>
+  </BaseScreenDataContractList>
+</ScreenDataListContract>

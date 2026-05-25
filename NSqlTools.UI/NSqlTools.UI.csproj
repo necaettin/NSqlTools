@@ -1,0 +1,828 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD5CAFC7-2439-4720-9008-73F60A010575}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NSqlTools.UI</RootNamespace>
+    <AssemblyName>NSqlTools</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>NSqlCompare.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B46DB50E6DE0EF3FC104A2D70786723755B0AB35</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>NSqlTools.UI_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=1.2.30115.18, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DG.AdvancedDataGridView.1.2.30115.18\lib\net40\AdvancedDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr4.Runtime.Standard, Version=4.13.1.0, Culture=neutral, PublicKeyToken=e78b2c5abd1fcb3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.Standard.4.13.1\lib\net45\Antlr4.Runtime.Standard.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Core, Version=1.50.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.50.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.17.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Identity.1.17.1\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="BOA.Common, Version=2.4.7349.22204, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalLibraries\BOA.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="BOA.Common.Constant, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalLibraries\BOA.Common.Constant.dll</HintPath>
+    </Reference>
+    <Reference Include="DiffPlex, Version=1.9.0.0, Culture=neutral, PublicKeyToken=1d35e91d1bd7bc0f, processorArchitecture=MSIL">
+      <HintPath>..\packages\DiffPlex.1.9.0\lib\net45\DiffPlex.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=3.2.0.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.3.2.0\lib\net462\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.Cryptography, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Cryptography.10.0.0\lib\net462\Microsoft.Bcl.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.TimeProvider, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.TimeProvider.10.0.0\lib\net462\Microsoft.Bcl.TimeProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient, Version=6.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.6.1.3\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.10.0.0\lib\net462\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.10.0.0\lib\net462\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.10.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.10.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.10.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.10.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.79.2.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.79.2\lib\net472\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.79.2.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.Extensions.Msal.4.79.2\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=8.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.8.15.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=8.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.8.15.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=8.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.8.15.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=8.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.8.15.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=8.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.8.15.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=8.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.8.15.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.TransactSql.ScriptDom, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.TransactSql.ScriptDom.170.128.0\lib\net472\Microsoft.SqlServer.TransactSql.ScriptDom.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Data.Tools.Interfaces.1.0, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="netstandard" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PoorMansTSqlFormatterLib35, Version=1.4.3.22897, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PoorMansTSQLFormatter.1.4.3.1\lib\net35\PoorMansTSqlFormatterLib35.dll</HintPath>
+    </Reference>
+    <Reference Include="ScintillaNET FindReplaceDialog, Version=1.4.0.17540, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScintillaNet.SearchBox.1.0.3\lib\net45\ScintillaNET FindReplaceDialog.dll</HintPath>
+    </Reference>
+    <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ClientModel, Version=1.8.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ClientModel.1.8.1\lib\netstandard2.0\System.ClientModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.10.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Formats.Asn1, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Formats.Asn1.10.0.0\lib\net462\System.Formats.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=8.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.8.15.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.10.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.10.0.0\lib\net462\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Pkcs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Pkcs.10.0.0\lib\net462\System.Security.Cryptography.Pkcs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.10.0.0\lib\net462\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Text.Encodings.Web, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.10.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.10.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MDIParent1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParent1.Designer.cs">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomizerPages\ucTableToCSV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\CustomizerPages\ucTableToCSV.Designer.cs">
+      <DependentUpon>ucTableToCSV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popups\frmTableTriggers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Popups\frmTableTriggers.Designer.cs">
+      <DependentUpon>frmTableTriggers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\frmEncryption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\frmEncryption.Designer.cs">
+      <DependentUpon>frmEncryption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\frmHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\frmHelp.Designer.cs">
+      <DependentUpon>frmHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\frmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\frmMessageBox.Designer.cs">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\frmNotePadCompareFullScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\frmNotePadCompareFullScreen.Designer.cs">
+      <DependentUpon>frmNotePadCompareFullScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\frmNotePadFullScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\frmNotePadFullScreen.Designer.cs">
+      <DependentUpon>frmNotePadFullScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\frmSqlIntellisenseTester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\frmSqlIntellisenseTester.Designer.cs">
+      <DependentUpon>frmSqlIntellisenseTester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucDataCompare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucDataCompare.Designer.cs">
+      <DependentUpon>ucDataCompare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucSnippets.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucSnippets.Designer.cs">
+      <DependentUpon>ucSnippets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucProjects.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucProjects.Designer.cs">
+      <DependentUpon>ucProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucFavoriteQueries.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucFavoriteQueries.Designer.cs">
+      <DependentUpon>ucFavoriteQueries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucTextViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucTextViewer.Designer.cs">
+      <DependentUpon>ucTextViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucFreeCompare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucFreeCompare.Designer.cs">
+      <DependentUpon>ucFreeCompare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucRunQuery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucRunQuery.Designer.cs">
+      <DependentUpon>ucRunQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popups\frmConnectionStringPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Popups\frmConnectionStringPopup.Designer.cs">
+      <DependentUpon>frmConnectionStringPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popups\frmSnippetPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Popups\frmSnippetPopup.Designer.cs">
+      <DependentUpon>frmSnippetPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popups\frmProjectPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Popups\frmProjectPopup.Designer.cs">
+      <DependentUpon>frmProjectPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popups\frmFavoriteQueryPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Popups\frmFavoriteQueryPopup.Designer.cs">
+      <DependentUpon>frmFavoriteQueryPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popups\frmTableDependency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Popups\frmTableDependency.Designer.cs">
+      <DependentUpon>frmTableDependency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Popups\frmTableInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Popups\frmTableInfo.Designer.cs">
+      <DependentUpon>frmTableInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucTfsChangesetSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucTfsChangesetSearch.Designer.cs">
+      <DependentUpon>ucTfsChangesetSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pages\Screens\frmAboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\frmAboutBox.Designer.cs">
+      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucConnectionStrings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucConnectionStrings.Designer.cs">
+      <DependentUpon>ucConnectionStrings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucDBBatchCompare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucDBBatchCompare.Designer.cs">
+      <DependentUpon>ucDBBatchCompare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\UIHelper.cs" />
+    <Compile Include="Pages\UserControls\ScreenCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucNotePadCompare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucNotePadCompare.Designer.cs">
+      <DependentUpon>ucNotePadCompare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucInsertScriptGenerator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucInsertScriptGenerator.Designer.cs">
+      <DependentUpon>ucInsertScriptGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucSearchDB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucSearchDB.Designer.cs">
+      <DependentUpon>ucSearchDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucDBObjectSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucDBObjectSelect.Designer.cs">
+      <DependentUpon>ucDBObjectSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucDBObjectCompare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucDBObjectCompare.Designer.cs">
+      <DependentUpon>ucDBObjectCompare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucObjectType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucObjectType.Designer.cs">
+      <DependentUpon>ucObjectType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucQueryResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucQueryResult.Designer.cs">
+      <DependentUpon>ucQueryResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucSqlNotePad.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucSqlNotePad.Designer.cs">
+      <DependentUpon>ucSqlNotePad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Screens\ucSqlViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Screens\ucSqlViewer.Designer.cs">
+      <DependentUpon>ucSqlViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucTableView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucTableView.Designer.cs">
+      <DependentUpon>ucTableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucTableViewCompare.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UserControls\ucTableViewCompare.Designer.cs">
+      <DependentUpon>ucTableViewCompare.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MDIParent1.resx">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\CustomizerPages\ucTableToCSV.resx">
+      <DependentUpon>ucTableToCSV.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Popups\frmTableTriggers.resx">
+      <DependentUpon>frmTableTriggers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\frmEncryption.resx">
+      <DependentUpon>frmEncryption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\frmHelp.resx">
+      <DependentUpon>frmHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\frmMain.tr.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\frmNotePadCompareFullScreen.resx">
+      <DependentUpon>frmNotePadCompareFullScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\frmNotePadFullScreen.resx">
+      <DependentUpon>frmNotePadFullScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\frmSqlIntellisenseTester.resx">
+      <DependentUpon>frmSqlIntellisenseTester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucDataCompare.resx">
+      <DependentUpon>ucDataCompare.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucFavoriteQueries.resx">
+      <DependentUpon>ucFavoriteQueries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucSnippets.resx">
+      <DependentUpon>ucSnippets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucProjects.resx">
+      <DependentUpon>ucProjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucTextViewer.resx">
+      <DependentUpon>ucTextViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucFreeCompare.resx">
+      <DependentUpon>ucFreeCompare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucRunQuery.resx">
+      <DependentUpon>ucRunQuery.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Popups\frmConnectionStringPopup.resx">
+      <DependentUpon>frmConnectionStringPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Popups\frmSnippetPopup.resx">
+      <DependentUpon>frmSnippetPopup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Popups\frmProjectPopup.resx">
+      <DependentUpon>frmProjectPopup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Popups\frmFavoriteQueryPopup.resx">
+      <DependentUpon>frmFavoriteQueryPopup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Popups\frmTableDependency.resx">
+      <DependentUpon>frmTableDependency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Popups\frmTableInfo.resx">
+      <DependentUpon>frmTableInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucTfsChangesetSearch.resx">
+      <DependentUpon>ucTfsChangesetSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\frmAboutBox.resx">
+      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucConnectionStrings.resx">
+      <DependentUpon>ucConnectionStrings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucDBBatchCompare.resx">
+      <DependentUpon>ucDBBatchCompare.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.tr.resx" />
+    <EmbeddedResource Include="Pages\UserControls\ucNotePadCompare.resx">
+      <DependentUpon>ucNotePadCompare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucInsertScriptGenerator.resx">
+      <DependentUpon>ucInsertScriptGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucSearchDB.resx">
+      <DependentUpon>ucSearchDB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UserControls\ucDBObjectSelect.resx">
+      <DependentUpon>ucDBObjectSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucDBObjectCompare.resx">
+      <DependentUpon>ucDBObjectCompare.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UserControls\ucObjectType.resx">
+      <DependentUpon>ucObjectType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UserControls\ucQueryResult.resx">
+      <DependentUpon>ucQueryResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UserControls\ucSqlNotePad.resx">
+      <DependentUpon>ucSqlNotePad.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Screens\ucSqlViewer.resx">
+      <DependentUpon>ucSqlViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UserControls\ucTableView.resx">
+      <DependentUpon>ucTableView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UserControls\ucTableViewCompare.resx">
+      <DependentUpon>ucTableViewCompare.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataFiles\TFS_CHANGESET_SEARCH_README.md" />
+    <None Include="NSqlTools.UI_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Images\Localization.png" />
+    <Content Include="DataFiles\ChangeLog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExternalLibraries\BOA.Common.Constant.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExternalLibraries\BOA.Common.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Clean.png" />
+    <Content Include="Images\DataCompare.png" />
+    <Content Include="Images\DifferentSql.png" />
+    <Content Include="Images\DiffSql.png" />
+    <Content Include="Images\DisplayEqualColumns.png" />
+    <Content Include="Images\DisplayNotEqualColumns.png" />
+    <Content Include="Images\Encrypt.png" />
+    <Content Include="Images\English.png" />
+    <Content Include="Images\Favorite.png" />
+    <Content Include="Images\FavoriteSave_16x16.png" />
+    <Content Include="Images\Format.png" />
+    <Content Include="Images\Help_DataCompare.png" />
+    <Content Include="Images\Help_TFS.png" />
+    <Content Include="Images\InserScriptSeperate.png" />
+    <Content Include="Images\Minus.png" />
+    <Content Include="Images\NotCompleted.png" />
+    <Content Include="Images\Package.png" />
+    <Content Include="Images\ProjectOpen.png" />
+    <Content Include="Images\Projects.png" />
+    <Content Include="Images\Refresh_16x16.png" />
+    <Content Include="Images\Right_16x16.png" />
+    <Content Include="Images\Running.png" />
+    <Content Include="Images\Save_16x16.png" />
+    <Content Include="Images\Stop.png" />
+    <Content Include="Images\TFS.png" />
+    <Content Include="Images\Trigger.png" />
+    <Content Include="Images\Turkish.png" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NSqlTools.BusinessLayer\NSqlTools.BusinessLayer.csproj">
+      <Project>{82fd5dbe-2a8b-4c6a-93b7-b74b791f2506}</Project>
+      <Name>NSqlTools.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NSqlTools.Lib\NSqlTools.Lib.csproj">
+      <Project>{2c59fb1d-9fa7-40b6-916e-9f476c57d607}</Project>
+      <Name>NSqlTools.Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NSqlTools.ScintillaDiff\NSqlTools.ScintillaDiff.csproj">
+      <Project>{6409c26b-9796-4815-9293-4aac31478835}</Project>
+      <Name>NSqlTools.ScintillaDiff</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NSqlTools.Types\NSqlTools.Types.csproj">
+      <Project>{88b8e918-200f-466f-9a9f-006980b67bbc}</Project>
+      <Name>NSqlTools.Types</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\About.jpeg" />
+    <Content Include="Images\About.png" />
+    <Content Include="Images\Add.png" />
+    <Content Include="Images\BatchCompare.png" />
+    <Content Include="Images\big-data.jpg" />
+    <Content Include="Images\BiggerChars.png" />
+    <Content Include="Images\CaseSensitive.png" />
+    <Content Include="Images\Close.png" />
+    <Content Include="Images\CloseBlue.png" />
+    <Content Include="Images\CloseDown.png" />
+    <Content Include="Images\Collapse.png" />
+    <Content Include="Images\ConnectionString.png" />
+    <Content Include="Images\ConnectionStringTest.png" />
+    <Content Include="Images\ConnectionTest.png" />
+    <Content Include="Images\Copy.png" />
+    <Content Include="Images\CreateInsertScripts.png" />
+    <Content Include="Images\DBSearch.png" />
+    <Content Include="Images\Delete.png" />
+    <Content Include="Images\Down.png" />
+    <Content Include="Images\Edit.png" />
+    <Content Include="Images\Equality_Equal.png" />
+    <Content Include="Images\Equality_Equal_Batch.png" />
+    <Content Include="Images\Equality_NotEqual.png" />
+    <Content Include="Images\Equality_NotEqual_Batch.png" />
+    <Content Include="Images\Equality_SourceExists.png" />
+    <Content Include="Images\Equality_SourceExists_Batch.png" />
+    <Content Include="Images\Equality_TargetExists.png" />
+    <Content Include="Images\Equality_TargetExists_Batch.png" />
+    <Content Include="Images\Excel.png" />
+    <Content Include="Images\ExcelImport.png" />
+    <Content Include="Images\First.png" />
+    <Content Include="Images\FreeCompare.png" />
+    <Content Include="Images\FullScreen.png" />
+    <Content Include="Images\Help_BatchCompare.png" />
+    <Content Include="Images\Help_ConnectionStrings.png" />
+    <Content Include="Images\Help_DBSearch.png" />
+    <Content Include="Images\Help_FreeTextCompare.png" />
+    <Content Include="Images\Help_InsertScriptGenerator.png" />
+    <Content Include="Images\Help_RunQuery.png" />
+    <Content Include="Images\Help_SqlCompare.png" />
+    <Content Include="Images\Help_SqlViewer.png" />
+    <Content Include="Images\Info.png" />
+    <Content Include="Images\Last.png" />
+    <Content Include="Images\Left.png" />
+    <Content Include="Images\Line.png" />
+    <Content Include="Images\NotCollapse.png" />
+    <Content Include="Images\Ok.png" />
+    <Content Include="Images\OpenDown.png" />
+    <Content Include="Images\OpenFindDialog.png" />
+    <Content Include="Images\OpenLeft.png" />
+    <Content Include="Images\OpenRight.png" />
+    <Content Include="Images\Page.png" />
+    <Content Include="Images\Query.png" />
+    <Content Include="Images\Refresh.png" />
+    <Content Include="Images\Right.png" />
+    <Content Include="Images\Run.png" />
+    <Content Include="Images\RunScript.png" />
+    <Content Include="Images\Save.png" />
+    <Content Include="Images\Save_Left.png" />
+    <Content Include="Images\Save_Right.png" />
+    <Content Include="Images\Search.png" />
+    <Content Include="Images\SearchLeft.png" />
+    <Content Include="Images\SearchResultClose.png" />
+    <Content Include="Images\SearchResultOpen.png" />
+    <Content Include="Images\SearchRight.png" />
+    <Content Include="Images\SmallerChars.png" />
+    <Content Include="Images\SqlCompare.png" />
+    <Content Include="Images\SqlViewer.png" />
+    <Content Include="Images\Swap.png" />
+    <Content Include="Images\Table.png" />
+    <Content Include="Images\TextViewer.png" />
+    <Content Include="Images\Up.png" />
+    <Content Include="Images\Users.png" />
+    <Content Include="Images\WithSquareBrackets.png" />
+    <Content Include="Images\Wrap.png" />
+    <Content Include="Images\Write.png" />
+    <Content Include="NSqlCompare.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+  </Target>
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+</Project>

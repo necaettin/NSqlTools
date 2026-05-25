@@ -1,0 +1,1485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FileMenu" xml:space="preserve">
+    <value>&amp;Dosya</value>
+  </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>Cache Temizle</value>
+  </data>
+  <data name="ToolsMenu" xml:space="preserve">
+    <value>&amp;Araçlar</value>
+  </data>
+  <data name="SqlViewerMenu" xml:space="preserve">
+    <value>&amp;Sql Görüntüleyici</value>
+  </data>
+  <data name="RunQuery" xml:space="preserve">
+    <value>SQL Çalıştır</value>
+  </data>
+  <data name="DBSearch" xml:space="preserve">
+    <value>DB ve Repoda Arama</value>
+  </data>
+  <data name="SqlCompare" xml:space="preserve">
+    <value>SQL Karşılaştırma</value>
+  </data>
+  <data name="SqlBatchCompare" xml:space="preserve">
+    <value>SQL Toplu Karşılaştırma</value>
+  </data>
+  <data name="InsertScriptGenerator" xml:space="preserve">
+    <value>Insert Scripti Oluşturucu</value>
+  </data>
+  <data name="InsertScriptGeneratorToolTip" xml:space="preserve">
+    <value>Belirli bir script'e dayalı olarak bir tablo için INSERT script'leri oluşturur.</value>
+  </data>
+  <data name="FreeTextCompare" xml:space="preserve">
+    <value>Metin Karşılaştırma</value>
+  </data>
+  <data name="ConnectionStrings" xml:space="preserve">
+    <value>DB Bağlantı Cümleleri</value>
+  </data>
+  <data name="TextViewer" xml:space="preserve">
+    <value>Metin Görüntüleyici</value>
+  </data>
+  <data name="ToolbarMenu" xml:space="preserve">
+    <value>&amp;Araç Çubuğu</value>
+  </data>
+  <data name="AlwaysOpenNewPage" xml:space="preserve">
+    <value>Her zaman yeni bir pencere aç</value>
+  </data>
+  <data name="HelpMenu" xml:space="preserve">
+    <value>&amp;Yardım</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Yardım</value>
+  </data>
+  <data name="AboutNSqlTools" xml:space="preserve">
+    <value>&amp;NSqlTools Hakkında</value>
+  </data>
+  <data name="ToolStrip" xml:space="preserve">
+    <value>ToolStrip</value>
+  </data>
+  <data name="SqlViewer" xml:space="preserve">
+    <value>Sql Görüntüleyici</value>
+  </data>
+  <data name="SqlViewerToolTip" xml:space="preserve">
+    <value>SQL Viewer: Tablolar ve Transact-SQL script'leri gibi SQL nesnelerinin içeriklerini görüntülemek için kullanılır.</value>
+  </data>
+  <data name="RunQueryToolTip" xml:space="preserve">
+    <value>Script Çalıştır: SQL script'lerini çalıştırmak için.</value>
+  </data>
+  <data name="DBSearchToolTip" xml:space="preserve">
+    <value>DB ve Repoda Arama: Bir veritabanı içindeki tüm nesnelerde arama yapmak için.</value>
+  </data>
+  <data name="DataSourcesToolTip" xml:space="preserve">
+    <value>Uygulama içinde kullanılan Bağlantı Script'lerinin tanımlandığı ekrandır.</value>
+  </data>
+  <data name="ExitMenu" xml:space="preserve">
+    <value>&amp;Çıkış</value>
+  </data>
+  <data name="OptionsMenu" xml:space="preserve">
+    <value>&amp;Seçenekler</value>
+  </data>
+  <data name="SqlCompareTooltip" xml:space="preserve">
+    <value>SQL Karşılaştırma: Tablolar ve Transact-SQL script'leri dahil olmak üzere SQL nesnelerinin içeriklerini karşılaştırmak için kullanılır.</value>
+  </data>
+  <data name="BatchCompareToolTip" xml:space="preserve">
+    <value>Sql Toplu Karşılaştırma: Bir şemaya ait veritabanı nesnelerinin karşılaştırılmasına olanak tanır.</value>
+  </data>
+  <data name="CreateInsertScripts" xml:space="preserve">
+    <value>Insert Script Oluştur</value>
+  </data>
+  <data name="ConnectionStringsToolTip" xml:space="preserve">
+    <value>Bağlantı Cümleleri: Uygulama içinde kullanılan Bağlantı Script'lerinin tanımlandığı ekrandır.</value>
+  </data>
+  <data name="CloseCurrentTab" xml:space="preserve">
+    <value>Aktif Tabı Kapat</value>
+  </data>
+  <data name="SaveFileDialogFilter" xml:space="preserve">
+    <value>Text Dosyaları (*.txt)|*.txt|Sql Dosyları (*.sql)|*.sql|Tüm Dosyalar (*.*)|*.*</value>
+  </data>
+  <data name="OpenFileDialogFilter" xml:space="preserve">
+    <value>Excel Dosyaları (*.xlsx)|*.xlsx|Tüm Dosyalar (*.*)|*.*</value>
+  </data>
+  <data name="MenuStrip" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="SearchDBObject" xml:space="preserve">
+    <value>DB ve Repoda Arama</value>
+  </data>
+  <data name="CacheCleared" xml:space="preserve">
+    <value>Cache Temizlendi!</value>
+  </data>
+  <data name="TabDragError" xml:space="preserve">
+    <value>Hata: {0}\nDraggedTabIndex:{1}</value>
+  </data>
+  <data name="ExistingScreensWillBeClosed" xml:space="preserve">
+    <value>Var olan ekranlar kapatılacaktır! Onaylıyor musunuz?</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Onay</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>&amp;Tamam</value>
+  </data>
+  <data name="ForFeedbackAndSuggestions" xml:space="preserve">
+    <value>Her türlü öneri ve geri bildirim için:</value>
+  </data>
+  <data name="CreatedByNecaettinKeskin" xml:space="preserve">
+    <value>Necaettin Keskin tarafından oluşturuldu.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>Hakkında: {0}</value>
+  </data>
+  <data name="VersionNumber" xml:space="preserve">
+    <value>Versiyon: {0}</value>
+  </data>
+  <data name="FeedbackAndSuggestions" xml:space="preserve">
+    <value>Geri bildirim ve öneriler</value>
+  </data>
+  <data name="HelloNNIHaveTheFollowingFeedbackOrSuggestions" xml:space="preserve">
+    <value>Merhaba, \n\n aşağıdaki geri bildirim ve önerilerde bulunmak istiyorum...</value>
+  </data>
+  <data name="UnableToOpenEmailClient" xml:space="preserve">
+    <value>Email uygulaması açılamıyor: {0}</value>
+  </data>
+  <data name="sqlViewerHelp" xml:space="preserve">
+    <value>SQL GÖRÜNTÜLEYİCİ: Tek tek DB nesnelerinin (Tablo, SP, Trigger vs.) içerikleri incelenebilir.</value>
+  </data>
+  <data name="RunQueryHelp" xml:space="preserve">
+    <value>SCRIPT ÇALIŞTIR: Sql scriptlerini çalıştırabilmek içindir. Çalıştırılan script birden fazla script içerebilir. Not: SP alter scriptleri çalıştırılmamalıdır.</value>
+  </data>
+  <data name="DBSearchHelp" xml:space="preserve">
+    <value>DB ve Repoda Arama: Bir DB içerisindeki tüm nesneler içerisinde istenirse büyük küçük harf duyarlı olarak arama yapılabilmesi içindir. Tablo kolonları içerisinde de arama gerçekleştirir.</value>
+  </data>
+  <data name="SqlCompareHelp" xml:space="preserve">
+    <value>SQL KARŞILAŞTIRMA: Tablo veya Transact SQL içeren iki DB nesnesinin karşılaştırılmasını sağlar. Bulunan farkları görüntüler.</value>
+  </data>
+  <data name="SqlBatchCompareHelp" xml:space="preserve">
+    <value>TOPLU SQL KARŞILAŞTIRMA: Bir şema altındaki istenen nesne türleri ile başka bir DB\'de yer alan nesneleri karşılaştırır. Fark varsa görüntüler.</value>
+  </data>
+  <data name="InsertScriptGeneratorHelp" xml:space="preserve">
+    <value>INSERT SCRIPT OLUŞTURUCU: Seçili olan bir tabloya  ait olan kolonları içeren bir sorguyu çalıştırır ve çıktısını sql script olarak görüntüler.</value>
+  </data>
+  <data name="ConnectionStringsHelp" xml:space="preserve">
+    <value>BAĞLANTI CÜMLECİKLERİ: Uygulama içerisinde kullanılan Connection String tanımları yapılır. Tanımlanan Connection Stringler DataSources.xml isimli dosyada tutulur.</value>
+  </data>
+  <data name="FreeTextCompareHelp" xml:space="preserve">
+    <value>METİN KARŞILAŞTIRICI: CS, Js, VB, XML vb. dosyalar arasında karşılaştırma yapılabilmesini sağlar.</value>
+  </data>
+  <data name="NotePadCompare" xml:space="preserve">
+    <value>Karşılaştırma Metin Penceresi</value>
+  </data>
+  <data name="NotePad" xml:space="preserve">
+    <value>Metin Penceresi</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigasyon</value>
+  </data>
+  <data name="AddDataSource" xml:space="preserve">
+    <value>Bağlantı Cümleciği Ekle</value>
+  </data>
+  <data name="EditDataSource" xml:space="preserve">
+    <value>Bağlantı Cümleciğini Düzenle</value>
+  </data>
+  <data name="DeleteDataSource" xml:space="preserve">
+    <value>Bağlantı Cümleciğini Sil</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="DataSource" xml:space="preserve">
+    <value>Veri Kaynağı</value>
+  </data>
+  <data name="IntegratedSecurity" xml:space="preserve">
+    <value>Windows Kullanıcısı ile bağlan</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Kullanıcı Adı</value>
+  </data>
+  <data name="InitialCatalog" xml:space="preserve">
+    <value>Geçerli DB</value>
+  </data>
+  <data name="TargetSchema" xml:space="preserve">
+    <value>Hedef Şema</value>
+  </data>
+  <data name="SourceSchema" xml:space="preserve">
+    <value>Kaynak Şema</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtre</value>
+  </data>
+  <data name="ObjectType" xml:space="preserve">
+    <value>Obje Tipi</value>
+  </data>
+  <data name="NameFilter" xml:space="preserve">
+    <value>İsim Filtresi</value>
+  </data>
+  <data name="SchemaSource" xml:space="preserve">
+    <value>Kaynak Şema</value>
+  </data>
+  <data name="NameSource" xml:space="preserve">
+    <value>Kaynak İsim</value>
+  </data>
+  <data name="Difference" xml:space="preserve">
+    <value>Farklar</value>
+  </data>
+  <data name="SchemaTarget" xml:space="preserve">
+    <value>Hedef Şema</value>
+  </data>
+  <data name="NameTarget" xml:space="preserve">
+    <value>Hedef Adı</value>
+  </data>
+  <data name="CollapseCriteriaPanel" xml:space="preserve">
+    <value>Filtre Panelini Kapat</value>
+  </data>
+  <data name="StartDBBatchCompare" xml:space="preserve">
+    <value>Toplu SQL Karşılaştırma Başlat</value>
+  </data>
+  <data name="ExportSearchResultToExcel" xml:space="preserve">
+    <value>Arama sonuçlarını excele çıkart</value>
+  </data>
+  <data name="Equal" xml:space="preserve">
+    <value>Eşit</value>
+  </data>
+  <data name="NotEqual" xml:space="preserve">
+    <value>Eşit Değil</value>
+  </data>
+  <data name="ExistsInSource" xml:space="preserve">
+    <value>Kaynakta Mevcut</value>
+  </data>
+  <data name="ExistsInTarget" xml:space="preserve">
+    <value>Hedefte Mevcut</value>
+  </data>
+  <data name="ExcelFiles" xml:space="preserve">
+    <value>Excel Dosyaları|*.xls;*.xlsx</value>
+  </data>
+  <data name="BatchCompareResults" xml:space="preserve">
+    <value>Toplu Karşılaştırma Sonuçları</value>
+  </data>
+  <data name="DataHasBeenSuccessfullyExportedToExcelWouldYouLikeToOpenExcel" xml:space="preserve">
+    <value>Veri excele aktarıldı. Dosyayı açmak ister misiniz?</value>
+  </data>
+  <data name="ExportSuccessful" xml:space="preserve">
+    <value>Aktarım Başarılı</value>
+  </data>
+  <data name="ExportFailed" xml:space="preserve">
+    <value>Aktarım Başarısız</value>
+  </data>
+  <data name="BatchCompare" xml:space="preserve">
+    <value>Toplu Karşılaştırma</value>
+  </data>
+  <data name="XObjectsWereCompared" xml:space="preserve">
+    <value>{0} obje karşılaştırıldı</value>
+  </data>
+  <data name="SourceDBObject" xml:space="preserve">
+    <value>Kaynak DB Nesnesi</value>
+  </data>
+  <data name="TableColumns" xml:space="preserve">
+    <value>Tablo Kolonları</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Seçim</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="Null" xml:space="preserve">
+    <value>Null</value>
+  </data>
+  <data name="Ident" xml:space="preserve">
+    <value>Sıralı</value>
+  </data>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Geçerli Değer</value>
+  </data>
+  <data name="TableSelect" xml:space="preserve">
+    <value>Tablo Seçimi</value>
+  </data>
+  <data name="SourceSQLScript" xml:space="preserve">
+    <value>Kaynak SQL Cümleciği</value>
+  </data>
+  <data name="SourceSQLScriptResult" xml:space="preserve">
+    <value>Kaynak SQL Cümleciği Sonucu</value>
+  </data>
+  <data name="GeneratedInsertScripts" xml:space="preserve">
+    <value>Oluşturulmuş Insert Scripti</value>
+  </data>
+  <data name="WriteSourceSqlScript" xml:space="preserve">
+    <value>Kaynak SQL Cümleciği</value>
+  </data>
+  <data name="RunSourceSQLScript" xml:space="preserve">
+    <value>Kaynak SQL Cümleciğini Çalıştır</value>
+  </data>
+  <data name="GenerateInsertScripts" xml:space="preserve">
+    <value>Insert cümleciklerini oluştur</value>
+  </data>
+  <data name="SaveGeneratedInsertScripts" xml:space="preserve">
+    <value>Oluşturulmuş insert cümleciklerini kaydet</value>
+  </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Excele Çıkart</value>
+  </data>
+  <data name="ImportFromExcel" xml:space="preserve">
+    <value>Excel'den Al</value>
+  </data>
+  <data name="WordWrap" xml:space="preserve">
+    <value>Satır Kaydır</value>
+  </data>
+  <data name="WithSquareBrackets" xml:space="preserve">
+    <value>Köşeli Parantezler İle</value>
+  </data>
+  <data name="ColumnInfo" xml:space="preserve">
+    <value>Tablo:{0}.{1} / {2} Kolon</value>
+  </data>
+  <data name="InsertSQL" xml:space="preserve">
+    <value>Insert Cümleciği</value>
+  </data>
+  <data name="SelectATableAndEnterSourceSqlScript" xml:space="preserve">
+    <value>Tablo seçin ve kaynak sql cümleciğini oluşturun!</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="TableContaisUndefined" xml:space="preserve">
+    <value>Table geçersiz veri tipi içermektedir: sysname, hierarchyid, geometry, variant, binary, image, varbinary</value>
+  </data>
+  <data name="ErrorOccuredOnRowColumnValue" xml:space="preserve">
+    <value>Şurada hata oluştu: Satır: {0}, Kolon: {1}, Değer: {2}</value>
+  </data>
+  <data name="InsertScriptsWereCreated" xml:space="preserve">
+    <value>{0} Insert cümleciği oluşturuldu.</value>
+  </data>
+  <data name="SqlScriptResults" xml:space="preserve">
+    <value>Sql Script Sonuçları</value>
+  </data>
+  <data name="DataHasBeenSuccessfullyImported" xml:space="preserve">
+    <value>Veri başarı ile çekildi!</value>
+  </data>
+  <data name="ImportSuccessful" xml:space="preserve">
+    <value>İçe alma başarılı</value>
+  </data>
+  <data name="ImportFromExcelFailed" xml:space="preserve">
+    <value>Excel'den veriler alınırken hata oluştu</value>
+  </data>
+  <data name="DataTypeMismatchedErrorOccured" xml:space="preserve">
+    <value>Veri tipi eşleşme hatası</value>
+  </data>
+  <data name="DataTypeMismatchedErrorOccuredDataTypeShouldBe" xml:space="preserve">
+    <value>Veri tipi eşleşme hatası. Veri tipi {0} olmalı.</value>
+  </data>
+  <data name="XRows" xml:space="preserve">
+    <value>{0} Satır</value>
+  </data>
+  <data name="DBSelect" xml:space="preserve">
+    <value>DB Seçimi</value>
+  </data>
+  <data name="ExpandQueryResultsPanel" xml:space="preserve">
+    <value>Sorgu Sonuçları Panelini Aç</value>
+  </data>
+  <data name="ParseSql" xml:space="preserve">
+    <value>Sql'i Doğrula</value>
+  </data>
+  <data name="CollapseQueryResultsPanel" xml:space="preserve">
+    <value>Sorgu Sonuçları Panelini Kapat</value>
+  </data>
+  <data name="ExpandCriteriaPanel" xml:space="preserve">
+    <value>Seçim Panelini Aç</value>
+  </data>
+  <data name="TransferToNotePad" xml:space="preserve">
+    <value>Seçili db nesnesi içeriği not penceresine taşınsın mı? Yazdığınız metinler silinecektir! Onaylıyor musunuz?</value>
+  </data>
+  <data name="DoYouConfirm" xml:space="preserve">
+    <value>Onaylıyor musunuz?</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Doğrulama</value>
+  </data>
+  <data name="SelectADatabase" xml:space="preserve">
+    <value>DB seçimi yapın!</value>
+  </data>
+  <data name="XQueryResult" xml:space="preserve">
+    <value>{0} Sorgu Sonucu</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>Mesajlar</value>
+  </data>
+  <data name="RepoFilter" xml:space="preserve">
+    <value>Azure Repo Filtreleme</value>
+  </data>
+  <data name="RepoToolTip" xml:space="preserve">
+    <value>Transact-SQL içeren veritabanı nesnelerindeki içeriği arar ve tablo türündeki veritabanı nesnelerinde sütun adlarını arar.</value>
+  </data>
+  <data name="RepoExtraSearchKeyword" xml:space="preserve">
+    <value>Repo Ekstra Arama Keywordü</value>
+  </data>
+  <data name="AzureRepo" xml:space="preserve">
+    <value>Azure Repo</value>
+  </data>
+  <data name="CaseSentitive" xml:space="preserve">
+    <value>Büyük Küçük Harf Duyarlı</value>
+  </data>
+  <data name="DBObjectType" xml:space="preserve">
+    <value>DB Obje Tipi</value>
+  </data>
+  <data name="SearchKeyword" xml:space="preserve">
+    <value>Arama Keywordü</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Arama Sonucu</value>
+  </data>
+  <data name="Schema" xml:space="preserve">
+    <value>Şema</value>
+  </data>
+  <data name="HitCount" xml:space="preserve">
+    <value>Bulunma Sayısı</value>
+  </data>
+  <data name="StartDBSearch" xml:space="preserve">
+    <value>DBAramaBaşlat</value>
+  </data>
+  <data name="Columns" xml:space="preserve">
+    <value>Kolonlar</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>Kolon Adı</value>
+  </data>
+  <data name="Nullable" xml:space="preserve">
+    <value>Null Bırakılabilir</value>
+  </data>
+  <data name="Identity" xml:space="preserve">
+    <value>Sıralı</value>
+  </data>
+  <data name="SqlScript" xml:space="preserve">
+    <value>Sql Cümleciği</value>
+  </data>
+  <data name="AzureRepoSearch" xml:space="preserve">
+    <value>Azure Repo Arama</value>
+  </data>
+  <data name="SearchKeywordIsRequired" xml:space="preserve">
+    <value>Arama keywordü zorunludur!</value>
+  </data>
+  <data name="OneOfDBSearchOrRepoSearchShouldBeChecked" xml:space="preserve">
+    <value>DB arama veya Repo aramadan biri seçilmelidir!</value>
+  </data>
+  <data name="DBShouldBeSelected" xml:space="preserve">
+    <value>DB seçimi yapılmalıdır</value>
+  </data>
+  <data name="RepoSelectionIsRequired" xml:space="preserve">
+    <value>Repo seçimi zorunludur!</value>
+  </data>
+  <data name="TableAndColumns" xml:space="preserve">
+    <value>Tablo:{0}.{1}.{2} / {3} Kolon</value>
+  </data>
+  <data name="RepoFileContent" xml:space="preserve">
+    <value>Repo Dosya İçeriği</value>
+  </data>
+  <data name="SearchResults" xml:space="preserve">
+    <value>Arama Sonuçları</value>
+  </data>
+  <data name="SearchKeywordFoundIn" xml:space="preserve">
+    <value>Aranan metin: {0} db nesneleri, {1} tablo kolonları, {2} repo nesneleri içerisinde bulundu.</value>
+  </data>
+  <data name="DBObject" xml:space="preserve">
+    <value>DB Nesnesi</value>
+  </data>
+  <data name="ConnectionString" xml:space="preserve">
+    <value>Bağlantı Cümlesi</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="TestTheConnectionString" xml:space="preserve">
+    <value>Bağlantı cümleciğini test et</value>
+  </data>
+  <data name="DefaultDatabase" xml:space="preserve">
+    <value>Geçerli DB</value>
+  </data>
+  <data name="ConnectionStringDefinition" xml:space="preserve">
+    <value>Bağlantı Cümleciği Tanımlama</value>
+  </data>
+  <data name="ConnectionSuccessfull" xml:space="preserve">
+    <value>Bağlantı başarılı!</value>
+  </data>
+  <data name="ConnectionTestResult" xml:space="preserve">
+    <value>Bağlantı Testi Sonucu</value>
+  </data>
+  <data name="ConnectionUnsuccessfullErrorDetail" xml:space="preserve">
+    <value>Bağlantı başarısız! Hata detayı: {0}</value>
+  </data>
+  <data name="ConnectionStringNameFieldIsRequired" xml:space="preserve">
+    <value>Bağlantı cümleciği adı zorunludur!</value>
+  </data>
+  <data name="ConnectionStringFieldIsRequired" xml:space="preserve">
+    <value>Bağlantı cümleciği zorunludur!</value>
+  </data>
+  <data name="ServerNameFieldIsRequired" xml:space="preserve">
+    <value>Server adı zorunludur!</value>
+  </data>
+  <data name="UserNameFieldIsRequired" xml:space="preserve">
+    <value>Kullanıcı adı zorunludur!</value>
+  </data>
+  <data name="PasswordFieldIsRequired" xml:space="preserve">
+    <value>Şifre alanı zorunludur!</value>
+  </data>
+  <data name="ThisNameHasAlreadyBeednUsed" xml:space="preserve">
+    <value>Bu isim kullanılmış durumda!</value>
+  </data>
+  <data name="TableRelationships" xml:space="preserve">
+    <value>Tablo İlişkileri</value>
+  </data>
+  <data name="TableIndexes" xml:space="preserve">
+    <value>Tablo İndexleri</value>
+  </data>
+  <data name="FKName" xml:space="preserve">
+    <value>FK Adı</value>
+  </data>
+  <data name="ReferencedTable" xml:space="preserve">
+    <value>Referans Alınan Tablo</value>
+  </data>
+  <data name="ColumnNames" xml:space="preserve">
+    <value>Kolon İsimleri</value>
+  </data>
+  <data name="RelationshipName" xml:space="preserve">
+    <value>İlişki Adı</value>
+  </data>
+  <data name="IndexName" xml:space="preserve">
+    <value>İndex Adı</value>
+  </data>
+  <data name="IsUnique" xml:space="preserve">
+    <value>Tekil Mi</value>
+  </data>
+  <data name="IsPrimaryKey" xml:space="preserve">
+    <value>Özel Anahtar Mı</value>
+  </data>
+  <data name="IndexType" xml:space="preserve">
+    <value>İndex Tipi</value>
+  </data>
+  <data name="TableInfo" xml:space="preserve">
+    <value>Tablo Bilgisi</value>
+  </data>
+  <data name="DB" xml:space="preserve">
+    <value>DB</value>
+  </data>
+  <data name="SaveLeftNotePad" xml:space="preserve">
+    <value>Sol NotePad İçeriğini Kaydet</value>
+  </data>
+  <data name="SaveRightNotePad" xml:space="preserve">
+    <value>Sağ NotePad İçeriğini Kaydet</value>
+  </data>
+  <data name="OpenLeft" xml:space="preserve">
+    <value>Solu Aç</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>İlk Kayıt</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Önceki</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Sonraki</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Sonuncu</value>
+  </data>
+  <data name="BiggerChars" xml:space="preserve">
+    <value>Büyük Karakter</value>
+  </data>
+  <data name="SmallerChars" xml:space="preserve">
+    <value>Küçük Karakter</value>
+  </data>
+  <data name="CaseSensistive" xml:space="preserve">
+    <value>Büyük Küçük Harf Duyarlı</value>
+  </data>
+  <data name="FindLeft" xml:space="preserve">
+    <value>Solda Ara</value>
+  </data>
+  <data name="OpenCloseFindResultsPanel" xml:space="preserve">
+    <value>Arama Sonuç Panelini Aç\\Kapa</value>
+  </data>
+  <data name="FindNext" xml:space="preserve">
+    <value>Sonrakini bul</value>
+  </data>
+  <data name="FindPrevious" xml:space="preserve">
+    <value>Öncekini bul</value>
+  </data>
+  <data name="Wrap" xml:space="preserve">
+    <value>Satır Kaydır</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Tam Ekran</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Tazele</value>
+  </data>
+  <data name="SingleView" xml:space="preserve">
+    <value>Basit Görünüm</value>
+  </data>
+  <data name="Swap" xml:space="preserve">
+    <value>Yer Değiştir</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>Tüm dosyalar (*.*)|*.*</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Kopyala</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="OpenFindDialog" xml:space="preserve">
+    <value>Arama Penceresini Aç</value>
+  </data>
+  <data name="ExpandFindResultsPanel" xml:space="preserve">
+    <value>Arama Sonuçları Panelini Aç</value>
+  </data>
+  <data name="CollapseFindResultsPanel" xml:space="preserve">
+    <value>Arama Sonuçları Panelini Kapat</value>
+  </data>
+  <data name="IDSource" xml:space="preserve">
+    <value>Kaynak ID</value>
+  </data>
+  <data name="TypeSource" xml:space="preserve">
+    <value>Kaynak Tip</value>
+  </data>
+  <data name="NullableSource" xml:space="preserve">
+    <value>Kaynak Null Olabilirlik</value>
+  </data>
+  <data name="IdentitySource" xml:space="preserve">
+    <value>Kaynak Sıralı</value>
+  </data>
+  <data name="IDTarget" xml:space="preserve">
+    <value>Hedef ID</value>
+  </data>
+  <data name="TypeTarget" xml:space="preserve">
+    <value>Hedef Tip</value>
+  </data>
+  <data name="NullableTarget" xml:space="preserve">
+    <value>Hedef Null Olabilirlik</value>
+  </data>
+  <data name="IdentityTarget" xml:space="preserve">
+    <value>Hedef Sıralı</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingColumns" xml:space="preserve">
+    <value>Kolon bilgileri alınırken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingConnectionStringsDefineConnectionStrings" xml:space="preserve">
+    <value>Bağlantı cümlecikleri alınırken hata oluştur. Bağlantı cümleciği oluşturun!</value>
+  </data>
+  <data name="ErrorOccuredWhileConnectingToX" xml:space="preserve">
+    <value>{0} bağlantısı esnasında hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingDBList" xml:space="preserve">
+    <value>DB Listesi çekilirken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingDbObjectList" xml:space="preserve">
+    <value>DB Nesne listesi çekilirken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingObjectList" xml:space="preserve">
+    <value>DB Objeleri alınırken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingDbObject" xml:space="preserve">
+    <value>DB nesnesine erişilirken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileSearchingDB" xml:space="preserve">
+    <value>DB üzerinde arama gerçekleştirilirken hata oluştu</value>
+  </data>
+  <data name="GetDepotsError" xml:space="preserve">
+    <value>Depo bilgileri çekilirken hata oluştu</value>
+  </data>
+  <data name="GetRepoSearchResultError" xml:space="preserve">
+    <value>Repo üzerinde arama yapılırken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingSchemaList" xml:space="preserve">
+    <value>Şema listesi çekilirken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileRunningSqlQuery" xml:space="preserve">
+    <value>Sql cümleciği çalıştırılırken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingTableList" xml:space="preserve">
+    <value>Tablo listesi çekilirken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingTableIndexList" xml:space="preserve">
+    <value>Tablo indexleri çekilirken hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingTableRelationshipList" xml:space="preserve">
+    <value>Tablo ilişkileri bulunurken hata oluştu</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Bul</value>
+  </data>
+  <data name="ErrorDetail" xml:space="preserve">
+    <value>{0}\n\nHata Detayı: {1}</value>
+  </data>
+  <data name="Criteria" xml:space="preserve">
+    <value>Kriterler</value>
+  </data>
+  <data name="CommandTimeout" xml:space="preserve">
+    <value>Max. Bekleme Süresi</value>
+  </data>
+  <data name="AddTableColumnsToCSV" xml:space="preserve">
+    <value>Kolon isimlerini de dahil et</value>
+  </data>
+  <data name="ThreadCount" xml:space="preserve">
+    <value>Thread Sayısı</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Klasör Yolu</value>
+  </data>
+  <data name="OnlyNotEmptyTables" xml:space="preserve">
+    <value>Sadece kayıt içeren tablolar</value>
+  </data>
+  <data name="Tables" xml:space="preserve">
+    <value>Tablolar</value>
+  </data>
+  <data name="Logs" xml:space="preserve">
+    <value>Loglar</value>
+  </data>
+  <data name="Run" xml:space="preserve">
+    <value>Çalıştır</value>
+  </data>
+  <data name="ExportToCSVCompleted" xml:space="preserve">
+    <value>CSV'ye aktarım işlemi tamamlandı.</value>
+  </data>
+  <data name="FileExportedStartedTableNameX" xml:space="preserve">
+    <value>CSV oluşturma işlemi başladı. Tablo adı: {0}</value>
+  </data>
+  <data name="FileExportedEndedTableNameX" xml:space="preserve">
+    <value>CSV oluşturma işlemi tamamlandı. Tablo adı: {0}</value>
+  </data>
+  <data name="ErrorOccuredTableNameErrorDetail" xml:space="preserve">
+    <value>Hata oluştu. Tablo adı: {0}, Hata detayı: {1}</value>
+  </data>
+  <data name="ErrorOccuredX" xml:space="preserve">
+    <value>Hata oluştu. Hata detayı: {0}</value>
+  </data>
+  <data name="ExportToCsvCompletedForDB" xml:space="preserve">
+    <value>{0} DB'si için CSV'ye aktarım işlemi tamamlandı</value>
+  </data>
+  <data name="ExportToCsvStartedForX" xml:space="preserve">
+    <value>{0} DB'si için CSV'ye aktarım işlemi başladı</value>
+  </data>
+  <data name="CreateZip" xml:space="preserve">
+    <value>Zip Oluştur</value>
+  </data>
+  <data name="ZipFileCreateStartedForX" xml:space="preserve">
+    <value>{0} DB'si için zip dosyası oluşturma işlemi başladı.</value>
+  </data>
+  <data name="ZipFileCreateEndedForX" xml:space="preserve">
+    <value>{0} DB'si için zip dosyası oluşturma işlemi tamamlandı.</value>
+  </data>
+  <data name="Customizer" xml:space="preserve">
+    <value>Customizer</value>
+  </data>
+  <data name="TableToCSV" xml:space="preserve">
+    <value>Tabloları CSV'ye Aktar</value>
+  </data>
+  <data name="DBList" xml:space="preserve">
+    <value>DB Listesi</value>
+  </data>
+  <data name="DBName" xml:space="preserve">
+    <value>DB Adı</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>İlerleme</value>
+  </data>
+  <data name="TableName" xml:space="preserve">
+    <value>Tablo Adı</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Durum</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Tamamlandı</value>
+  </data>
+  <data name="NotCompleted" xml:space="preserve">
+    <value>Tamamlanmadı</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Çalışıyor</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Durdur</value>
+  </data>
+  <data name="ProcessCancelled" xml:space="preserve">
+    <value>İşlem iptal edildi</value>
+  </data>
+  <data name="SelectAPath" xml:space="preserve">
+    <value>Klasör yolu seçin</value>
+  </data>
+  <data name="ErrorOccuredErrorDetail" xml:space="preserve">
+    <value>Hata oluştu. Hata detayı: {0}</value>
+  </data>
+  <data name="NoTableFoundForX" xml:space="preserve">
+    <value>{0} için aktarılacak herhangi bir tablo bulunamadı</value>
+  </data>
+  <data name="CreateInsertScriptsSeperately" xml:space="preserve">
+    <value>Insert scriptlerini ayrı ayrı oluştur</value>
+  </data>
+  <data name="FavoriteQueries" xml:space="preserve">
+    <value>Favori Queryler</value>
+  </data>
+  <data name="AddFavoriteQuery" xml:space="preserve">
+    <value>Favori Query Ekle</value>
+  </data>
+  <data name="EditFavoriteQuery" xml:space="preserve">
+    <value>Favori Query Güncelle</value>
+  </data>
+  <data name="DeleteFavoriteQuery" xml:space="preserve">
+    <value>Favori Query Sil</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Oluşturulma Tarihi</value>
+  </data>
+  <data name="_0FavoriteQueryies" xml:space="preserve">
+    <value>{0} Favori Query(ler)</value>
+  </data>
+  <data name="AreYouSureYouWantToDeleteit" xml:space="preserve">
+    <value>Silmek istediğinize emin misiniz?</value>
+  </data>
+  <data name="QueryText" xml:space="preserve">
+    <value>Query Metni</value>
+  </data>
+  <data name="QueryTextisRequired" xml:space="preserve">
+    <value>Query metni zorunludur</value>
+  </data>
+  <data name="NameisRequired" xml:space="preserve">
+    <value>İsim zorunludur</value>
+  </data>
+  <data name="SQLTools" xml:space="preserve">
+    <value>SQL Araçları</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Araçlar</value>
+  </data>
+  <data name="SqlConnectionStringBuilderError" xml:space="preserve">
+    <value>SqlConnection String Oluşturma Hatası</value>
+  </data>
+  <data name="FormatSql" xml:space="preserve">
+    <value>SQL'i Formatla</value>
+  </data>
+  <data name="NameShouldBeUnique" xml:space="preserve">
+    <value>İsim tekil olmalıdır</value>
+  </data>
+  <data name="GetFromFavoriteQueries" xml:space="preserve">
+    <value>Favori querylerden getir</value>
+  </data>
+  <data name="SaveToFavoriteQueries" xml:space="preserve">
+    <value>Favori querylere ekle\kaydet</value>
+  </data>
+  <data name="RefreshFavoriteQueries" xml:space="preserve">
+    <value>Favori queryleri tazele</value>
+  </data>
+  <data name="DoYouWantToOpenLastSessionSForms" xml:space="preserve">
+    <value>Bir önceki sessionda açmış olduğunuz ekranların tekrar açılmasını ister misiniz? Açık durumdaki tablar kapatılacaktır!</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Onay</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>Ekran Paketini Güncelle</value>
+  </data>
+  <data name="AddNewProject" xml:space="preserve">
+    <value>Ekran Paketi Ekle</value>
+  </data>
+  <data name="UpdateDate" xml:space="preserve">
+    <value>Güncellenme Tarihi</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Ekran Paketleri</value>
+  </data>
+  <data name="OpenProject" xml:space="preserve">
+    <value>Ekran Paketini Aç</value>
+  </data>
+  <data name="AddProject" xml:space="preserve">
+    <value>Ekran Paketi Ekle</value>
+  </data>
+  <data name="DeleteProject" xml:space="preserve">
+    <value>Ekran Paketini Sil</value>
+  </data>
+  <data name="MultiRowTabs" xml:space="preserve">
+    <value>Çok satırlı tab gösterimi</value>
+  </data>
+  <data name="FillWithCurrentOpenedDocuments" xml:space="preserve">
+    <value>Açılmış durumdaki ekran bilgileri ile doldur</value>
+  </data>
+  <data name="Screens" xml:space="preserve">
+    <value>Ekranlar</value>
+  </data>
+  <data name="XScreenPackages" xml:space="preserve">
+    <value>{0} Ekran paketi\paketleri</value>
+  </data>
+  <data name="ScreenPackageInfo" xml:space="preserve">
+    <value>Ekran Paketi Bilgileri</value>
+  </data>
+  <data name="Savesandopenstheopenedscreenstogetherwiththeselectedcriteria" xml:space="preserve">
+    <value>Açılmış olan ekranları seçili kriterleri ile birlikte kaydeder ve açar.</value>
+  </data>
+  <data name="FavoriteQueriesCanBeSavedForLaterUse" xml:space="preserve">
+    <value>Favori sorgular daha sonra kullanılabilmesi için kaydedilebilir.</value>
+  </data>
+  <data name="LoadLastOpenedScreens" xml:space="preserve">
+    <value>Son açılan ekranları aç</value>
+  </data>
+  <data name="ComparisonColumns" xml:space="preserve">
+    <value>Karşılaştırma Kolonları</value>
+  </data>
+  <data name="TargetDB" xml:space="preserve">
+    <value>Hedef DB</value>
+  </data>
+  <data name="SourceDB" xml:space="preserve">
+    <value>Kaynak DB</value>
+  </data>
+  <data name="ToBeComparedSQLScript" xml:space="preserve">
+    <value>Karşılaştırılacak SQL Cümleciği</value>
+  </data>
+  <data name="DataCompare" xml:space="preserve">
+    <value>Veri Karşılaştır</value>
+  </data>
+  <data name="FillSourceDBTargetDBAndSQL" xml:space="preserve">
+    <value>Kaynak DB, Hedef DB ve SQL bilgilerini doldurunuz.</value>
+  </data>
+  <data name="SourceSQLShouldReturnOneTable" xml:space="preserve">
+    <value>Kaynak SQL sonucu tek bir sonuç dönmelidir.</value>
+  </data>
+  <data name="ErrorOccuredWhileRunningSqlToDataCompare" xml:space="preserve">
+    <value>Sql çalıştırılırken hata oluştu. Hata detayı: {0}</value>
+  </data>
+  <data name="PleaseFillCompareColumns" xml:space="preserve">
+    <value>Karşılaştırma kolonlarını giriniz</value>
+  </data>
+  <data name="DataCompareResults" xml:space="preserve">
+    <value>Veri karşılaştırma sonuçları</value>
+  </data>
+  <data name="DisplayOnlyNotEqualColumns" xml:space="preserve">
+    <value>Sadece eşitlik içermeyen kolonları göster</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Kaynak - </value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Hedef - </value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Sonuç</value>
+  </data>
+  <data name="DataCompareHelp" xml:space="preserve">
+    <value>VERİ KARŞILAŞTIR: İki veri kaynağını hücre bazlı olarak birbirleriyle karşılaştırır ve sonuçları grid üzerinde gösterir.</value>
+  </data>
+  <data name="DatabaseOrder" xml:space="preserve">
+    <value>DB Sırası</value>
+  </data>
+  <data name="TableDependencies" xml:space="preserve">
+    <value>Tablo İlişkileri</value>
+  </data>
+  <data name="ObjectContent" xml:space="preserve">
+    <value>İçerik</value>
+  </data>
+  <data name="SchemaName" xml:space="preserve">
+    <value>Şema</value>
+  </data>
+  <data name="ObjectName" xml:space="preserve">
+    <value>Nesne Adı</value>
+  </data>
+  <data name="ObjectId" xml:space="preserve">
+    <value>ObjectId</value>
+  </data>
+  <data name="DescriptionIsRequired" xml:space="preserve">
+    <value>Açıklama zorunludur</value>
+  </data>
+  <data name="ExpansionIsRequired" xml:space="preserve">
+    <value>Sql cümleciği zorunludur</value>
+  </data>
+  <data name="ShortcutIsRequired" xml:space="preserve">
+    <value>Kısa yol zorunludur!</value>
+  </data>
+  <data name="ShortcutMustStartWith" xml:space="preserve">
+    <value>Kısa yol # ile başlamalıdır.</value>
+  </data>
+  <data name="ShortcutShouldBeUnique" xml:space="preserve">
+    <value>Kısa yol tekil olmalıdır!</value>
+  </data>
+  <data name="AddSnippet" xml:space="preserve">
+    <value>Snippet Ekle</value>
+  </data>
+  <data name="UpdateSnippet" xml:space="preserve">
+    <value>Snippet Güncelle</value>
+  </data>
+  <data name="Shortcut" xml:space="preserve">
+    <value>Kısa yol</value>
+  </data>
+  <data name="Snippets" xml:space="preserve">
+    <value>Snippetlar</value>
+  </data>
+  <data name="DeleteSnippet" xml:space="preserve">
+    <value>Snippet'i Sil</value>
+  </data>
+  <data name="Snippet" xml:space="preserve">
+    <value>Snippetlar</value>
+  </data>
+  <data name="ChangeLog" xml:space="preserve">
+    <value>Değişiklik Logu</value>
+  </data>
+  <data name="LogFiles" xml:space="preserve">
+    <value>Log Dosyaları</value>
+  </data>
+  <data name="FormatText" xml:space="preserve">
+    <value>Metni Formatla</value>
+  </data>
+  <data name="DatabaseAlreadyAdded" xml:space="preserve">
+    <value>DB zaten tanımlanmış!</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="Source0Target12DifferencesWereFoundBetweenTheScripts" xml:space="preserve">
+    <value>Kaynak: {0}, Hedef: {1} / {2} farklılık bulundu.</value>
+  </data>
+  <data name="Table0123Columns" xml:space="preserve">
+    <value>Tablo: {0}.{1}.{2} ({3} Kolonlar)</value>
+  </data>
+  <data name="_0DBObjects" xml:space="preserve">
+    <value>{0} DB Nesnleri</value>
+  </data>
+  <data name="_0RowSAffected" xml:space="preserve">
+    <value>({0} satır etkilendi)</value>
+  </data>
+  <data name="_0ConnectionStringS" xml:space="preserve">
+    <value>{0} Bağlantı Cümlesi</value>
+  </data>
+  <data name="TotalRecordCount0NumberOfColumnsContainingDifferences1NumberOfRowsContainingDifferences2NumberOfCellsContainingDifferences3" xml:space="preserve">
+    <value>Toplam kayıt sayısı: {0}, Fark içereren kolon sayısı: {1}, Fark içereren satır sayısı: {2}, Fark içereren hücre sayısı: {3}</value>
+  </data>
+  <data name="LogInitializationError0" xml:space="preserve">
+    <value>Log başlatma hatası: {0}</value>
+  </data>
+  <data name="ApplicationError0" xml:space="preserve">
+    <value>Uygulama hatası: {0}</value>
+  </data>
+  <data name="AllFilesAll" xml:space="preserve">
+    <value>Tüm Dosyalar|*.*</value>
+  </data>
+  <data name="ImportFromFileFailed" xml:space="preserve">
+    <value>Dosyadan aktarma başarısız</value>
+  </data>
+  <data name="ShowOptionsToolbar" xml:space="preserve">
+    <value>Ayarlar araç çubuğunu göster</value>
+  </data>
+  <data name="ShowToolsToolbar" xml:space="preserve">
+    <value>Araçlar araç çubuğunu göster</value>
+  </data>
+  <data name="SQLScriptSource" xml:space="preserve">
+    <value>SQL Cümleciği - Kaynak</value>
+  </data>
+  <data name="SQLScriptSourceTarget" xml:space="preserve">
+    <value>SQL Cümleciği - Kaynak ve Hedef</value>
+  </data>
+  <data name="SQLScriptTarget" xml:space="preserve">
+    <value>SQL Cümleciği - Hedef</value>
+  </data>
+  <data name="SqlScriptIsDifferent" xml:space="preserve">
+    <value>Sql Cümleciği Farklıdır</value>
+  </data>
+  <data name="EncryptDecrypt" xml:space="preserve">
+    <value>Şifrele \Çöz</value>
+  </data>
+  <data name="BOAEncryptDecrypt" xml:space="preserve">
+    <value>BOA Şifre Olutşurma \ Çözme</value>
+  </data>
+  <data name="Encrypt" xml:space="preserve">
+    <value>Şifrele</value>
+  </data>
+  <data name="Decrypt" xml:space="preserve">
+    <value>Çöz</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>Metod</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Anahtar</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Çıktı</value>
+  </data>
+  <data name="Input" xml:space="preserve">
+    <value>Girdi</value>
+  </data>
+  <data name="Sha256" xml:space="preserve">
+    <value>Sha256</value>
+  </data>
+  <data name="Rijndael" xml:space="preserve">
+    <value>Rijndael</value>
+  </data>
+  <data name="SData" xml:space="preserve">
+    <value>SData</value>
+  </data>
+  <data name="AES" xml:space="preserve">
+    <value>AES</value>
+  </data>
+  <data name="FillInputValue" xml:space="preserve">
+    <value>Şifrelenecek\Çözülecek değeri giriniz!</value>
+  </data>
+  <data name="FillKeyValue" xml:space="preserve">
+    <value>Şifreleme\Çözümleme anahtarını giriniz!</value>
+  </data>
+  <data name="Journal" xml:space="preserve">
+    <value>Jurnal</value>
+  </data>
+  <data name="BOATools" xml:space="preserve">
+    <value>BOA Araçları</value>
+  </data>
+  <data name="TFS" xml:space="preserve">
+    <value>TFS</value>
+  </data>
+  <data name="Ara" xml:space="preserve">
+    <value>Ara</value>
+  </data>
+  <data name="RefreshUsers" xml:space="preserve">
+    <value>Kullanıcıları Yenile</value>
+  </data>
+  <data name="TFSSettings" xml:space="preserve">
+    <value>TFS Ayarları</value>
+  </data>
+  <data name="TFSPath" xml:space="preserve">
+    <value>TFS Klasörü</value>
+  </data>
+  <data name="TFSURL" xml:space="preserve">
+    <value>TFS Yolu</value>
+  </data>
+  <data name="ChangesetID" xml:space="preserve">
+    <value>Changeset ID</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Değişiklik Açıklama</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Kullanıcı</value>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>Oluşturulma Tarihi</value>
+  </data>
+  <data name="Branch" xml:space="preserve">
+    <value>Branch</value>
+  </data>
+  <data name="MergedToTest" xml:space="preserve">
+    <value>Teste Merge Edilmiş</value>
+  </data>
+  <data name="MergedToMain" xml:space="preserve">
+    <value>Maine Merge Edilmiş</value>
+  </data>
+  <data name="ChangesetComment" xml:space="preserve">
+    <value>Değişiklik Açıklaması</value>
+  </data>
+  <data name="ShowOnlyUnmergedToMain" xml:space="preserve">
+    <value>Sadece Main'e merge edilmemişler</value>
+  </data>
+  <data name="ShowOnlyUnmergedToTest" xml:space="preserve">
+    <value>Sadece Test'e merge edilmemişler</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Bitiş Tarihi</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Başlangıç Tarihi</value>
+  </data>
+  <data name="Clean" xml:space="preserve">
+    <value>Temizle</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Hazır</value>
+  </data>
+  <data name="ValueCountChangesetFound" xml:space="preserve">
+    <value>{0} adet changeset bulundu</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>-- Tümü --</value>
+  </data>
+  <data name="FillTFSUrl" xml:space="preserve">
+    <value>Lütfen TFS URL giriniz.</value>
+  </data>
+  <data name="PleaseFillTFSPathExProductAndDeliveryDestek" xml:space="preserve">
+    <value>Lütfen TFS Path giriniz (örn: ProductAndDelivery/Destek).</value>
+  </data>
+  <data name="ASearchingOperationIsRunningPleaseWait" xml:space="preserve">
+    <value>Bir arama işlemi devam ediyor. Lütfen bekleyiniz.</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Bilgi</value>
+  </data>
+  <data name="Searching" xml:space="preserve">
+    <value>Aranıyor...</value>
+  </data>
+  <data name="ErrorOccured" xml:space="preserve">
+    <value>Hata oluştu</value>
+  </data>
+  <data name="ErrorOccuredDetail0" xml:space="preserve">
+    <value>Arama sırasında hata oluştu: {0}</value>
+  </data>
+  <data name="AOperationIsRunningPleaseWait" xml:space="preserve">
+    <value>Bir işlem devam ediyor. Lütfen bekleyiniz!</value>
+  </data>
+  <data name="UsersAreLoading" xml:space="preserve">
+    <value>Kullanıcılar yükleniyor...</value>
+  </data>
+  <data name="_0UsersAreFound" xml:space="preserve">
+    <value>{0} kullanıcı bulundu.</value>
+  </data>
+  <data name="TFSSearchResults" xml:space="preserve">
+    <value>TFS Arama Sonuçları</value>
+  </data>
+  <data name="DevCheckinUser" xml:space="preserve">
+    <value>Dev'e Gönderen Kullanıcı</value>
+  </data>
+  <data name="TestMergeUser" xml:space="preserve">
+    <value>Test'e Merge Eden Kullanıcı</value>
+  </data>
+  <data name="TestMergeDate" xml:space="preserve">
+    <value>Test'e Merge Edilme Tarihi</value>
+  </data>
+  <data name="MainMergeUser" xml:space="preserve">
+    <value>Main'e Merge Eden Kullanıcı</value>
+  </data>
+  <data name="MainMergeDate" xml:space="preserve">
+    <value>Main'e Merge Edilme Tarihi</value>
+  </data>
+  <data name="CouldNtFoundAnyFirmBranchUnder0" xml:space="preserve">
+    <value>{0} altinda hicbir firma/branch yapisi bulunamadi.</value>
+  </data>
+  <data name="TFSError0" xml:space="preserve">
+    <value>TFS arama hatasi: {0}</value>
+  </data>
+  <data name="BranchStructureCouldNtBeDiscovered0" xml:space="preserve">
+    <value>Branch yapisi kesfedilemedi: {0}</value>
+  </data>
+  <data name="CommentIsRequired" xml:space="preserve">
+    <value>Açıklama zorunludur!</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingOwners" xml:space="preserve">
+    <value>Kullanıcılar çekilirken hata oluştu</value>
+  </data>
+  <data name="LoadingFileChangesForChangeset0" xml:space="preserve">
+    <value>Changeset {0} için değişiklik yapılan dosyalar getiriliyor...</value>
+  </data>
+  <data name="_0FileChangesFound" xml:space="preserve">
+    <value>{0} adet değişiklik bulundu</value>
+  </data>
+  <data name="OldVersion" xml:space="preserve">
+    <value>Eski Versiyon</value>
+  </data>
+  <data name="NewVersion" xml:space="preserve">
+    <value>Yeni Versiyon</value>
+  </data>
+  <data name="ServerPath" xml:space="preserve">
+    <value>Dosya Yolu</value>
+  </data>
+  <data name="ChangeType" xml:space="preserve">
+    <value>Değişiklik Tipi</value>
+  </data>
+  <data name="LoadingFileContent0" xml:space="preserve">
+    <value>Dosya içeriği yükleniyor: {0}</value>
+  </data>
+  <data name="NotPadCompare" xml:space="preserve">
+    <value>Not Pad Karşılaştırma</value>
+  </data>
+  <data name="DisplayingFile0" xml:space="preserve">
+    <value>Dosya görüntüleniyor: {0}</value>
+  </data>
+  <data name="TFSSearch" xml:space="preserve">
+    <value>TFS Arama</value>
+  </data>
+  <data name="DoubleClickToViewFileChanges" xml:space="preserve">
+    <value>Değişiklikleri görmek için çift tıklayın</value>
+  </data>
+  <data name="ToViewTheChangesDoubleClickOrLeftClickIfTheWindowIsAlreadyOpen" xml:space="preserve">
+    <value>Değişiklikleri görebilmek için; çift tıklayın veya ekran açık ise sol-click tıklayın</value>
+  </data>
+  <data name="DevOld" xml:space="preserve">
+    <value>Dev - Eski</value>
+  </data>
+  <data name="DevNew" xml:space="preserve">
+    <value>Dev - Yeni</value>
+  </data>
+  <data name="TestOld" xml:space="preserve">
+    <value>Test - Eski</value>
+  </data>
+  <data name="TestNew" xml:space="preserve">
+    <value>Test - Yeni</value>
+  </data>
+  <data name="MainOld" xml:space="preserve">
+    <value>Main - Eski</value>
+  </data>
+  <data name="MainNew" xml:space="preserve">
+    <value>Main - Yeni</value>
+  </data>
+  <data name="LütfenSourceVeTargetSeçiniz" xml:space="preserve">
+    <value>Lütfen Source ve Target seçiniz</value>
+  </data>
+  <data name="LütfenÖnceBirChangesetSeçiniz" xml:space="preserve">
+    <value>Lütfen önce bir changeset seçiniz</value>
+  </data>
+  <data name="Uyarı" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="TFSSearchHelp" xml:space="preserve">
+    <value>TFS üzerinde arama gerçekleştirir. Test veya maine geçmemiş durumda olan changesetleri gösterir. Changeset içeriklerini gösterir.</value>
+  </data>
+  <data name="TableTriggers" xml:space="preserve">
+    <value>Tablo Trigerları</value>
+  </data>
+  <data name="TriggerName" xml:space="preserve">
+    <value>Triger Adı</value>
+  </data>
+  <data name="ErrorOccuredWhileGettingTableTriggerList" xml:space="preserve">
+    <value>Tablo trigger'ları getirilirken hata oluştu!</value>
+  </data>
+  <data name="CancelQuery" xml:space="preserve">
+    <value>Sorgu İptal</value>
+  </data>
+  <data name="QueryCancelled" xml:space="preserve">
+    <value>Sorgu iptal edildi.</value>
+  </data>
+  <data name="SearchCancelled" xml:space="preserve">
+    <value>Arama iptal edildi.</value>
+  </data>
+  <data name="SearchFailed" xml:space="preserve">
+    <value>Aramada hata oluştu: </value>
+  </data>
+  <data name="OperationCancelled" xml:space="preserve">
+    <value>İşlem iptal edildi.</value>
+  </data>
+  <data name="BatchCompareCancelledByUser" xml:space="preserve">
+    <value>Toplu karşılaştırma işlemi kullanıcı tarafından iptal edildi.</value>
+  </data>
+  <data name="ComparisonCancelled" xml:space="preserve">
+    <value>Karşılaştırma iptal edildi.</value>
+  </data>
+</root>

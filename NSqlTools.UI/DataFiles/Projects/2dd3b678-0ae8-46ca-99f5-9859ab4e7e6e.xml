@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<ScreenDataListContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BaseScreenDataContractList>
+    <BaseScreenDataContract xsi:type="InsertScriptGeneratorScreenDataContract">
+      <Name>Insert Scripti Oluşturucu</Name>
+      <Description>Insert Scripti Oluşturucu</Description>
+      <DBIndexes />
+      <ObjectType>18</ObjectType>
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+      <InputSqlScript />
+      <OutputSqlScript />
+      <UseNoSquareBrackets>true</UseNoSquareBrackets>
+      <SeperateInsertScripts>false</SeperateInsertScripts>
+      <Columns />
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="ConnectionStringsScreenDataContract">
+      <Name>Bağlantı Cümlesi</Name>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="FavoriteQueryScreenDataContract">
+      <Name>Favori Queryler</Name>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="SqlViewerScreenDataContract">
+      <Name>Sql Görüntüleyici</Name>
+      <Description>Sql Görüntüleyici</Description>
+      <DBIndexes />
+      <ObjectType>9</ObjectType>
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="SqlViewerScreenDataContract">
+      <Name>Sql Görüntüleyici</Name>
+      <Description>Sql Görüntüleyici</Description>
+      <DBIndexes />
+      <ObjectType>9</ObjectType>
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="SqlViewerScreenDataContract">
+      <Name>Sql Görüntüleyici</Name>
+      <Description>Sql Görüntüleyici</Description>
+      <DBIndexes />
+      <ObjectType>9</ObjectType>
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="RunQueryScreenDataContract">
+      <Name>SQL Çalıştır</Name>
+      <DBIndexes />
+      <ObjectType>9</ObjectType>
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+      <QueryText />
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="RunQueryScreenDataContract">
+      <Name>SQL Çalıştır</Name>
+      <DBIndexes />
+      <ObjectType>9</ObjectType>
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+      <QueryText />
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="SearchDBScreenDataContract">
+      <Name>DB Arama</Name>
+      <DBIndexes />
+      <ObjectType xsi:nil="true" />
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+      <SearchKeyword />
+      <CaseSensitive>false</CaseSensitive>
+      <DBSearch>true</DBSearch>
+      <RepoSearch>false</RepoSearch>
+      <RepoExtraSearchKeyword />
+      <ObjectTypeOriginal xsi:nil="true" />
+      <NameFilter />
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="SearchDBScreenDataContract">
+      <Name>DB Arama</Name>
+      <DBIndexes />
+      <ObjectType xsi:nil="true" />
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+      <SearchKeyword />
+      <CaseSensitive>false</CaseSensitive>
+      <DBSearch>true</DBSearch>
+      <RepoSearch>false</RepoSearch>
+      <RepoExtraSearchKeyword />
+      <ObjectTypeOriginal xsi:nil="true" />
+      <NameFilter />
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="DBObjectCompareScreenDataContract">
+      <Name>SQL Karşılaştırma</Name>
+      <ObjectTypeOriginal>9</ObjectTypeOriginal>
+      <SourceDBObjectSelectFormDataContract>
+        <DBIndexes />
+        <ObjectType>9</ObjectType>
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </SourceDBObjectSelectFormDataContract>
+      <TargetDBObjectSelectFormDataContract>
+        <DBIndexes />
+        <ObjectType>9</ObjectType>
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </TargetDBObjectSelectFormDataContract>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="DBObjectCompareScreenDataContract">
+      <Name>SQL Karşılaştırma</Name>
+      <ObjectTypeOriginal>9</ObjectTypeOriginal>
+      <SourceDBObjectSelectFormDataContract>
+        <DBIndexes />
+        <ObjectType>9</ObjectType>
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </SourceDBObjectSelectFormDataContract>
+      <TargetDBObjectSelectFormDataContract>
+        <DBIndexes />
+        <ObjectType>9</ObjectType>
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </TargetDBObjectSelectFormDataContract>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="DBBatchCompareScreenDataContract">
+      <Name>Toplu Karşılaştırma</Name>
+      <ObjectTypeOriginal>9</ObjectTypeOriginal>
+      <NameFilter />
+      <SourceDBObjectSelectFormDataContract>
+        <DBIndexes />
+        <ObjectType>9</ObjectType>
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </SourceDBObjectSelectFormDataContract>
+      <TargetDBObjectSelectFormDataContract>
+        <DBIndexes />
+        <ObjectType>9</ObjectType>
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </TargetDBObjectSelectFormDataContract>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="DBBatchCompareScreenDataContract">
+      <Name>Toplu Karşılaştırma</Name>
+      <ObjectTypeOriginal>9</ObjectTypeOriginal>
+      <NameFilter />
+      <SourceDBObjectSelectFormDataContract>
+        <DBIndexes />
+        <ObjectType>9</ObjectType>
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </SourceDBObjectSelectFormDataContract>
+      <TargetDBObjectSelectFormDataContract>
+        <DBIndexes />
+        <ObjectType>9</ObjectType>
+        <SchemaId xsi:nil="true" />
+        <ObjectId xsi:nil="true" />
+      </TargetDBObjectSelectFormDataContract>
+    </BaseScreenDataContract>
+    <BaseScreenDataContract xsi:type="InsertScriptGeneratorScreenDataContract">
+      <Name>Insert Scripti Oluşturucu</Name>
+      <Description>Insert Scripti Oluşturucu</Description>
+      <DBIndexes />
+      <ObjectType>18</ObjectType>
+      <SchemaId xsi:nil="true" />
+      <ObjectId xsi:nil="true" />
+      <InputSqlScript />
+      <OutputSqlScript />
+      <UseNoSquareBrackets>true</UseNoSquareBrackets>
+      <SeperateInsertScripts>false</SeperateInsertScripts>
+      <Columns />
+    </BaseScreenDataContract>
+  </BaseScreenDataContractList>
+</ScreenDataListContract>
