@@ -27,3 +27,6 @@
 
 19.05.2026 - 2.1.6
 - Threadli çalışan ekranlarda iptal yapılabilmesi sağlandı.
+
+01.09.2026 - 2.1.7
+- Göçme hatası düzeltildi.

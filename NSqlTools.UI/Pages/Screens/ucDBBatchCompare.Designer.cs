@@ -18,6 +18,9 @@ namespace NSqlTools.UI.Pages
 		{
 			if (disposing)
 			{
+				if (MainForm is frmMain main)
+					main.Resize -= frmMain_Resize;
+
 				// Cancel and dispose BackgroundWorker
 				if (backgroundWorker != null)
 				{

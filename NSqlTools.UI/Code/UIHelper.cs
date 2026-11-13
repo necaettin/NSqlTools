@@ -625,14 +625,13 @@ namespace NSqlTools.UI
 
 			// Nokta sonrası yazarken metni değiştirme
 			int replaceLen = (isSpace || isComma || isOpenParen || isEquals || isAt || isAfterDot) ? 0 : (pos - start);
-			var suggestions = SimpleSqlIntellisenseEngine.GetSuggestions(scintillaComponent.Text, pos, dbCacheInfo, dbCacheInfo?.FirstOrDefault());
-			if (!suggestions.Any()) return false;
+			var suggestions = SimpleSqlIntellisenseEngine.GetSuggestions(scintillaComponent.Text, pos, dbCacheInfo, dbCacheInfo?.FirstOrDefault()).ToList();
+			if (suggestions.Count == 0) return false;
 
-			// For space/comma/paren/equals/@, show list without replacing any text
 			scintillaComponent.AutoCShow(replaceLen, string.Join(" ", suggestions));
 
 			System.Diagnostics.Debug.WriteLine(
-				$"[UI] AutoCShow replaceLen={replaceLen} count={suggestions.Count()} first={suggestions.FirstOrDefault()}");
+				$"[UI] AutoCShow replaceLen={replaceLen} count={suggestions.Count} first={suggestions[0]}");
 
 			return true;
 		}

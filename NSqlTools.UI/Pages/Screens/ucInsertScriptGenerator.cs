@@ -528,7 +528,7 @@ namespace NSqlTools.UI.Pages
 							break;
 						case SqlColumnDataTypeEnum.sql_time:
 							isStringValue = true;
-							cellValueString = Convert.ToDateTime(cellValue).ToString("HH:mm");
+							cellValueString = ((TimeSpan)cellValue).ToString("c");
 
 							break;
 						case SqlColumnDataTypeEnum.sql_datetime:
@@ -695,6 +695,21 @@ namespace NSqlTools.UI.Pages
 
 			((frmMain)MainForm).Resize += frmMain_Resize;
 			frmMain_Resize(this, EventArgs.Empty);
+		}
+
+		protected override void OnHandleDestroyed(EventArgs e)
+		{
+			if (MainForm is frmMain main)
+				main.Resize -= frmMain_Resize;
+
+			base.OnHandleDestroyed(e);
+		}
+
+		protected override void ReleaseScreenResources()
+		{
+			ScriptResultDataSource = null;
+			ColumnsDataSource = null;
+			base.ReleaseScreenResources();
 		}
 
 		public override BaseScreenDataContract GetFormData()

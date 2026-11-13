@@ -231,7 +231,7 @@ namespace NSqlTools.UI.Pages
 				TabPage clickedTab = getClickedTab(e.Location);
 				if(clickedTab != null)
 				{
-					tcPages.TabPages.Remove(clickedTab);
+					closeTabPage(clickedTab);
 				}
 			}
 			else if (e.Button == MouseButtons.Left)
@@ -461,36 +461,75 @@ namespace NSqlTools.UI.Pages
 
 		private T showUserControl<T>(String caption, String name, Boolean openNew = true, BaseScreenDataContract formDataBaseContract = null) where T : BaseUserControl, new()
 		{
-			if (tcPages.TabPages.ContainsKey(name))
+			try
 			{
-				if((name == "ConnectionStrings" || name == "FavoriteQueries" || name == "Projects")
-					|| (!openNew || !tsmiMultiRowTabs.Checked))
+				if (tcPages.TabPages.ContainsKey(name))
 				{
-					tcPages.SelectedIndex = tcPages.TabPages.IndexOfKey(name);
+					if((name == "ConnectionStrings" || name == "FavoriteQueries" || name == "Projects")
+						|| (!openNew || !tsmiMultiRowTabs.Checked))
+					{
+						tcPages.SelectedIndex = tcPages.TabPages.IndexOfKey(name);
 
-					return (T)tcPages.TabPages[name].Controls[0];
+						return (T)tcPages.TabPages[name].Controls[0];
+					}
 				}
+
+				TabPage tp = new TabPage(caption + "  ");
+				T uc = new T
+				{
+					MainForm = this,
+					Dock = DockStyle.Fill,
+					ParentTabPage = tp
+				};
+				tp.Padding = new Padding(2, 5, 2, 2);
+				tp.Controls.Add(uc);
+				tp.Name = name;
+				tcPages.TabPages.Add(tp);
+				tcPages.SelectedTab = tp;
+				uc.InitForm();
+				BuildLeftSideTabSequence(uc);
+				uc.Show();
+				if(formDataBaseContract != null)
+					uc.SetFormData(formDataBaseContract);
+
+				return uc;
 			}
-
-			TabPage tp = new TabPage(caption + "  ");
-			T uc = new T
+			catch (Exception ex)
 			{
-				MainForm = this,
-				Dock = DockStyle.Fill,
-				ParentTabPage = tp
-			};
-			tp.Padding = new Padding(2, 5, 2, 2);
-			tp.Controls.Add(uc);
-			tp.Name = name;
-			tcPages.TabPages.Add(tp);
-			tcPages.SelectedTab = tp;
-			uc.InitForm();
-			BuildLeftSideTabSequence(uc);
-			uc.Show();
-			if(formDataBaseContract != null)
-				uc.SetFormData(formDataBaseContract);
+				LogHelper.Error($"Failed to show user control: {name}", ex);
+				MessageBox.Show(
+					String.Format("Error while opening screen: {0}", ex.Message),
+					CommonResource.Error,
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Error
+				);
+				return null;
+			}
+		}
 
-			return uc;
+		private void closeTabPage(TabPage tabPage)
+		{
+			tcPages.TabPages.Remove(tabPage);
+			tabPage.Dispose();
+			ReleaseMemoryAfterClose();
+		}
+
+		[System.Runtime.InteropServices.DllImport("psapi.dll")]
+		private static extern int EmptyWorkingSet(IntPtr hProcess);
+
+		private static void ReleaseMemoryAfterClose()
+		{
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
+			GC.Collect();
+			try
+			{
+				EmptyWorkingSet(System.Diagnostics.Process.GetCurrentProcess().Handle);
+			}
+			catch
+			{
+				// ignored
+			}
 		}
 
 		private void SwapTabs(int sourceIndex, int targetIndex)
@@ -548,47 +587,54 @@ namespace NSqlTools.UI.Pages
 
 			foreach (BaseScreenDataContract formDataBaseContract in baseScreenDataContractList)
 			{
-				switch (formDataBaseContract.GetType())
+				try
 				{
-					case Type t when t == typeof(ConnectionStringsScreenDataContract):
-						showUserControl<ucConnectionStrings>(CommonResource.ConnectionStrings, "ConnectionStrings", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(SqlViewerScreenDataContract):
-						showUserControl<ucSqlViewer>(CommonResource.SqlViewer, "SqlViewer", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(TextViewerScreenDataContract):
-						showUserControl<ucTextViewer>(CommonResource.TextViewer, "TextViewer", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(RunQueryScreenDataContract):
-						showUserControl<ucRunQuery>(CommonResource.RunQuery, "RunSqlQuery", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(SearchDBScreenDataContract):
-						showUserControl<ucSearchDB>(CommonResource.SearchDBObject, "SearchDBObject", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(InsertScriptGeneratorScreenDataContract):
-						showUserControl<ucInsertScriptGenerator>(CommonResource.InsertScriptGenerator, "InsertScriptGenerator", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(FreeTextCompareScreenDataContract):
-						showUserControl<ucFreeTextCompare>(CommonResource.FreeTextCompare, "FreeCompare", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(FavoriteQueryScreenDataContract):
-						showUserControl<ucFavoriteQueries>(CommonResource.FavoriteQueries, "FavoriteQueries", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(DBObjectCompareScreenDataContract):
-						showUserControl<ucDBObjectCompare>(CommonResource.SqlCompare, "SqlCompare", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(DBBatchCompareScreenDataContract):
-						showUserControl<ucDBBatchCompare>(CommonResource.SqlBatchCompare, "BatchCompare", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(ProjectsScreenDataContract):
-						showUserControl<ucProjects>(CommonResource.Projects, "Projects", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(SnippetScreenDataContract):
-						showUserControl<ucSnippet>(CommonResource.Snippets, "Snippets", false, formDataBaseContract);
-						break;
-					case Type t when t == typeof(DataCompareScreenDataContract):
-						showUserControl<ucDataCompare>(CommonResource.DataCompare, "DataCompare", false, formDataBaseContract);
-						break;
+					switch (formDataBaseContract.GetType())
+					{
+						case Type t when t == typeof(ConnectionStringsScreenDataContract):
+							showUserControl<ucConnectionStrings>(CommonResource.ConnectionStrings, "ConnectionStrings", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(SqlViewerScreenDataContract):
+							showUserControl<ucSqlViewer>(CommonResource.SqlViewer, "SqlViewer", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(TextViewerScreenDataContract):
+							showUserControl<ucTextViewer>(CommonResource.TextViewer, "TextViewer", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(RunQueryScreenDataContract):
+							showUserControl<ucRunQuery>(CommonResource.RunQuery, "RunSqlQuery", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(SearchDBScreenDataContract):
+							showUserControl<ucSearchDB>(CommonResource.SearchDBObject, "SearchDBObject", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(InsertScriptGeneratorScreenDataContract):
+							showUserControl<ucInsertScriptGenerator>(CommonResource.InsertScriptGenerator, "InsertScriptGenerator", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(FreeTextCompareScreenDataContract):
+							showUserControl<ucFreeTextCompare>(CommonResource.FreeTextCompare, "FreeCompare", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(FavoriteQueryScreenDataContract):
+							showUserControl<ucFavoriteQueries>(CommonResource.FavoriteQueries, "FavoriteQueries", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(DBObjectCompareScreenDataContract):
+							showUserControl<ucDBObjectCompare>(CommonResource.SqlCompare, "SqlCompare", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(DBBatchCompareScreenDataContract):
+							showUserControl<ucDBBatchCompare>(CommonResource.SqlBatchCompare, "BatchCompare", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(ProjectsScreenDataContract):
+							showUserControl<ucProjects>(CommonResource.Projects, "Projects", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(SnippetScreenDataContract):
+							showUserControl<ucSnippet>(CommonResource.Snippets, "Snippets", false, formDataBaseContract);
+							break;
+						case Type t when t == typeof(DataCompareScreenDataContract):
+							showUserControl<ucDataCompare>(CommonResource.DataCompare, "DataCompare", false, formDataBaseContract);
+							break;
+					}
+				}
+				catch (Exception ex)
+				{
+					LogHelper.Error($"Failed to load screen: {formDataBaseContract?.Name}", ex);
 				}
 			}
 		}

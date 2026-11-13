@@ -18,6 +18,32 @@ namespace NSqlTools.UI.Pages
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
+			if (disposing && MainForm is frmMain main)
+				main.Resize -= frmMain_Resize;
+
+			if (disposing)
+			{
+				if (backgroundWorker != null)
+				{
+					backgroundWorker.DoWork -= backgroundWorker_DoWork;
+					backgroundWorker.ProgressChanged -= backgroundWorker_ProgressChanged;
+					backgroundWorker.RunWorkerCompleted -= backgroundWorker_RunWorkerCompleted;
+					if (backgroundWorker.IsBusy)
+						backgroundWorker.CancelAsync();
+					backgroundWorker.Dispose();
+					backgroundWorker = null;
+				}
+
+				_cancellationTokenSource?.Cancel();
+				_cancellationTokenSource?.Dispose();
+				_cancellationTokenSource = null;
+
+				lock (_activeCommands)
+				{
+					_activeCommands.Clear();
+				}
+			}
+
 			if (disposing && (components != null))
 			{
 				components.Dispose();

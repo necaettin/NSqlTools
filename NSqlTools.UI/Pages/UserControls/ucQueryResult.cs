@@ -47,6 +47,15 @@ namespace NSqlTools.UI.UserControls
 		}
 		#endregion
 
+		protected override void ReleaseScreenResources()
+		{
+			var table = dgvQueryResult.DataSource as DataTable;
+			dgvQueryResult.DataSource = null;
+			dgvQueryResult.CellFormatting -= dgvQueryResult_CellFormatting;
+			table?.Dispose();
+			base.ReleaseScreenResources();
+		}
+
 		private void HookTimestampFormatting()
 		{
 			// Tek bir kez bağlanması yeterli

@@ -20,6 +20,27 @@ namespace NSqlTools.Types.BaseTypes
 		public virtual BaseScreenDataContract GetFormData() { return null; }
 
 		public virtual void SetFormData(BaseScreenDataContract formDataBaseContract) { }
+
+		protected virtual void ReleaseScreenResources() { }
+		#endregion
+
+		#region Dispose
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				try
+				{
+					ReleaseScreenResources();
+				}
+				finally
+				{
+					ParentTabPage = null;
+					MainForm = null;
+				}
+			}
+			base.Dispose(disposing);
+		}
 		#endregion
 	}
 }

@@ -832,14 +832,28 @@ namespace NSqlTools.UI.UserControls
 
 		private void txtDBObjectFilter_TextChanged(object sender, EventArgs e)
 		{
-			lbDBObject.DataSource =
-    string.IsNullOrWhiteSpace(txtDBObjectFilter.Text)
-        ? DBObjectContractList
-        : DBObjectContractList
-            .Where(d => d.Name != null &&
-                        d.Name.IndexOf(txtDBObjectFilter.Text,
-                            StringComparison.OrdinalIgnoreCase) >= 0)
-            .ToList();
+			lbDBObject.SelectedIndexChanged -= lbDBObject_SelectedIndexChanged;
+			try
+			{
+				// Clear selection before filtering (filter only, no auto-selection)
+				lbDBObject.SelectedIndex = -1;
+
+				lbDBObject.DataSource =
+				string.IsNullOrWhiteSpace(txtDBObjectFilter.Text)
+					? DBObjectContractList
+					: DBObjectContractList
+						.Where(d => d.Name != null &&
+									d.Name.IndexOf(txtDBObjectFilter.Text,
+										StringComparison.OrdinalIgnoreCase) >= 0)
+						.ToList();
+
+				// Keep selection cleared after DataSource change
+				lbDBObject.SelectedIndex = -1;
+			}
+			finally
+			{
+				lbDBObject.SelectedIndexChanged += lbDBObject_SelectedIndexChanged;
+			}
 		}
 
 		private void txtDBFilter_TextChanged(object sender, EventArgs e)

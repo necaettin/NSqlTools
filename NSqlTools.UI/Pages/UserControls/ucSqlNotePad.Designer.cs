@@ -13,9 +13,17 @@
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
-			if (disposing && (components != null))
+			if (disposing)
 			{
-				components.Dispose();
+				if (scSqlQuery != null)
+				{
+					scSqlQuery.CharAdded -= new System.EventHandler<ScintillaNET.CharAddedEventArgs>(this.scSqlQuery_CharAdded);
+					scSqlQuery.KeyUp -= new System.Windows.Forms.KeyEventHandler(this.scSqlQuery_KeyUp);
+				}
+				if (components != null)
+				{
+					components.Dispose();
+				}
 			}
 			base.Dispose(disposing);
 		}

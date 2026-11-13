@@ -1488,4 +1488,19 @@
   <data name="ComparisonCancelled" xml:space="preserve">
     <value>Comparison cancelled.</value>
   </data>
+  <data name="QueryReturnedTooMuchDataTryAddingTOPClauseOrWHEREConditionsToLimitResultsNError" xml:space="preserve">
+    <value>Query returned too much data. Try adding TOP clause or WHERE conditions to limit results. \n Error: </value>
+  </data>
+  <data name="UnexpectedErrorOccurred" xml:space="preserve">
+    <value>An unexpected error occurred. The error has been logged.</value>
+  </data>
+  <data name="ApplicationWillClose" xml:space="preserve">
+    <value>The application will now close. </value>
+  </data>
+  <data name="ErrorWhileOpeningScreen0" xml:space="preserve">
+    <value>Error while opening screen: {0}</value>
+  </data>
+  <data name="TheApplicationWillNowClose" xml:space="preserve">
+    <value>The application will now close.</value>
+  </data>
 </root>

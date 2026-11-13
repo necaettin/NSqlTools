@@ -1482,4 +1482,19 @@
   <data name="ComparisonCancelled" xml:space="preserve">
     <value>Karşılaştırma iptal edildi.</value>
   </data>
+  <data name="QueryReturnedTooMuchDataTryAddingTOPClauseOrWHEREConditionsToLimitResultsNError" xml:space="preserve">
+    <value>Sorgu çok fazla veri döndürdü. Sonuçları sınırlandırmak için TOP ifadesi veya WHERE koşulu eklemeyi deneyin. \n Hata:</value>
+  </data>
+  <data name="UnexpectedErrorOccurred" xml:space="preserve">
+    <value>Beklenmeyen bir hata oluştu. Hata kaydedildi.</value>
+  </data>
+  <data name="ApplicationWillClose" xml:space="preserve">
+    <value>Uygulama kapatılacak. </value>
+  </data>
+  <data name="ErrorWhileOpeningScreen0" xml:space="preserve">
+    <value>Ekran açılırken hata oluştu: {0}</value>
+  </data>
+  <data name="TheApplicationWillNowClose" xml:space="preserve">
+    <value>Uygulama kapatılacak. </value>
+  </data>
 </root>

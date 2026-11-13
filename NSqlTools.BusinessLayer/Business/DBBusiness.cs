@@ -46,9 +46,10 @@ namespace NSqlTools.BusinessLayer
 						"	sys.databases " +
 						"WHERE " +
 						"	database_id > 5 ORDER BY name", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Execute
-					SqlDataReader dr = cmd.ExecuteReader();
+                    // Execute
+                    SqlDataReader dr = cmd.ExecuteReader();
 					Int32 orderNo = 1000;
 					while (dr.Read())
 					{

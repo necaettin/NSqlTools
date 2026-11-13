@@ -39,9 +39,10 @@ namespace NSqlTools.BusinessLayer
 						$"	(@type IS NULL OR O.type = @type) " +
 						$"ORDER BY " +
 						$"	name", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(objectType == null
+                    // Parameters
+                    cmd.Parameters.Add(objectType == null
 						? new SqlParameter("@type", SqlDbType.VarChar) { Value = DBNull.Value }
 						: new SqlParameter("@type", SqlDbType.VarChar) { Value = objectType });
 

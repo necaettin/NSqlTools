@@ -19,6 +19,9 @@ namespace NSqlTools.UI.Pages
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
+			if (disposing && MainForm is frmMain main)
+				main.Resize -= frmMain_Resize;
+
 			if (disposing && (components != null))
 			{
 				components.Dispose();

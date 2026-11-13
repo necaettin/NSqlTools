@@ -35,6 +35,7 @@ namespace NSqlTools.Lib.Controls
 
 		public void BindList<T>(IList<T> list) where T : class
 		{
+			DisposeListBinder();
 			_listBinder = new AdvancedDataGridViewListBinder<T>(
 				this,
 				_bindingSource,
@@ -48,6 +49,7 @@ namespace NSqlTools.Lib.Controls
 
 			if (table == null)
 			{
+				DisposeListBinder();
 				_listBinder = null;
 				_bindingSource.DataSource = null;
 				DataSource = null;
@@ -64,6 +66,22 @@ namespace NSqlTools.Lib.Controls
 		}
 
 		public DataTable GetBoundDataTable() => _boundDataTable;
+
+		private void DisposeListBinder()
+		{
+			(_listBinder as IDisposable)?.Dispose();
+			_listBinder = null;
+		}
+
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				DisposeListBinder();
+			}
+
+			base.Dispose(disposing);
+		}
 
 		private void OnColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
 		{

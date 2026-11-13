@@ -367,5 +367,28 @@ namespace NSqlTools.UI.Pages
 			frmMain_Resize(this, EventArgs.Empty);
 		}
 		#endregion
+
+		protected override void OnHandleDestroyed(EventArgs e)
+		{
+			if (MainForm is frmMain main)
+				main.Resize -= frmMain_Resize;
+
+			base.OnHandleDestroyed(e);
+		}
+
+		protected override void ReleaseScreenResources()
+		{
+			if (cancellationTokenSource != null)
+			{
+				cancellationTokenSource.Cancel();
+				cancellationTokenSource.Dispose();
+				cancellationTokenSource = null;
+			}
+
+			semaphore?.Dispose();
+			semaphore = null;
+			TableContractList = null;
+			base.ReleaseScreenResources();
+		}
 	}
 }

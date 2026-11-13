@@ -9,8 +9,10 @@ using Zuby.ADGV;
 
 namespace NSqlTools.Lib.Helpers
 {
-	public class AdvancedDataGridViewListBinder<T> where T : class
+	public class AdvancedDataGridViewListBinder<T> : IDisposable where T : class
 	{
+		private bool _disposed;
+
 		private readonly BindingSource _bindingSource;
 		private readonly AdvancedDataGridView _grid;
 		private readonly IList<T> _original;
@@ -42,6 +44,16 @@ namespace NSqlTools.Lib.Helpers
 		public void Rebind()
 		{
 			ReapplyFilterAndSort();
+		}
+
+		public void Dispose()
+		{
+			if (_disposed)
+				return;
+
+			_disposed = true;
+			_grid.FilterStringChanged -= Grid_FilterStringChanged;
+			_grid.SortStringChanged -= Grid_SortStringChanged;
 		}
 
 		private void Grid_FilterStringChanged(object sender, AdvancedDataGridView.FilterEventArgs e)

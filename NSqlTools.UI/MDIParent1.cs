@@ -60,7 +60,10 @@ namespace NSqlTools.UI
             TextRenderer.DrawText(e.Graphics, tabPage.Text, tabControl.Font, textRect, Color.Black);
 
             Rectangle closeRect = new Rectangle(tabRect.Right - 18, tabRect.Top + 4, 12, 12);
-            e.Graphics.DrawString("×", new Font(tabControl.Font.FontFamily, 10, FontStyle.Bold), Brushes.Black, closeRect);
+            using (Font closeFont = new Font(tabControl.Font.FontFamily, 10, FontStyle.Bold))
+            {
+                e.Graphics.DrawString("×", closeFont, Brushes.Black, closeRect);
+            }
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,6 +116,8 @@ namespace NSqlTools.UI
             childForm.FormClosed += (s, args) =>
             {
                 tabControl.TabPages.Remove(tabPage);
+                tabPage.Dispose();
+                childForm.BeginInvoke((MethodInvoker)childForm.Dispose);
             };
 
             tabControl.TabPages.Add(tabPage);

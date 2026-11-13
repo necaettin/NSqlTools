@@ -127,7 +127,7 @@ namespace NSqlTools.UI.Pages.Screens
 					case EncryptionAlgorithm.Rijindael:
 						output = rbEncrypt.Checked
 							? BOA.Common.Helpers.EncryptionHelper.EncryptByRijndael(input, key)
-							: BOA.Common.Helpers.EncryptionHelper.DecryptByRijndael(input, key);
+							: BOA.Common.Helpers.EncryptionHelper.ForceDecrypt(input);
 
 						break;
 					case EncryptionAlgorithm.Sha256:

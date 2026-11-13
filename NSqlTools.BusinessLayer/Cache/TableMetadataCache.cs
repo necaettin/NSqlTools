@@ -51,12 +51,23 @@ namespace NSqlTools.BusinessLayer.Cache
             return serverName + "|" + databaseName;
         }
 
+        private static void PruneExpired()
+        {
+            var nowUtc = DateTime.UtcNow;
+            foreach (var pair in _cache)
+            {
+                if (pair.Value.TableExpirationUtc <= nowUtc)
+                    _cache.TryRemove(pair.Key, out _);
+            }
+        }
+
         /// <summary>
         /// Ensure table list (no columns) is cached.
         /// </summary>
         public static void EnsureCached(string connectionString, string databaseName)
         {
             if (string.IsNullOrWhiteSpace(connectionString) || string.IsNullOrWhiteSpace(databaseName)) return;
+            PruneExpired();
             string key = BuildKey(connectionString, databaseName);
             // Try to load a valid cache from disk first
             if (!_cache.ContainsKey(key))
@@ -87,15 +98,17 @@ namespace NSqlTools.BusinessLayer.Cache
             EnsureCached(connectionString, databaseName); // make sure table list exists first
             string key = BuildKey(connectionString, databaseName);
             var entry = _cache.GetOrAdd(key, _ => LoadTables(connectionString, databaseName));
-            if (entry.ColumnsLoaded && entry.ColumnExpirationUtc > DateTime.UtcNow) return Task.CompletedTask;
-            // Create load task if missing or expired
-            if (entry.ColumnLoadTask != null && entry.ColumnLoadTask.IsValueCreated)
+            lock (entry)
             {
-                return entry.ColumnLoadTask.Value;
+                if (entry.ColumnsLoaded && entry.ColumnExpirationUtc > DateTime.UtcNow) return Task.CompletedTask;
+                if (entry.ColumnLoadTask != null && entry.ColumnLoadTask.IsValueCreated)
+                {
+                    return entry.ColumnLoadTask.Value;
+                }
+                var newTask = new Lazy<Task>(() => Task.Run(() => BulkLoadColumns(connectionString, databaseName, entry)));
+                entry.ColumnLoadTask = newTask;
+                return newTask.Value;
             }
-            var newTask = new Lazy<Task>(() => Task.Run(() => BulkLoadColumns(connectionString, databaseName, entry)));
-            var task = (entry.ColumnLoadTask = newTask);
-            return task.Value; // trigger
         }
 
         /// <summary>
@@ -121,19 +134,22 @@ namespace NSqlTools.BusinessLayer.Cache
                         conn.ChangeDatabase(databaseName);
                     string sql = @"SELECT TABLE_SCHEMA, TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' ORDER BY TABLE_SCHEMA, TABLE_NAME";
                     using (var cmd = new SqlCommand(sql, conn))
-                    using (var rdr = cmd.ExecuteReader())
                     {
-                        while (rdr.Read())
+					    cmd.CommandTimeout = 1000;
+                        using (var rdr = cmd.ExecuteReader())
                         {
-                            string schema = rdr.GetString(0);
-                            string table = rdr.GetString(1);
-                            contractList.Add(new IntellisenseTableContract
+                            while (rdr.Read())
                             {
-                                SchemaName = schema,
-                                TableName = table,
-                                ColumnList = null
-                            });
-                            fullNames.Add(schema + "." + table);
+                                string schema = rdr.GetString(0);
+                                string table = rdr.GetString(1);
+                                contractList.Add(new IntellisenseTableContract
+                                {
+                                    SchemaName = schema,
+                                    TableName = table,
+                                    ColumnList = null
+                                });
+                                fullNames.Add(schema + "." + table);
+                            }
                         }
                     }
                 }
@@ -174,10 +190,11 @@ namespace NSqlTools.BusinessLayer.Cache
                     using (var cmd = new SqlCommand(sql, conn))
                     {
 	                    cmd.CommandType = CommandType.Text;
-	                    cmd.CommandTimeout = 60;
+	                    cmd.CommandTimeout = 1000;
 	                    using (var rdr = cmd.ExecuteReader())
 	                    {
-		                    var map = entry.Tables.ToDictionary(t => t.SchemaName + "." + t.TableName, t => t, StringComparer.OrdinalIgnoreCase);
+							foreach (var t in entry.Tables) t.ColumnList = null;
+							var map = entry.Tables.ToDictionary(t => t.SchemaName + "." + t.TableName, t => t, StringComparer.OrdinalIgnoreCase);
 		                    while (rdr.Read())
 		                    {
 			                    var schema = rdr.GetString(0);

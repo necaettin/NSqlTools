@@ -209,12 +209,87 @@ namespace NSqlTools.UI.Pages
         // Event handler ekleyelim
         private void tsbCancelQuery_Click(object sender, EventArgs e)
         {
-            _cancellationTokenSource?.Cancel();
+            lock (_queryLock)
+            {
+                _cancellationTokenSource?.Cancel();
+            }
         }
 		#endregion
 
 		#region Methods
 		private CancellationTokenSource _cancellationTokenSource;
+		private volatile bool _isQueryRunning = false;
+		private readonly object _queryLock = new object();
+
+		private bool canUpdateUi()
+		{
+			return !IsDisposed && !Disposing && IsHandleCreated && tcQueryResults != null && !tcQueryResults.IsDisposed;
+		}
+
+		private bool canUpdateQueryResults()
+		{
+			return canUpdateUi() && tcQueryResults.TabPages != null;
+		}
+
+		private void clearQueryResults()
+		{
+			if (!canUpdateQueryResults())
+				return;
+
+			try
+			{
+				var pages = tcQueryResults.TabPages.Cast<TabPage>().ToList();
+				tcQueryResults.TabPages.Clear();
+				foreach (TabPage page in pages)
+					page.Dispose();
+			}
+			catch (ObjectDisposedException)
+			{
+			}
+			catch (InvalidOperationException)
+			{
+			}
+		}
+
+		private void setQueryToolbarState(Boolean isRunning)
+		{
+			if (!canUpdateUi())
+				return;
+
+			if (this.InvokeRequired)
+			{
+				try
+				{
+					this.BeginInvoke(new Action(() =>
+					{
+						if (!canUpdateUi())
+							return;
+
+						if (tsbCancelQuery != null && !tsbCancelQuery.IsDisposed)
+							tsbCancelQuery.Enabled = isRunning;
+						if (tsbRunQuery != null && !tsbRunQuery.IsDisposed)
+							tsbRunQuery.Enabled = !isRunning;
+						if (tspParse != null && !tspParse.IsDisposed)
+							tspParse.Enabled = !isRunning;
+					}));
+				}
+				catch (ObjectDisposedException)
+				{
+				}
+				catch (InvalidOperationException)
+				{
+				}
+			}
+			else
+			{
+				if (tsbCancelQuery != null && !tsbCancelQuery.IsDisposed)
+					tsbCancelQuery.Enabled = isRunning;
+				if (tsbRunQuery != null && !tsbRunQuery.IsDisposed)
+					tsbRunQuery.Enabled = !isRunning;
+				if (tspParse != null && !tspParse.IsDisposed)
+					tspParse.Enabled = !isRunning;
+			}
+		}
 
 		private async void runQuery(Boolean parse = false)
 		{
@@ -223,6 +298,16 @@ namespace NSqlTools.UI.Pages
 			{
 				MessageBox.Show(CommonResource.SelectADatabase, CommonResource.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
+			}
+
+			lock (_queryLock)
+			{
+				if (_isQueryRunning)
+				{
+					MessageBox.Show("A query is already running. Please wait or cancel it first.", CommonResource.Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return;
+				}
+				_isQueryRunning = true;
 			}
 			#endregion
 
@@ -236,18 +321,30 @@ namespace NSqlTools.UI.Pages
 			#endregion
 
 			#region Query Results
-			scQueryAndResultPanel2Collapsed = false;
-			tcQueryResults.TabPages.Clear();
-			_cancellationTokenSource?.Dispose();
-			_cancellationTokenSource = new CancellationTokenSource();
-			
-			// Enable cancel button, disable run buttons
-			tsbCancelQuery.Enabled = true;
-			tsbRunQuery.Enabled = false;
-			tspParse.Enabled = false;
+			if (!canUpdateUi())
+			{
+				lock (_queryLock)
+				{
+					_isQueryRunning = false;
+				}
+				return;
+			}
 
-            try
-            {
+			scQueryAndResultPanel2Collapsed = false;
+			clearQueryResults();
+
+			CancellationTokenSource cancellationTokenSource;
+			lock (_queryLock)
+			{
+				_cancellationTokenSource?.Dispose();
+				cancellationTokenSource = new CancellationTokenSource();
+				_cancellationTokenSource = cancellationTokenSource;
+			}
+
+			setQueryToolbarState(true);
+
+			try
+			{
 				// Run query on background thread with cancellation support
 				RunSqlResultContract runSqlResultContract = await Task.Run(() => 
 					sqlScriptBusiness.RunSqlQuery(
@@ -255,30 +352,45 @@ namespace NSqlTools.UI.Pages
 						databaseName,
 						runQueryString,
 						parse,
-						_cancellationTokenSource.Token),
-					_cancellationTokenSource.Token);
+						cancellationTokenSource.Token),
+					cancellationTokenSource.Token).ConfigureAwait(true);
+
+				if (!canUpdateUi())
+					return;
 
 				// Display return tables
-				for (Int32 i = 0; i < runSqlResultContract.TableCollection.Count; i++)
+				if (runSqlResultContract.TableCollection.Count > 0)
 				{
-					DataTable dt = runSqlResultContract.TableCollection[i];
-					String tabName = String.Format(CommonResource.XQueryResult, i + 1);
-					addQueryResultGridTab(tabName, dt);
+					if (!canUpdateQueryResults())
+						return;
+
+					addQueryResultGridTab(CommonResource.Result, runSqlResultContract.TableCollection.Cast<DataTable>().ToList());
 				}
 
 				// Display messages
-				addQueryResultTextBoxTab(CommonResource.Messages, runSqlResultContract.AffectedRowsMessages.ToString());
+				if (runSqlResultContract.AffectedRowsMessages != null && runSqlResultContract.AffectedRowsMessages.Length > 0)
+				{
+					if (canUpdateQueryResults())
+						addQueryResultTextBoxTab(CommonResource.Messages, string.Join(Environment.NewLine, runSqlResultContract.AffectedRowsMessages));
+				}
+			}
+			catch (TaskCanceledException)
+			{
+				if (canUpdateQueryResults())
+					addQueryResultTextBoxTab(CommonResource.Messages, NSqlTools.Types.Properties.CommonResource.QueryCancelled);
 			}
 			catch (OperationCanceledException)
 			{
-				addQueryResultTextBoxTab(CommonResource.Messages, NSqlTools.Types.Properties.CommonResource.QueryCancelled);
+				if (canUpdateQueryResults())
+					addQueryResultTextBoxTab(CommonResource.Messages, NSqlTools.Types.Properties.CommonResource.QueryCancelled);
 			}
 			catch (SqlException ex)
 			{
-				// SqlCommand.Cancel() SqlException fırlatır
+				// SqlCommand.Cancel() SqlException fırlatır (Error -2)
 				if (ex.Number == -2 || ex.Message.Contains("cancelled") || ex.Message.Contains("iptal"))
 				{
-					addQueryResultTextBoxTab(CommonResource.Messages, NSqlTools.Types.Properties.CommonResource.QueryCancelled);
+					if (canUpdateQueryResults())
+						addQueryResultTextBoxTab(CommonResource.Messages, NSqlTools.Types.Properties.CommonResource.QueryCancelled);
 				}
 				else
 				{
@@ -295,58 +407,222 @@ namespace NSqlTools.UI.Pages
 						sb.AppendLine($"Procedure: {error.Procedure}");
 						sb.AppendLine("----------------------");
 					}
-					addQueryResultTextBoxTab(CommonResource.Messages, sb.ToString());
+					if (canUpdateQueryResults())
+						addQueryResultTextBoxTab(CommonResource.Messages, sb.ToString());
 				}
+			}
+			catch (OutOfMemoryException ex)
+			{
+				LogHelper.Error(ex);
+				if (canUpdateQueryResults())
+					addQueryResultTextBoxTab(CommonResource.Messages, NSqlTools.Types.Properties.CommonResource.QueryReturnedTooMuchDataTryAddingTOPClauseOrWHEREConditionsToLimitResultsNError + ex.Message);
+			}
+			catch (InvalidOperationException ex) when (ex.Message.Contains("connection") || ex.Message.Contains("bağlantı"))
+			{
+				LogHelper.Error(ex);
+				if (canUpdateQueryResults())
+					addQueryResultTextBoxTab(CommonResource.Messages, "Connection error: " + ex.Message);
 			}
 			catch (Exception ex)
 			{
 				LogHelper.Error(ex);
-				addQueryResultTextBoxTab(CommonResource.Messages, ex.Message);
+				if (canUpdateQueryResults())
+					addQueryResultTextBoxTab(CommonResource.Messages, "Unexpected error: " + ex.Message);
 			}
 			finally
 			{
-				tsbCancelQuery.Enabled = false;
-				tsbRunQuery.Enabled = true;
-				tspParse.Enabled = true;
-            }
-            #endregion
+				lock (_queryLock)
+				{
+					_isQueryRunning = false;
+					if (ReferenceEquals(_cancellationTokenSource, cancellationTokenSource))
+					{
+						_cancellationTokenSource = null;
+					}
+					cancellationTokenSource.Dispose();
+				}
 
-            if (tcQueryResults.TabPages.Count > 0)
+				setQueryToolbarState(false);
+			}
+			#endregion
+
+			if (canUpdateQueryResults() && tcQueryResults.TabPages.Count > 0)
 				tcQueryResults.SelectedTab = tcQueryResults.TabPages[0];
 		}
 
-		private void addQueryResultGridTab(String caption, DataTable dataSource)
+		private const Int32 MaxDisplayRows = 10000;
+
+		private static DataTable limitRows(DataTable source, Int32 maxRows)
 		{
-			TabPage tpQueryResult = new TabPage(caption);
-			ucQueryResult tableView = new ucQueryResult
+			if (source.Rows.Count <= maxRows)
+				return source;
+
+			DataTable limited = source.Clone();
+			for (Int32 r = 0; r < maxRows; r++)
+				limited.ImportRow(source.Rows[r]);
+			return limited;
+		}
+
+		private const Int32 MaxResultGridHeight = 200;
+		private const Int32 MinResultGridHeight = 100;
+		private const Int32 ResultGridSpacing = 6;
+		private const Int32 EstimatedRowHeight = 22;
+		private const Int32 EstimatedHeaderAndScrollHeight = 23 + 17 + 4;
+
+		private void addQueryResultGridTab(String caption, List<DataTable> dataSources)
+		{
+			if (!canUpdateQueryResults())
+				return;
+
+			try
+			{
+				TabPage tpQueryResult = new TabPage(caption);
+				tpQueryResult.Padding = new Padding(2, 5, 2, 2);
+
+				tpQueryResult.Controls.Add(buildResultLayout(dataSources, 0));
+
+				if (canUpdateQueryResults())
+					tcQueryResults.TabPages.Add(tpQueryResult);
+				else
+					tpQueryResult.Dispose();
+			}
+			catch (ObjectDisposedException)
+			{
+			}
+			catch (InvalidOperationException)
+			{
+			}
+			catch (Exception ex)
+			{
+				LogHelper.Error(ex);
+			}
+		}
+
+		private ucQueryResult createQueryResultView(DataTable dataSource, DockStyle dock)
+		{
+			return new ucQueryResult
 			{
 				MainForm = this.MainForm,
-				Dock = DockStyle.Fill,
+				Dock = dock,
 				ParentTabPage = this.ParentTabPage,
-				DataSource = dataSource
+				DataSource = limitRows(dataSource, MaxDisplayRows)
 			};
-			tableView.MainForm = this.MainForm;
-			tpQueryResult.Padding = new Padding(2, 5, 2, 2);
-			tpQueryResult.Controls.Add(tableView);
-			tcQueryResults.TabPages.Add(tpQueryResult);
-			//tcQueryResults.SelectedTab = tpQueryResult;
+		}
+
+		private Control buildResultLayout(List<DataTable> dataSources, Int32 index)
+		{
+			// Outer panel: single vertical scrollbar for all results (like SSMS)
+			Panel pnlResults = new Panel
+			{
+				Dock = DockStyle.Fill,
+				AutoScroll = true,
+				BackColor = System.Drawing.SystemColors.ControlDark
+			};
+
+			pnlResults.SuspendLayout();
+			try
+			{
+				// Dock = Top stacks the last added control on top, so add in reverse order
+				for (Int32 i = dataSources.Count - 1; i >= index; i--)
+				{
+					DataTable table = dataSources[i];
+
+					Panel pnlItem = new Panel
+					{
+						Dock = DockStyle.Top,
+						Height = calculateResultHeight(table),
+						BackColor = System.Drawing.SystemColors.Control
+					};
+					pnlItem.Controls.Add(createQueryResultView(table, DockStyle.Fill));
+
+					// Drag handle resizes the result panel directly above it
+					pnlResults.Controls.Add(createResultResizeHandle(pnlItem));
+					pnlResults.Controls.Add(pnlItem);
+				}
+			}
+			finally
+			{
+				pnlResults.ResumeLayout(true);
+			}
+
+			return pnlResults;
+		}
+
+		private static Control createResultResizeHandle(Control target)
+		{
+			Panel handle = new Panel
+			{
+				Dock = DockStyle.Top,
+				Height = ResultGridSpacing,
+				Cursor = Cursors.HSplit,
+				BackColor = System.Drawing.SystemColors.ControlDark
+			};
+
+			Boolean dragging = false;
+			Int32 startY = 0;
+			Int32 startHeight = 0;
+
+			handle.MouseDown += (s, e) =>
+			{
+				if (e.Button != MouseButtons.Left)
+					return;
+				dragging = true;
+				startY = Control.MousePosition.Y;
+				startHeight = target.Height;
+			};
+			handle.MouseMove += (s, e) =>
+			{
+				if (!dragging)
+					return;
+				Int32 newHeight = Math.Max(MinResultGridHeight, startHeight + (Control.MousePosition.Y - startY));
+				if (newHeight != target.Height)
+					target.Height = newHeight;
+			};
+			handle.MouseUp += (s, e) => dragging = false;
+
+			return handle;
+		}
+
+		private static Int32 calculateResultHeight(DataTable table)
+		{
+			Int32 rowCount = Math.Min(table?.Rows.Count ?? 0, MaxDisplayRows);
+			Int32 desired = EstimatedHeaderAndScrollHeight + (rowCount * EstimatedRowHeight);
+			return Math.Max(MinResultGridHeight, Math.Min(MaxResultGridHeight, desired));
 		}
 
 		private void addQueryResultTextBoxTab(String caption, String message)
 		{
-			TabPage tpQueryResult = new TabPage(caption);
-			TextBox txtQueryResult = new TextBox();
-			txtQueryResult.Text = message;
-			txtQueryResult.Multiline = true;
-			txtQueryResult.ReadOnly = true;
-			txtQueryResult.Dock = DockStyle.Fill;
-			txtQueryResult.ScrollBars = ScrollBars.Both;
-			tpQueryResult.Padding = new Padding(2, 5, 2, 2);
-			tpQueryResult.AutoScroll = true;
-			tpQueryResult.HorizontalScroll.Visible = true;
-			tpQueryResult.Controls.Add(txtQueryResult);
-			tcQueryResults.TabPages.Add(tpQueryResult);
-			//tcQueryResults.SelectedTab = tpQueryResult;
+			if (!canUpdateQueryResults())
+				return;
+
+			try
+			{
+				TabPage tpQueryResult = new TabPage(caption);
+				TextBox txtQueryResult = new TextBox();
+				txtQueryResult.Text = message;
+				txtQueryResult.Multiline = true;
+				txtQueryResult.ReadOnly = true;
+				txtQueryResult.Dock = DockStyle.Fill;
+				txtQueryResult.ScrollBars = ScrollBars.Both;
+				tpQueryResult.Padding = new Padding(2, 5, 2, 2);
+				tpQueryResult.AutoScroll = true;
+				tpQueryResult.HorizontalScroll.Visible = true;
+				tpQueryResult.Controls.Add(txtQueryResult);
+
+				if (canUpdateQueryResults())
+					tcQueryResults.TabPages.Add(tpQueryResult);
+				else
+					tpQueryResult.Dispose();
+			}
+			catch (ObjectDisposedException)
+			{
+			}
+			catch (InvalidOperationException)
+			{
+			}
+			catch (Exception ex)
+			{
+				LogHelper.Error(ex);
+			}
 		}
 
 		private void fillFavoriteQueries()
@@ -371,7 +647,7 @@ namespace NSqlTools.UI.Pages
 			this.tsMenu.Text = CommonResource.ExpandQueryResultsPanel;
 			this.tsbRunQuery.Text = CommonResource.RunQuery;
 			this.tspParse.Text = CommonResource.ParseSql;
-			this.tsbCancelQuery.Text = "Cancel Query"; // Hardcoded until resource is added
+			this.tsbCancelQuery.Text = NSqlTools.Types.Properties.CommonResource.CancelQuery;
 			this.tsbCriteriaCollapse.Text = CommonResource.CollapseCriteriaPanel;
 			this.tsbQueryResultOpenClose.Text = CommonResource.ExpandQueryResultsPanel;
 			this.btnGetFromFavoriteQueries.ToolTipText = CommonResource.GetFromFavoriteQueries;
@@ -385,7 +661,11 @@ namespace NSqlTools.UI.Pages
 		{
 			fillFavoriteQueries();
 			ucDBObjectSelectControl.InitForm();
-			((frmMain)MainForm).Resize += frmMain_Resize;
+			if (MainForm is frmMain main)
+			{
+				main.Resize -= frmMain_Resize;
+				main.Resize += frmMain_Resize;
+			}
 			frmMain_Resize(this, EventArgs.Empty);
 		}
 
@@ -437,10 +717,23 @@ namespace NSqlTools.UI.Pages
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
-		public void OnHandleDestroyed(object sender, EventArgs e)
+       protected override void OnHandleDestroyed(EventArgs e)
 		{
 			if (MainForm is frmMain main)
 				main.Resize -= frmMain_Resize;
+
+			lock (_queryLock)
+			{
+				try
+				{
+					_cancellationTokenSource?.Cancel();
+					_cancellationTokenSource?.Dispose();
+					_cancellationTokenSource = null;
+				}
+				catch { }
+			}
+
+			base.OnHandleDestroyed(e);
 		}
 		#endregion
 

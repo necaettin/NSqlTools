@@ -428,7 +428,7 @@ namespace NSqlTools.UI.Pages
 			// Sonuç
 			Int32 diffRowCount = dgvCompareResult.Rows
 				.Cast<DataGridViewRow>()
-				.Count(c => (ColumnDifferenceTypeEnum)c.Cells["DifferenceType"].Value != ColumnDifferenceTypeEnum.Equal);
+				.Count(c => c.Cells["DifferenceType"].Value != null && (ColumnDifferenceTypeEnum)c.Cells["DifferenceType"].Value != ColumnDifferenceTypeEnum.Equal);
 			lblStatus.Text = String.Format(CommonResource.TotalRecordCount0NumberOfColumnsContainingDifferences1NumberOfRowsContainingDifferences2NumberOfCellsContainingDifferences3,
 				CompareResultDataSource.Rows.Count,
 				diffColumnCount,
@@ -583,6 +583,22 @@ namespace NSqlTools.UI.Pages
 			frmMain_Resize(this, EventArgs.Empty);
 
 			dgvCompareResult.DataBindingComplete += dgvCompareResult_DataBindingComplete;
+		}
+
+		protected override void OnHandleDestroyed(EventArgs e)
+		{
+			if (MainForm is frmMain main)
+				main.Resize -= frmMain_Resize;
+
+			base.OnHandleDestroyed(e);
+		}
+
+		protected override void ReleaseScreenResources()
+		{
+			CompareResultDataSource?.Dispose();
+			CompareResultDataSource = null;
+			CompareColumnsList = null;
+			base.ReleaseScreenResources();
 		}
 
 		public override BaseScreenDataContract GetFormData()

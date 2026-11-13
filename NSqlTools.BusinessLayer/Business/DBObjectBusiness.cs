@@ -32,7 +32,7 @@ namespace NSqlTools.BusinessLayer
 						$"	s.name as SchemaName, o.object_id AS ObjectId " +
 						$"FROM " +
 						$"	Sys.Objects o " +
-						$"	JOIN sys.schemas s ON s.schema_id = o.schema_id " +
+                        $"	JOIN sys.schemas s ON s.schema_id = o.schema_id " +
 						$"WHERE " +
 						$"	(" +
 						$"		(@type1 IS NULL AND @type2 IS NULL) " +
@@ -43,9 +43,10 @@ namespace NSqlTools.BusinessLayer
 						$"	AND o.schema_id = @schema_id " +
 						$"ORDER BY " +
 						$"	o.name", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(new SqlParameter("@schema_id", SqlDbType.Int) { Value = schemaId });
+                    // Parameters
+                    cmd.Parameters.Add(new SqlParameter("@schema_id", SqlDbType.Int) { Value = schemaId });
 					cmd.Parameters.Add(objectType == null
 						? new SqlParameter("@type1", SqlDbType.VarChar) { Value = DBNull.Value }
 						: new SqlParameter("@type1", SqlDbType.VarChar) { Value = objectType });
@@ -109,9 +110,10 @@ namespace NSqlTools.BusinessLayer
 						$"	AND (@name_filter IS NULL OR o.name collate {collation} LIKE '%' + @name_filter collate {collation} + '%') " +
 						$"ORDER BY " +
 						$"	name", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(new SqlParameter("@object_type", SqlDbType.VarChar) { Value = objectType });
+                    // Parameters
+                    cmd.Parameters.Add(new SqlParameter("@object_type", SqlDbType.VarChar) { Value = objectType });
 					cmd.Parameters.Add(new SqlParameter("@schema_id", SqlDbType.Int) { Value = schemaId });
 					cmd.Parameters.Add(String.IsNullOrWhiteSpace(nameFilter)
 						? new SqlParameter("@name_filter", SqlDbType.VarChar) { Value = DBNull.Value }
@@ -166,9 +168,10 @@ namespace NSqlTools.BusinessLayer
 						$"	sys.sql_modules " +
 						$"WHERE " +
 						$"	object_id = @object_id", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(new SqlParameter("@object_id", SqlDbType.Int) { Value = dbObjectContract.ObjectId });
+                    // Parameters
+                    cmd.Parameters.Add(new SqlParameter("@object_id", SqlDbType.Int) { Value = dbObjectContract.ObjectId });
 
 					// Execute
 					String objectContent = cmd.ExecuteScalar().ToString();
@@ -224,9 +227,10 @@ namespace NSqlTools.BusinessLayer
 						$"	AND (@name_filter IS NULL OR t.name COLLATE {collation} LIKE '%' + @name_filter collate {collation} + '%') " +
 						$"ORDER BY " +
 						$"	t.name", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(schemaId == null
+                    // Parameters
+                    cmd.Parameters.Add(schemaId == null
 						? new SqlParameter("@schema_id", SqlDbType.Int) { Value = DBNull.Value }
 						: new SqlParameter("@schema_id", SqlDbType.Int) { Value = schemaId.Value });
 
@@ -341,17 +345,18 @@ namespace NSqlTools.BusinessLayer
 						$"FROM " +
 						$"	sys.sql_modules m " +
 						$"	JOIN sys.objects o ON m.object_id = o.object_id " +
-						$"	JOIN sys.schemas s ON s.schema_id = o.schema_id " +
+						$"	LEFT JOIN sys.schemas s ON s.schema_id = o.schema_id " +
 						$"WHERE " +
 						$"	(@type IS NULL OR o.type=@type) " +
-						$"	AND (@schema_id IS NULL OR o.schema_id = @schema_id) " +
+                        $"	AND (@schema_id IS NULL OR o.schema_id = @schema_id OR (@type = 'TR' AND o.schema_id IS NULL)) " +
 						$"	AND (@search_keyword IS NULL OR m.definition collate {collation} LIKE '%' + @search_keyword collate {collation} + '%') " +
 						$"	AND (@name IS NULL OR o.name collate {collation} LIKE '%' + @name collate {collation} + '%') " +
 						$"ORDER BY " +
 						$"	o.name", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(objectType == null
+                    // Parameters
+                    cmd.Parameters.Add(objectType == null
 						? new SqlParameter("@type", SqlDbType.VarChar) { Value = DBNull.Value }
 						: new SqlParameter("@type", SqlDbType.VarChar) { Value = objectType });
 
@@ -382,8 +387,8 @@ namespace NSqlTools.BusinessLayer
 							{
 								DBName = dbName,
 								ObjectId = Convert.ToInt32(dr["object_id"]),
-								SchemaId = Convert.ToInt32(dr["schema_id"]),
-								SchemaName = dr["SchemaName"].ToString(),
+                                SchemaId = dr["schema_id"] == DBNull.Value ? 0 : Convert.ToInt32(dr["schema_id"]),
+								SchemaName = dr["SchemaName"] == DBNull.Value ? String.Empty : dr["SchemaName"].ToString(),
 								Name = dr["name"].ToString(),
 								Definition = dr["definition"].ToString(),
 								HitCount = countOccurrences(dr["definition"].ToString(), searchKeyword, caseSensitive),

@@ -201,9 +201,28 @@ namespace NSqlTools.UI.Pages
 				: Resources.Collapse;
 		}
 
+		protected override void ReleaseScreenResources()
+		{
+			dataSource = null;
+			base.ReleaseScreenResources();
+		}
+
 		private void frmMain_Resize(object sender, EventArgs e)
 		{
 			UIHelper.SafeSetSplitterDistance(scBatchCompare, Constants.DefaultSplitterDistance);
+		}
+
+		protected override void OnHandleDestroyed(EventArgs e)
+		{
+			if (MainForm is frmMain main)
+			{
+				main.Resize -= frmMain_Resize;
+			}
+
+			_cancellationTokenSource?.Cancel();
+			backgroundWorker?.CancelAsync();
+
+			base.OnHandleDestroyed(e);
 		}
 		#endregion
 

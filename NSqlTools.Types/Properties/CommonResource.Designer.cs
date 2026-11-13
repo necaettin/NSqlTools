@@ -2725,6 +2725,15 @@ namespace NSqlTools.Types.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Query returned too much data. Try adding TOP clause or WHERE conditions to limit results. \n Error: .
+        /// </summary>
+        public static string QueryReturnedTooMuchDataTryAddingTOPClauseOrWHEREConditionsToLimitResultsNError {
+            get {
+                return ResourceManager.GetString("QueryReturnedTooMuchDataTryAddingTOPClauseOrWHEREConditionsToLimitResultsNError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Query Text.
         /// </summary>
         public static string QueryText {

@@ -45,6 +45,39 @@ namespace NSqlTools.UI.Pages.Screens
 
 		private TfsBusiness tfsBusiness;
 
+		protected override void ReleaseScreenResources()
+		{
+			if (backgroundWorker != null)
+			{
+				backgroundWorker.DoWork -= BackgroundWorker_Search_DoWork;
+				backgroundWorker.RunWorkerCompleted -= BackgroundWorker_Search_RunWorkerCompleted;
+				backgroundWorker.DoWork -= BackgroundWorker_LoadOwners_DoWork;
+				backgroundWorker.RunWorkerCompleted -= BackgroundWorker_LoadOwners_RunWorkerCompleted;
+				if (backgroundWorker.IsBusy)
+					backgroundWorker.CancelAsync();
+				backgroundWorker.Dispose();
+				backgroundWorker = null;
+			}
+
+			if (fileChangesWorker != null)
+			{
+				if (fileChangesWorker.IsBusy)
+					fileChangesWorker.CancelAsync();
+				fileChangesWorker.Dispose();
+				fileChangesWorker = null;
+			}
+
+			if (_cancellationTokenSource != null)
+			{
+				_cancellationTokenSource.Cancel();
+				_cancellationTokenSource.Dispose();
+				_cancellationTokenSource = null;
+			}
+
+			dataSource = null;
+			base.ReleaseScreenResources();
+		}
+
 		public override List<Object> TabProviders
 		{
 			get

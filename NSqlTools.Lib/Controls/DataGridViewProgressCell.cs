@@ -115,7 +115,10 @@ namespace NSqlTools.Lib.Controls
 			{
 
 				// Draw the progress 
-				g.FillRectangle(new SolidBrush(_ProgressBarColor), cellBounds.X + 2, cellBounds.Y + 2, Convert.ToInt32((percentage * cellBounds.Width * 0.8)), cellBounds.Height / 1 - 5);
+				using (Brush progressBrush = new SolidBrush(_ProgressBarColor))
+				{
+					g.FillRectangle(progressBrush, cellBounds.X + 2, cellBounds.Y + 2, Convert.ToInt32((percentage * cellBounds.Width * 0.8)), cellBounds.Height / 1 - 5);
+				}
 				//Draw text
 				g.DrawString(progressVal.ToString() + "%", cellStyle.Font, foreColorBrush, posX, posY);
 			}
@@ -126,13 +129,17 @@ namespace NSqlTools.Lib.Controls
 				var dataGridViewRow = this.DataGridView.CurrentRow;
 				if (dataGridViewRow != null && dataGridViewRow.Index == rowIndex)
 				{
-					g.DrawString(progressVal.ToString() + "%", cellStyle.Font, new SolidBrush(cellStyle.SelectionForeColor), posX, posX);
+					using (Brush selectionBrush = new SolidBrush(cellStyle.SelectionForeColor))
+					{
+						g.DrawString(progressVal.ToString() + "%", cellStyle.Font, selectionBrush, posX, posX);
+					}
 				}
 				else
 				{
 					g.DrawString(progressVal.ToString() + "%", cellStyle.Font, foreColorBrush, posX, posY);
 				}
 			}
+			foreColorBrush.Dispose();
 		}
 
 		public override object Clone()

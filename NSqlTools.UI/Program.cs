@@ -16,6 +16,9 @@ namespace NSqlTools.UI
 		[STAThread]
 		static void Main()
 		{
+			// Install global exception handlers
+			GlobalExceptionHandler.Install();
+
 			// Log sistemini başlat ve test et
 			try
 			{
@@ -30,7 +33,7 @@ namespace NSqlTools.UI
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Thread.CurrentThread.CurrentUICulture = new CultureInfo(UIHelper.GetCultureFromRegistry());
-			
+
 			try
 			{
 				Application.Run(new frmMain());
@@ -43,6 +46,7 @@ namespace NSqlTools.UI
 			finally
 			{
 				LogHelper.Info("Application shutting down");
+				GlobalExceptionHandler.Uninstall();
 			}
 		}
 	}

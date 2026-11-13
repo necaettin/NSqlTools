@@ -48,7 +48,9 @@ public class ClosableMetroTabControl : MetroFramework.Controls.MetroTabControl
 
             if (closeRect.Contains(e.Location))
             {
+                TabPage tabPage = TabPages[i];
                 TabPages.RemoveAt(i);
+                tabPage.Dispose();
                 break;
             }
         }

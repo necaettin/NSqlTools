@@ -31,9 +31,10 @@ namespace NSqlTools.BusinessLayer
 						$"	join sys.types t on c.user_type_id=t.user_type_id " +
 						$"WHERE " +
 						$"	object_id = @object_id", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(new SqlParameter("@object_id", SqlDbType.Int) { Value = dbObjectContract.ObjectId });
+                    // Parameters
+                    cmd.Parameters.Add(new SqlParameter("@object_id", SqlDbType.Int) { Value = dbObjectContract.ObjectId });
 
 					// Execute
 					var reader = cmd.ExecuteReader();
@@ -80,7 +81,8 @@ namespace NSqlTools.BusinessLayer
 						$"USE {dbName}; SELECT c.column_id, c.name, c.system_type_id, c.user_type_id, c.max_length, c.precision, c.is_nullable, c.is_identity, t.name AS type_name FROM sys.columns c JOIN sys.types t ON c.user_type_id = t.user_type_id JOIN sys.objects o ON c.object_id = o.object_id JOIN sys.schemas s ON o.schema_id = s.schema_id WHERE o.type='U' AND s.name=@schema AND o.name=@table ORDER BY c.column_id", con);
 					cmd.Parameters.Add(new SqlParameter("@schema", SqlDbType.NVarChar, 128) { Value = schema });
 					cmd.Parameters.Add(new SqlParameter("@table", SqlDbType.NVarChar, 128) { Value = table });
-					var rdr = cmd.ExecuteReader();
+					cmd.CommandTimeout = 1000;
+                    var rdr = cmd.ExecuteReader();
 					while (rdr.Read())
 					{
 						list.Add(new ColumnContract

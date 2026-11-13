@@ -46,9 +46,10 @@ namespace NSqlTools.BusinessLayer
 						$"	) indcols " +
 						$"WHERE " +
 						$"	t.object_id = @objectId", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(new SqlParameter("@objectId", SqlDbType.Int) { Value = objectId });
+                    // Parameters
+                    cmd.Parameters.Add(new SqlParameter("@objectId", SqlDbType.Int) { Value = objectId });
 
 					// Execute
 					SqlDataReader dr = cmd.ExecuteReader();
@@ -107,9 +108,10 @@ namespace NSqlTools.BusinessLayer
 						$"	) fkr " +
 						$"WHERE " +
 						$"	tp.object_id = @objectId", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(new SqlParameter("@objectId", SqlDbType.Int) { Value = objectId });
+                    // Parameters
+                    cmd.Parameters.Add(new SqlParameter("@objectId", SqlDbType.Int) { Value = objectId });
 
 					// Execute
 					SqlDataReader dr = cmd.ExecuteReader();
@@ -157,9 +159,10 @@ namespace NSqlTools.BusinessLayer
 						$"	JOIN sys.objects o ON d.referencing_id = o.object_id " +
 						$"WHERE " +
 						$"	d.referenced_id = @objectId", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(new SqlParameter("@objectId", SqlDbType.Int) { Value = objectId });
+                    // Parameters
+                    cmd.Parameters.Add(new SqlParameter("@objectId", SqlDbType.Int) { Value = objectId });
 
 					// Execute
 					SqlDataReader dr = cmd.ExecuteReader();
@@ -203,9 +206,10 @@ namespace NSqlTools.BusinessLayer
 						$"	sys.triggers trg " +
 						$"WHERE " +
 						$"	trg.parent_id = @objectId", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(new SqlParameter("@objectId", SqlDbType.Int) { Value = objectId });
+                    // Parameters
+                    cmd.Parameters.Add(new SqlParameter("@objectId", SqlDbType.Int) { Value = objectId });
 
 					// Execute
 					SqlDataReader dr = cmd.ExecuteReader();
@@ -267,9 +271,10 @@ namespace NSqlTools.BusinessLayer
 						$"	OR (@only_not_empty_tables = 0) " +
 						$"ORDER BY " +
 						$"	row_count ASC ", con);
+                    cmd.CommandTimeout = 1000;
 
-					// Parameters
-					cmd.Parameters.Add(new SqlParameter("@only_not_empty_tables", SqlDbType.Int) { Value = onlyNotEmptyTables ? 1: 0 });
+                    // Parameters
+                    cmd.Parameters.Add(new SqlParameter("@only_not_empty_tables", SqlDbType.Int) { Value = onlyNotEmptyTables ? 1: 0 });
 
 					// Execute
 					SqlDataReader dr = cmd.ExecuteReader();

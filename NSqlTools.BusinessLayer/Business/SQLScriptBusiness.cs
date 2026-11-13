@@ -23,7 +23,8 @@ namespace NSqlTools.BusinessLayer
 					SqlCommand cmd = new SqlCommand(String.Format(
 						"USE [" + dbName + "]; \n" +
 						"{0}", sqlQuery), con);
-					using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+					cmd.CommandTimeout = 1000;
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
 					{
 						da.Fill(dataTable);
 					}
@@ -47,52 +48,114 @@ namespace NSqlTools.BusinessLayer
 		{
 			RunSqlResultContract result = new RunSqlResultContract();
 			DataSet dataSet = new DataSet();
+			SqlConnection con = null;
+			SqlCommand cmd = null;
+
+			// Büyük veri setleri için DataSet ayarlarını optimize et
+			dataSet.EnforceConstraints = false;
+
 			try
 			{
-				using (SqlConnection con = new SqlConnection(connectionString))
+				// Connection timeout ayarla
+				SqlConnectionStringBuilder connBuilder = new SqlConnectionStringBuilder(connectionString);
+				if (connBuilder.ConnectTimeout < 30)
+					connBuilder.ConnectTimeout = 30;
+
+				con = new SqlConnection(connBuilder.ConnectionString);
+
+				// PRINT, RAISERROR vb. mesajları yakala
+				con.InfoMessage += (sender, e) =>
 				{
-					con.Open();
-
-					// Prepare Sql Query String
-					StringBuilder sb = new StringBuilder();
-					sb.AppendLine($"USE [{databaseName}]");
-					//sb.AppendLine($"SET NOCOUNT OFF;");
-					if(parse)
-						sb.AppendLine("SET FMTONLY ON");
-					sb.AppendLine(query);
-					if (parse)
-						sb.AppendLine("SET FMTONLY OFF");
-
-					// Run Sql Query
-					String sqlQueryRun = sb.ToString();
-					using (SqlCommand cmd = new SqlCommand(sqlQueryRun, con))
+					foreach (SqlError error in e.Errors)
 					{
-						cmd.CommandType = CommandType.Text;
-						cmd.CommandTimeout = 300; // 300 saniye timeout
-						cmd.StatementCompleted += (sender, e) =>
-						{
-							result.AffectedRowsMessages.AppendLine(String.Format(CommonResource._0RowSAffected, e.RecordCount));
-						};
+						result.AffectedRowsMessages.AppendLine(error.Message);
+					}
+				};
 
-						// CancellationToken ile SqlCommand.Cancel() çağrısını bağla
-						using (cancellationToken.Register(() => cmd.Cancel()))
+				// Cancellation kontrolü - connection açılmadan önce
+				cancellationToken.ThrowIfCancellationRequested();
+
+				con.Open();
+
+				// Cancellation kontrolü - connection açıldıktan sonra
+				cancellationToken.ThrowIfCancellationRequested();
+
+				// Prepare Sql Query String
+				StringBuilder sb = new StringBuilder();
+				sb.AppendLine($"USE [{databaseName}]");
+				//sb.AppendLine($"SET NOCOUNT OFF;");
+				if(parse)
+					sb.AppendLine("SET FMTONLY ON");
+				sb.AppendLine(query);
+				if (parse)
+					sb.AppendLine("SET FMTONLY OFF");
+
+				// Run Sql Query
+				String sqlQueryRun = sb.ToString();
+				cmd = new SqlCommand(sqlQueryRun, con);
+				cmd.CommandTimeout = 1000;
+                cmd.CommandType = CommandType.Text;
+				// 0 = unlimited timeout (kullanıcı cancel edene kadar çalışır)
+				cmd.CommandTimeout = 0;
+				cmd.StatementCompleted += (sender, e) =>
+				{
+					result.AffectedRowsMessages.AppendLine(String.Format(CommonResource._0RowSAffected, e.RecordCount));
+				};
+
+				// CancellationToken ile SqlCommand.Cancel() çağrısını bağla
+				using (cancellationToken.Register(() => 
+				{
+					try
+					{
+						if (cmd != null && con != null && con.State == ConnectionState.Open)
 						{
-							using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-							{
-								da.Fill(dataSet);
-							}
+							cmd.Cancel();
 						}
+					}
+					catch
+					{
+						// Cancel sırasında oluşabilecek hataları yoksay
+					}
+				}))
+				{
+					using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+					{
+						da.Fill(dataSet);
 					}
 				}
 			}
+			catch (OperationCanceledException)
+			{
+				// Cancellation bekleniyordu, yeniden fırlat
+				throw;
+			}
 			catch(SqlException ex)
 			{
+				// SqlException'ı olduğu gibi fırlat (UI'da detaylı handle edilecek)
 				throw;
 			}
 			catch (Exception ex)
 			{
 				LogHelper.Error(ex);
 				throw new Exception(CommonResource.ErrorOccuredWhileRunningSqlQuery, ex);
+			}
+			finally
+			{
+				// Kaynakları temizle
+				if (cmd != null)
+				{
+					try { cmd.Dispose(); } catch { }
+				}
+				if (con != null)
+				{
+					try 
+					{ 
+						if (con.State == ConnectionState.Open)
+							con.Close();
+						con.Dispose(); 
+					} 
+					catch { }
+				}
 			}
 
 			result.TableCollection = dataSet.Tables;

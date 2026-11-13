@@ -149,6 +149,14 @@ namespace NSqlTools.UI.Pages
 			frmMain_Resize(this, EventArgs.Empty);
 		}
 
+		protected override void OnHandleDestroyed(EventArgs e)
+		{
+			if (MainForm is frmMain main)
+				main.Resize -= frmMain_Resize;
+
+			base.OnHandleDestroyed(e);
+		}
+
 		public override BaseScreenDataContract GetFormData()
 		{
 			DBObjectSelectScreenDataContract dbObjectSelectFormDataContract = (DBObjectSelectScreenDataContract)ucDBObjectSelect.GetFormData();
